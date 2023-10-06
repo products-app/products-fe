@@ -4,6 +4,11 @@ declare module app {
     name: string;
     image: string;
     price: number;
+    stock: string;
+  }
+
+  export interface CartProduct {
+    [uuid: string]: Product;
   }
 
   export interface BadgeVariants {

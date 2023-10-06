@@ -1,13 +1,12 @@
 import { Heading } from '@lebernardo/react'
 
-import Page from '../../components/Page'
-import ProductGrid from '../../components/ProductGrid'
+import Page from '@/components/Page'
+import ProductGrid from '@/components/ProductGrid'
 
-import { useSelector } from 'react-redux'
-import { RootState } from '../../store'
+import { useAppSelector } from '@./store'
 
 function ProductList() {
-  const products = useSelector((state: RootState) => state.products)
+  const products = useAppSelector((state) => state.products)
 
   return (
     <Page>
