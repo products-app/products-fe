@@ -4,10 +4,11 @@ declare module app {
     name: string;
     image: string;
     price: number;
-    stock: string;
+    stock: number;
+    quantity: number;
   }
 
-  export interface CartProduct {
+  export interface cartItem {
     [uuid: string]: Product;
   }
 
