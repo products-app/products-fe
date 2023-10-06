@@ -1,6 +1,9 @@
 import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
-import Badge from '../Badge'
+import Badge from '@/components/Badge'
+import { useAppSelector } from '@/store'
+import { useDispatch } from 'react-redux'
+import { setOpen } from '@/store/slices/sidebar'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -8,6 +11,13 @@ const styles = {
 }
 
 const Header = () => {
+  const dispatch = useDispatch()
+  const sidebarControl = useAppSelector((state) => state.sidebarControl)
+
+  const handleOpen = () => {
+    dispatch(setOpen(!sidebarControl.open))
+  }
+
   return (
     <header className="bg-gray700">
       <div className={styles.container}>
@@ -25,7 +35,7 @@ const Header = () => {
           />
         </form>
 
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={handleOpen}>
           <ShoppingCartSimple className="text-white" />
           <Badge variant="secondary" className="absolute right-0 top-0">
             4

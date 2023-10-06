@@ -1,21 +1,32 @@
-import Sidebar from '../Sidebar'
-import List, { ListItem } from '../List'
+import Sidebar from '@/components/Sidebar'
+import List, { ListItem } from '@/components/List'
 import { Text } from '@lebernardo/react'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
-import { formatDecimalToReal } from '../../helpers/products'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../store'
+import { formatDecimalToReal } from '@/helpers/products'
+import { useAppSelector } from '@/store'
+import { useDispatch } from 'react-redux'
+import { setOpen } from '@/store/slices/sidebar'
 
 const CartSidebar = () => {
-  const products = useSelector((state: RootState) => state.products)
+  const dispatch = useDispatch()
+  const { cartProducts, open } = useAppSelector((state) => {
+    return {
+      cartProducts: state.cart.products,
+      open: state.sidebarControl.open,
+    }
+  })
+
+  const handleCloseSidebar = () => {
+    dispatch(setOpen(false))
+  }
 
   return (
-    <Sidebar isOpen={false}>
+    <Sidebar isOpen={open} onClose={handleCloseSidebar}>
       <Text size="xl" className="mb-5">
         Carrinho de compras
       </Text>
       <List>
-        {products.map((product, i) => (
+        {cartProducts.map((product, i) => (
           <ListItem key={i}>
             <figure className="bg-gray600 rounded-lg w-36 h-13 overflow-hidden">
               <img
@@ -27,7 +38,7 @@ const CartSidebar = () => {
             <div className="whitespace-nowrap overflow-hidden w-full">
               <Text size="md">{product.name}</Text>
               <Text size="sm" className="text-gray400">
-                Quantity: <strong>1</strong>
+                Qtde: <strong>1</strong>
               </Text>
             </div>
             <div className="text-right">
