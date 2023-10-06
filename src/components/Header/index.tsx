@@ -1,6 +1,6 @@
 import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
-import Badge from '@/components/Badge'
+import Badge from '../Badge'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
