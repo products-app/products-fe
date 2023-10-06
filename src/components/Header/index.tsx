@@ -5,6 +5,7 @@ import { useAppSelector } from '@/store'
 import { useDispatch } from 'react-redux'
 import { setOpen } from '@/store/slices/sidebar'
 import { countCartItems } from '@/helpers/cart'
+import { setSearch } from '../../store/slices/search'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -14,15 +15,20 @@ const styles = {
 const Header = () => {
   const dispatch = useDispatch()
 
-  const { cartItems, sidebarControl } = useAppSelector((state) => {
+  const { cartItems, sidebarControl, searchTerm } = useAppSelector((state) => {
     return {
       cartItems: state.cart.items,
       sidebarControl: state.sidebarControl,
+      searchTerm: state.search.searchTerm,
     }
   })
 
   const handleOpen = () => {
     dispatch(setOpen(!sidebarControl.open))
+  }
+
+  const handleChange = (value: string) => {
+    dispatch(setSearch(value))
   }
 
   return (
@@ -39,6 +45,8 @@ const Header = () => {
             type="text"
             id="search"
             placeholder="Pesquise por produtos"
+            onChange={(e) => handleChange(e.target.value)}
+            value={searchTerm}
           />
         </form>
 

@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
-import { cart, products, sidebar } from './slices'
+import { cart, products, sidebar, search } from './slices'
 
 export const store = configureStore({
   reducer: {
     cart,
     products,
     sidebarControl: sidebar,
+    search,
   },
 })
 

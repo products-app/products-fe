@@ -1,3 +1,3 @@
-export const countCartItems = (cartItems: app.cartItem): number => {
+export const countCartItems = (cartItems: app.CartItems): number => {
   return Object.keys(cartItems).length
 }
