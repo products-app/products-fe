@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const productSlice = createSlice({
   name: 'products',
@@ -24,12 +24,11 @@ const productSlice = createSlice({
       price: 11,
     },
   ],
-  reducers: {},
-})
-
-export const store = configureStore({
-  reducer: {
-    products: productSlice.reducer,
+  reducers: {
+    add: (state, action) => {
+      state.push(action.payload.product)
+    },
   },
 })
-export type RootState = ReturnType<typeof store.getState>
+
+export const products = productSlice.reducer
