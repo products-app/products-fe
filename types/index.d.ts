@@ -5,4 +5,8 @@ declare module app {
     image: string;
     price: number;
   }
+
+  export interface BadgeVariants {
+    [key: string]: string;
+  }
 }
