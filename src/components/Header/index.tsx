@@ -4,6 +4,7 @@ import Badge from '@/components/Badge'
 import { useAppSelector } from '@/store'
 import { useDispatch } from 'react-redux'
 import { setOpen } from '@/store/slices/sidebar'
+import { countCartItems } from '@/helpers/cart'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -12,7 +13,13 @@ const styles = {
 
 const Header = () => {
   const dispatch = useDispatch()
-  const sidebarControl = useAppSelector((state) => state.sidebarControl)
+
+  const { cartItems, sidebarControl } = useAppSelector((state) => {
+    return {
+      cartItems: state.cart.items,
+      sidebarControl: state.sidebarControl,
+    }
+  })
 
   const handleOpen = () => {
     dispatch(setOpen(!sidebarControl.open))
@@ -38,7 +45,7 @@ const Header = () => {
         <button className={styles.btn} onClick={handleOpen}>
           <ShoppingCartSimple className="text-white" />
           <Badge variant="secondary" className="absolute right-0 top-0">
-            4
+            {cartItems ? countCartItems(cartItems) : '0'}
           </Badge>
         </button>
       </div>

@@ -7,6 +7,7 @@ import { useAppSelector } from '@/store'
 import { useDispatch } from 'react-redux'
 import { setOpen } from '@/store/slices/sidebar'
 import { decrementItem, incrementItem, removeItem } from '@/store/slices/cart'
+import { countCartItems } from '../../helpers/cart'
 
 const EmptyCart = () => (
   <div className="flex justify-center flex-col items-center h-5/6 overflow-hidden">
@@ -28,7 +29,7 @@ const CartSidebar = () => {
     }
   })
 
-  const countCartItems = Object.keys(cartProducts).length
+  const totalCartItems = countCartItems(cartProducts)
 
   const handleCloseSidebar = () => {
     dispatch(setOpen(false))
@@ -51,7 +52,7 @@ const CartSidebar = () => {
       <Text size="xl" className="mb-5">
         Carrinho de compras
       </Text>
-      {cartProducts && countCartItems > 0 && (
+      {cartProducts && totalCartItems > 0 && (
         <List>
           {Object.entries(cartProducts).map(([key, value], i) => (
             <ListItem key={i}>
@@ -102,7 +103,7 @@ const CartSidebar = () => {
           ))}
         </List>
       )}
-      {countCartItems === 0 && <EmptyCart />}
+      {totalCartItems === 0 && <EmptyCart />}
     </Sidebar>
   )
 }
