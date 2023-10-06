@@ -1,13 +1,13 @@
-import Sidebar from "../Sidebar";
-import List, { ListItem } from "../List";
-import { Text } from "@lebernardo/react";
-import { Minus, Plus, TrashSimple } from "phosphor-react";
-import { formatDecimalToReal } from "../../helpers/products";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import Sidebar from '../Sidebar'
+import List, { ListItem } from '../List'
+import { Text } from '@lebernardo/react'
+import { Minus, Plus, TrashSimple } from 'phosphor-react'
+import { formatDecimalToReal } from '../../helpers/products'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store'
 
 const CartSidebar = () => {
-  const products = useSelector((state: RootState) => state.products);
+  const products = useSelector((state: RootState) => state.products)
 
   return (
     <Sidebar isOpen={false}>
@@ -53,7 +53,7 @@ const CartSidebar = () => {
         ))}
       </List>
     </Sidebar>
-  );
-};
+  )
+}
 
-export default CartSidebar;
+export default CartSidebar
