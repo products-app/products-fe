@@ -17,7 +17,7 @@ const styles = {
   actionsWrapper: 'flex items-center gap-4 justify-end',
 }
 
-function ProductAdd() {
+function AdminProductAdd() {
   return (
     <div className={styles.container}>
       <div className="text-center mb-4 font-heading">
@@ -73,4 +73,4 @@ function ProductAdd() {
   )
 }
 
-export default ProductAdd
+export default AdminProductAdd

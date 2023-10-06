@@ -5,6 +5,8 @@ declare module app {
     image: string;
     price: number;
     stock: number;
+    active?: boolean;
+    description?: string;
   }
 
   export interface CartItem extends Product {

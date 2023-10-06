@@ -1,9 +1,7 @@
 import { Heading } from '@lebernardo/react'
-
 import Page from '@/components/Page'
 import ProductGrid from '@/components/ProductGrid'
 import { filterProductsBySearchTerm } from '@/helpers/products'
-
 import { useAppSelector } from '@/store'
 
 function ProductList() {

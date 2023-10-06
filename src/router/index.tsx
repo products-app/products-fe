@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
-import ProductAdd from '@/pages/Admin/ProductAdd'
+import AdminProductList from '@/pages/Admin/ProductList'
+import AdminProductAdd from '@/pages/Admin/ProductAdd'
 import ProductList from '@/pages/ProductList'
 
 const router = createBrowserRouter([
@@ -9,7 +10,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin/add-product',
-    element: <ProductAdd />,
+    element: <AdminProductAdd />,
+  },
+  {
+    path: '/admin/list-product',
+    element: <AdminProductList />,
   },
 ])
 
