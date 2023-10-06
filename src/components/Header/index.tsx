@@ -1,10 +1,16 @@
 import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
+import Badge from '@/components/Badge'
+
+const styles = {
+  container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
+  btn: 'w-10 h-10 rounded-full border-none hover:bg-gray800 flex items-center justify-center relative',
+}
 
 const Header = () => {
   return (
     <header className="bg-gray700">
-      <div className="max-w-5xl mx-auto p-3 flex items-center justify-between">
+      <div className={styles.container}>
         <a href="#" className="flex items-center">
           <Text className="font-bold text-white" size="xl">
             Prompt
@@ -19,8 +25,11 @@ const Header = () => {
           />
         </form>
 
-        <button className="w-10 h-10 rounded-full border-none hover:bg-gray800 flex items-center justify-center">
+        <button className={styles.btn}>
           <ShoppingCartSimple className="text-white" />
+          <Badge variant="secondary" className="absolute right-0 top-0">
+            4
+          </Badge>
         </button>
       </div>
     </header>
