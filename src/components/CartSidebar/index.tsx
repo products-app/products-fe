@@ -31,17 +31,18 @@ const CartSidebar = () => {
           </Text>
           <div className="w-full h-[90%] overflow-y-scroll">
             {cartItems && totalCartItems > 0 && <ListCart items={cartItems} />}
+            {totalCartItems === 0 && <EmptyCart />}
           </div>
         </div>
 
-        <Card className="fixed right-0 bottom-0 w-full">
-          <Button variant="primary" className="w-full my-4">
-            Comprar agora
-          </Button>
-        </Card>
+        {totalCartItems > 0 && (
+          <Card className="fixed right-0 bottom-0 w-full">
+            <Button variant="primary" className="w-full my-4">
+              Comprar agora
+            </Button>
+          </Card>
+        )}
       </div>
-
-      {totalCartItems === 0 && <EmptyCart />}
     </Sidebar>
   )
 }
