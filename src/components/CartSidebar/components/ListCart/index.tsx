@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import styles from './styles'
 
 type PageProps = {
-  items: app.cartItem
+  items?: app.CartItems
 }
 
 const ListCart = ({ items }: PageProps) => {
