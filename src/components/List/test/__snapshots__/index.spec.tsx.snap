@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`List Item component > should render correctly 1`] = `
+<div>
+  <li
+    class="flex gap-4 py-3 justify-between border-t-2 border-gray-700 border-solid"
+  >
+    <div>
+      Test
+    </div>
+  </li>
+</div>
+`;
+
+exports[`List and List Item components > should render both components correctly 1`] = `
+<div>
+  <ul>
+    <li
+      class="flex gap-4 py-3 justify-between border-t-2 border-gray-700 border-solid"
+    >
+      <div>
+        Test
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List component > should render correctly 1`] = `
+<div>
+  <ul>
+    <div>
+      Test
+    </div>
+  </ul>
+</div>
+`;
