@@ -1,12 +1,9 @@
-import Header from '../../components/Header'
-import CartSidebar from '../CartSidebar'
-
-const styles = {
-  container: 'max-w-5xl mx-auto my-10',
-}
+import Header from '@/components/Header'
+import CartSidebar from '@/components/CartSidebar'
+import styles from './styles'
 
 type PageProps = {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const Page = ({ children }: PageProps) => {
@@ -21,4 +18,9 @@ const Page = ({ children }: PageProps) => {
   )
 }
 
+const defaultProps = {
+  children: <></>,
+}
+
+Page.defaultProps = defaultProps
 export default Page
