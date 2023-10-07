@@ -1,13 +1,10 @@
-import List, { ListItem } from '../../../List'
+import List, { ListItem } from '@/components/List'
 import { Text } from '@lebernardo/react'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
-import { formatDecimalToReal } from '../../../../helpers/products'
-import {
-  decrementItem,
-  incrementItem,
-  removeItem,
-} from '../../../../store/slices/cart'
+import { formatDecimalToReal } from '@/helpers/products'
+import { decrementItem, incrementItem, removeItem } from '@/store/slices/cart'
 import { useDispatch } from 'react-redux'
+import styles from './styles'
 
 type PageProps = {
   items: app.cartItem
@@ -32,47 +29,50 @@ const ListCart = ({ items }: PageProps) => {
     <List>
       {Object.entries(items).map(([key, value], i) => (
         <ListItem key={i}>
-          <figure className="bg-gray600 rounded-lg w-36 h-13 overflow-hidden">
+          <figure className={styles.containerImg}>
             <img
-              className="object-cover w-auto h-auto aspect-square"
+              className={styles.imgItem}
               src={value.image}
-              alt=""
+              alt={value.name}
             />
           </figure>
-          <div className="whitespace-nowrap overflow-hidden w-full">
+
+          <div className={styles.containerProductText}>
             <Text size="md">{value.name}</Text>
-            <Text size="sm" className="text-gray400">
+            <Text size="sm" className={styles.textProductQuantity}>
               Qtde: <strong>{value.quantity}</strong>
             </Text>
           </div>
-          <div className="text-right">
-            <Text className="text-base300 font-bold">
+
+          <div className={styles.containerControls}>
+            <Text className={styles.textProductPrice}>
               {formatDecimalToReal(99.9)}
             </Text>
-            <div className="flex mt-2 justify-end">
+            <div className={styles.containerQuantityControls}>
               <button
-                className="bg-gray-700 p-1"
+                name="minus"
+                className={styles.buttonQuantityMinus}
                 onClick={() => handleDecrementItem(key)}
                 disabled={value.quantity === 1}
               >
-                <Minus className="text-white text-xs" />
+                <Minus className={styles.buttonIconQuantity} />
               </button>
               <button
-                className="bg-gray-800 p-1 disabled:"
+                className={styles.buttonQuantityPlus}
                 onClick={() => handleIncrementItem(key)}
                 disabled={value.quantity === value.stock}
               >
-                <Plus className="text-white text-xs" />
+                <Plus className={styles.buttonIconQuantity} />
               </button>
             </div>
           </div>
 
-          <div className="text-right">
+          <div className={styles.containerControls}>
             <button
-              className="p-2 hover:bg-gray800 rounded-full"
+              className={styles.buttonRemoveProduct}
               onClick={() => handleRemoveItem(key)}
             >
-              <TrashSimple className="text-gray200 hover:text-white" />
+              <TrashSimple className={styles.buttonIconRemove} />
             </button>
           </div>
         </ListItem>
@@ -81,4 +81,9 @@ const ListCart = ({ items }: PageProps) => {
   )
 }
 
+const defaultProps = {
+  items: [],
+}
+
+ListCart.defaultProps = defaultProps
 export default ListCart
