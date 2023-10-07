@@ -71,3 +71,4 @@ const productSlice = createSlice({
 })
 
 export const products = productSlice.reducer
+export const { add } = productSlice.actions
