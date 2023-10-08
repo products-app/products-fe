@@ -2,7 +2,7 @@ import { Text } from '@lebernardo/react'
 import { defaultImages } from '@/constants/images'
 import styles from './styles'
 
-const EmptyCart = () => (
+const CartItems = () => (
   <div className={styles.container}>
     <img
       className={styles.defaultImg}
@@ -13,4 +13,4 @@ const EmptyCart = () => (
   </div>
 )
 
-export default EmptyCart
+export default CartItems

@@ -1,11 +1,11 @@
-import Sidebar from '@/components/Sidebar'
-import { Text, Card, Button } from '@lebernardo/react'
-import ListCart from './components/ListCart'
-import EmptyCart from './components/EmptyCart'
 import { useAppSelector } from '@/store'
-import { useDispatch } from 'react-redux'
 import { setOpen } from '@/store/slices/sidebar'
 import { countCartItems } from '@/helpers/cart'
+import { useDispatch } from 'react-redux'
+import { Text, Button, Card } from '@lebernardo/react'
+import Sidebar from '@/components/Sidebar'
+import NotFound from '@/components/NotFound'
+import ListCart from './components/ListCart'
 
 const CartSidebar = () => {
   const dispatch = useDispatch()
@@ -31,7 +31,7 @@ const CartSidebar = () => {
           </Text>
           <div className="w-full h-[90%] overflow-y-scroll">
             {cartItems && totalCartItems > 0 && <ListCart items={cartItems} />}
-            {totalCartItems === 0 && <EmptyCart />}
+            {totalCartItems === 0 && <NotFound variant="cart-items" />}
           </div>
         </div>
 
