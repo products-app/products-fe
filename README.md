@@ -123,6 +123,11 @@ disable all rules that are deemed unnecessary or could potentially clash with Pr
 - [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh): This package validates that your components can be updated safely with a quick update.
 
 
+### Router 
+
+- [react-dom](https://www.npmjs.com/package/react-dom): This package serves as the entry point to the DOM and server renderers for React. For this project it is used to create the client side of the route.
+- [react-router-dom](https://reactrouter.com/en/main): this package creates a routing on the client side.
+
 <!-- LICENSE -->
 ## License
 
