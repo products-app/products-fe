@@ -143,6 +143,7 @@ disable all rules that are deemed unnecessary or could potentially clash with Pr
 - [tailwindcss](https://tailwindcss.com/): this package is a CSS framework to write css in the classname markup.
 - [postcss](https://postcss.org/): converts the codes of modern css framework into a css file.
 - [autoprefixer](https://github.com/postcss/autoprefixer): this package is used to convert some modern css attributes into css that older browsers can interpret.
+- [@vitejs/plugin-react-swc](https://www.npmjs.com/package/@vitejs/plugin-react-swc): This package has limited options to enable good performances and be transpiler agnostic.
 
 <!-- LICENSE -->
 ## License
