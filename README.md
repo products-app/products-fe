@@ -128,11 +128,22 @@ disable all rules that are deemed unnecessary or could potentially clash with Pr
 - [react-dom](https://www.npmjs.com/package/react-dom): This package serves as the entry point to the DOM and server renderers for React. For this project it is used to create the client side of the route.
 - [react-router-dom](https://reactrouter.com/en/main): this package creates a routing on the client side.
 
+### Tests
+
+- [@testing-library](https://testing-library.com/): tool to create tests.
+- [@testing-library/dom](https://www.npmjs.com/package/@testing-library/dom): tool to create DOM tests in the front-end.
+- [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom): tool to create DOM tests with element matchers for Jest.
+- [@testing-library/react](https://www.npmjs.com/package/@testing-library/react): tool to create DOM tests. It provides light utility functions on top of react-dom and react-dom/test-utils.
+- [@vitest/coverage-v8](https://www.npmjs.com/package/@vitest/coverage-v8): this package create the coverago for the tests.
+- [jsdom](https://www.npmjs.com/package/jsdom): this package is a pure JavaScript implementation of many web standards for use with Node.js.
+- [vitest](https://vitest.dev/): this package is a easily testing framework.
+
 ### Others
 
 - [tailwindcss](https://tailwindcss.com/): this package is a CSS framework to write css in the classname markup.
 - [postcss](https://postcss.org/): converts the codes of modern css framework into a css file.
 - [autoprefixer](https://github.com/postcss/autoprefixer): this package is used to convert some modern css attributes into css that older browsers can interpret.
+- [@vitejs/plugin-react-swc](https://www.npmjs.com/package/@vitejs/plugin-react-swc): This package has limited options to enable good performances and be transpiler agnostic.
 
 <!-- LICENSE -->
 ## License
