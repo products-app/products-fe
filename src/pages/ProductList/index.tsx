@@ -26,18 +26,11 @@ function ProductList() {
         <ProductGrid items={filterProductsBySearchTerm(products, searchTerm)} />
       )}
 
-      {filteredProducts.length === 0 && searchTerm !== '' && (
-        <div className="h-screen w-full">
-          <NotFound variant="search" componentProps={{ searchTerm }} />
-        </div>
-      )}
-
       {filteredProducts.length === 0 && searchTerm === '' && (
         <div className="h-screen w-full">
           <NotFound variant="list-products" />
         </div>
       )}
-      <ProductGrid items={filteredProducts} />
     </Page>
   )
 }

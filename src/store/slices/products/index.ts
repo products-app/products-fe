@@ -4,12 +4,14 @@ const productSlice = createSlice({
   name: 'products',
   initialState: [
     {
+      id: 1,
       name: 'leg warmers',
       image: 'https://source.unsplash.com/random?product=1',
       price: 49.9,
       stock: 10,
     },
     {
+      id: 2,
       name: 'controller',
       image: 'https://source.unsplash.com/random?product=2',
       price: 99.9,
@@ -17,6 +19,7 @@ const productSlice = createSlice({
       active: true,
     },
     {
+      id: 3,
       name: 'towel',
       image: 'https://source.unsplash.com/random?product=3',
       price: 10,
@@ -24,6 +27,7 @@ const productSlice = createSlice({
       active: true,
     },
     {
+      id: 4,
       name: 'soda can',
       image: 'https://source.unsplash.com/random?product=4',
       price: 11,
@@ -62,7 +66,7 @@ const productSlice = createSlice({
       stock: 9,
       active: true,
     },
-  ],
+  ] as app.Product[],
   reducers: {
     add: (state, action) => {
       state.push(action.payload.product)
