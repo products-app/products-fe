@@ -123,6 +123,17 @@ disable all rules that are deemed unnecessary or could potentially clash with Pr
 - [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh): This package validates that your components can be updated safely with a quick update.
 
 
+### Router 
+
+- [react-dom](https://www.npmjs.com/package/react-dom): This package serves as the entry point to the DOM and server renderers for React. For this project it is used to create the client side of the route.
+- [react-router-dom](https://reactrouter.com/en/main): this package creates a routing on the client side.
+
+### Others
+
+- [tailwindcss](https://tailwindcss.com/): this package is a CSS framework to write css in the classname markup.
+- [postcss](https://postcss.org/): converts the codes of modern css framework into a css file.
+- [autoprefixer](https://github.com/postcss/autoprefixer): this package is used to convert some modern css attributes into css that older browsers can interpret.
+
 <!-- LICENSE -->
 ## License
 
