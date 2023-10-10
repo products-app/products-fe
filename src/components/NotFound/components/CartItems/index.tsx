@@ -1,15 +1,16 @@
 import { Text } from '@lebernardo/react'
+import { defaultImages } from '@/constants/images'
 import styles from './styles'
 
-const EmptyCart = () => (
+const CartItems = () => (
   <div className={styles.container}>
     <img
       className={styles.defaultImg}
-      src="/empty_cart.png"
+      src={defaultImages.emptyCart}
       alt="Imagem de carrinho vazio"
     />
     <Text className={styles.message}>Adicione algo em seu carrinho...</Text>
   </div>
 )
 
-export default EmptyCart
+export default CartItems

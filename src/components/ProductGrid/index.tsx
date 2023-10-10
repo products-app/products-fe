@@ -1,7 +1,12 @@
 import { Heading, Button, Text } from '@lebernardo/react'
-import { formatDecimalToReal } from '@/helpers/products'
+import {
+  formatDecimalToReal,
+  getProductImage,
+  getProductStock,
+} from '@/helpers/products'
 import { useDispatch } from 'react-redux'
 import { addItem } from '@/store/slices/cart'
+import styles from './styles'
 
 type ProductGridProps = {
   items: app.Product[]
@@ -15,23 +20,28 @@ const ProductGrid = ({ items }: ProductGridProps) => {
   }
 
   return (
-    <section className="grid grid-cols-3 grid-flow-row gap-4">
+    <section className={styles.grid}>
       {items.map((product, i) => (
-        <figure
-          key={product.id + i}
-          className="bg-gray600 rounded-lg overflow-hidden"
-        >
-          <img src={product.image + i} className="w-full aspect-square" />
-          <figcaption className="p-4">
-            <Heading size="sm" className="text-white">
+        <figure key={product.id + i} className={styles.gridItemProduct}>
+          <img
+            src={getProductImage(product.image)}
+            className={styles.imgProduct}
+          />
+
+          <figcaption className={styles.wrapperText}>
+            <Heading size="sm" className={styles.textProductName}>
               {product.name}
             </Heading>
             <Text>{formatDecimalToReal(product.price)}</Text>
-            <div className="flex items-center justify-center">
+
+            <div className={styles.wrapperControls}>
               <Button
-                className="w-full mt-4"
                 variant="outline"
+                className={styles.buttonAddToCart}
                 onClick={() => handleAddToCart(product)}
+                disabled={
+                  getProductStock(product.stock) === 0 || product.price === 0
+                }
               >
                 Adicionar ao carrinho
               </Button>

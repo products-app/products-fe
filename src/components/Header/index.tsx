@@ -4,8 +4,8 @@ import Badge from '@/components/Badge'
 import { useAppSelector } from '@/store'
 import { useDispatch } from 'react-redux'
 import { setOpen } from '@/store/slices/sidebar'
+import { setSearch } from '@/store/slices/search'
 import { countCartItems } from '@/helpers/cart'
-import { setSearch } from '../../store/slices/search'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',

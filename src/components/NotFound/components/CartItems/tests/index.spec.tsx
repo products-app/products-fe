@@ -17,7 +17,7 @@ describe('Empty Card component', () => {
   it('should contain the empty cart image', () => {
     render(<EmptyCart />)
     const emptyCardImage = screen.getByRole('img')
-    expect(emptyCardImage).toHaveAttribute('src', '/empty_cart.png')
+    expect(emptyCardImage).toHaveAttribute('src', 'empty-cart.png')
     expect(emptyCardImage).toHaveAttribute('alt')
   })
 })

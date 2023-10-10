@@ -8,7 +8,7 @@ exports[`Empty Card component > should render correctly 1`] = `
     <img
       alt="Imagem de carrinho vazio"
       class="w-full px-8"
-      src="/empty_cart.png"
+      src="empty-cart.png"
     />
     <p
       class="c-dgMvMW c-dgMvMW-kWyXas-size-md text-gray500"

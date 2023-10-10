@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 const styles = {
   container: 'rounded-full w-4 h-4 flex items-center justify-center',
+  textBagde: 'text-xs font-bold',
 }
 
 type BadgeProps = {
@@ -30,7 +31,7 @@ const Badge = ({ children, variant, className }: BadgeProps) => {
         [className]: !!className,
       })}
     >
-      <Text className="text-xs font-bold">{children}</Text>
+      <Text className={styles.textBagde}>{children}</Text>
     </div>
   )
 }
