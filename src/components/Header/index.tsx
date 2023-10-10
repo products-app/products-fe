@@ -1,11 +1,11 @@
+import { useSyncExternalStore } from 'react'
 import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
 import Badge from '@/components/Badge'
-import { useAppSelector } from '@/store'
-import { useDispatch } from 'react-redux'
-import { setOpen } from '@/store/slices/sidebar'
-import { setSearch } from '@/store/slices/search'
 import { countCartItems } from '@/helpers/cart'
+import { useSidebarStore } from '@/root/src/store/slices/sidebar'
+import { useSearchStore } from '@/root/src/store/slices/search'
+import { useCartStore } from '@/root/src/store/cart'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -13,22 +13,22 @@ const styles = {
 }
 
 const Header = () => {
-  const dispatch = useDispatch()
+  const open = useSidebarStore((state) => state.open)
+  const setOpen = useSidebarStore((state) => state.setOpen)
+  const searchTerm = useSearchStore((state) => state.searchTerm)
+  const setSearch = useSearchStore((state) => state.setSearch)
 
-  const { cartItems, sidebarControl, searchTerm } = useAppSelector((state) => {
-    return {
-      cartItems: state.cart.items,
-      sidebarControl: state.sidebarControl,
-      searchTerm: state.search.searchTerm,
-    }
-  })
+  const cart = useSyncExternalStore(
+    useCartStore.subscribe,
+    useCartStore.getState,
+  )
 
   const handleOpen = () => {
-    dispatch(setOpen(!sidebarControl.open))
+    setOpen(!open)
   }
 
   const handleChange = (value: string) => {
-    dispatch(setSearch(value))
+    setSearch(value)
   }
 
   return (
@@ -53,7 +53,7 @@ const Header = () => {
         <button className={styles.btn} onClick={handleOpen}>
           <ShoppingCartSimple className="text-white" />
           <Badge variant="secondary" className="absolute right-0 top-0">
-            {cartItems ? countCartItems(cartItems) : '0'}
+            {cart.cartItems ? countCartItems(cart.cartItems) : '0'}
           </Badge>
         </button>
       </div>

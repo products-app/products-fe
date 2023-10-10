@@ -1,25 +1,23 @@
-import { useAppSelector } from '@/store'
-import { setOpen } from '@/store/slices/sidebar'
+import { useSyncExternalStore } from 'react'
 import { countCartItems } from '@/helpers/cart'
-import { useDispatch } from 'react-redux'
 import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
 import NotFound from '@/components/NotFound'
 import ListCart from './components/ListCart'
+import { useCartStore } from '@/root/src/store/cart'
+import { useSidebarStore } from '@/root/src/store/slices/sidebar'
 
 const CartSidebar = () => {
-  const dispatch = useDispatch()
-  const { cartItems, open } = useAppSelector((state) => {
-    return {
-      cartItems: state.cart.items,
-      open: state.sidebarControl.open,
-    }
-  })
-
-  const totalCartItems = countCartItems(cartItems)
+  const cart = useSyncExternalStore(
+    useCartStore.subscribe,
+    useCartStore.getState,
+  )
+  const open = useSidebarStore((state) => state.open)
+  const setOpen = useSidebarStore((state) => state.setOpen)
+  const totalCartItems = countCartItems(cart.cartItems)
 
   const handleCloseSidebar = () => {
-    dispatch(setOpen(false))
+    setOpen(false)
   }
 
   return (
@@ -30,7 +28,9 @@ const CartSidebar = () => {
             Carrinho de compras
           </Text>
           <div className="w-full h-[90%] overflow-y-scroll">
-            {cartItems && totalCartItems > 0 && <ListCart items={cartItems} />}
+            {cart.cartItems && totalCartItems > 0 && (
+              <ListCart items={cart.cartItems} />
+            )}
             {totalCartItems === 0 && <NotFound variant="cart-items" />}
           </div>
         </div>

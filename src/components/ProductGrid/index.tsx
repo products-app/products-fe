@@ -4,25 +4,27 @@ import {
   getProductImage,
   getProductStock,
 } from '@/helpers/products'
-import { useDispatch } from 'react-redux'
-import { addItem } from '@/store/slices/cart'
 import styles from './styles'
+import { useCartStore } from '@/root/src/store/cart'
 
 type ProductGridProps = {
   items: app.Product[]
 }
 
 const ProductGrid = ({ items }: ProductGridProps) => {
-  const dispatch = useDispatch()
+  const addItem = useCartStore((state) => state.addItem)
 
   const handleAddToCart = (product: app.Product) => {
-    dispatch(addItem(product))
+    addItem(product)
   }
 
   return (
     <section className={styles.grid}>
       {items.map((product, i) => (
-        <figure key={product.id + i} className={styles.gridItemProduct}>
+        <figure
+          key={product?.id && product?.id + i}
+          className={styles.gridItemProduct}
+        >
           <img
             src={getProductImage(product.image)}
             className={styles.imgProduct}
