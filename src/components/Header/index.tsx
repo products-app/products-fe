@@ -3,8 +3,8 @@ import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
 import Badge from '@/components/Badge'
 import { countCartItems } from '@/helpers/cart'
-import { useSidebarStore } from '@/root/src/store/slices/sidebar'
-import { useSearchStore } from '@/root/src/store/slices/search'
+import { useSidebarStore } from '@/root/src/store/sidebar'
+import { useSearchStore } from '@/root/src/store/search'
 import { useCartStore } from '@/root/src/store/cart'
 
 const styles = {

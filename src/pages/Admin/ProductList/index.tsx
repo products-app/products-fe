@@ -1,6 +1,6 @@
 import Datatable from '@/components/Admin/DataTable'
 import { Heading, Card } from '@lebernardo/react'
-import { useStore } from '@/root/src/store/slices/products'
+import { useStore } from '@/root/src/store/products'
 
 const styles = {
   container: 'max-w-6xl m-auto py-12',
