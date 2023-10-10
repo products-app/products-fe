@@ -2,13 +2,11 @@
 
 exports[`List Item component > should render correctly 1`] = `
 <div>
-  <li
-    class="flex gap-4 py-3 justify-between border-t-2 border-gray-700 border-solid"
-  >
+  <ul>
     <div>
       Test
     </div>
-  </li>
+  </ul>
 </div>
 `;
 

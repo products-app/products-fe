@@ -27,8 +27,6 @@ describe('products slice', () => {
   it('should add a new product', () => {
     const state = reducer(exampleState, add(newProduct))
 
-    console.log(state)
-
     expect(state.length).toEqual(2)
   })
 })
