@@ -5,7 +5,7 @@ import Sidebar from '@/components/Sidebar'
 import NotFound from '@/components/NotFound'
 import ListCart from './components/ListCart'
 import { useCartStore } from '@/root/src/store/cart'
-import { useSidebarStore } from '@/root/src/store/slices/sidebar'
+import { useSidebarStore } from '@/root/src/store/sidebar'
 
 const CartSidebar = () => {
   const cart = useSyncExternalStore(
