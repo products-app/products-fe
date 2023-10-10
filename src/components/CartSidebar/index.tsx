@@ -1,25 +1,19 @@
-import { useAppSelector } from '@/store'
-import { setOpen } from '@/store/slices/sidebar'
 import { countCartItems } from '@/helpers/cart'
-import { useDispatch } from 'react-redux'
 import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
 import NotFound from '@/components/NotFound'
 import ListCart from './components/ListCart'
+import { useCartStore } from '@/store/cart'
+import { useSidebarStore } from '@/store/sidebar'
 
 const CartSidebar = () => {
-  const dispatch = useDispatch()
-  const { cartItems, open } = useAppSelector((state) => {
-    return {
-      cartItems: state.cart.items,
-      open: state.sidebarControl.open,
-    }
-  })
-
+  const cartItems = useCartStore((state) => state.cartItems)
+  const open = useSidebarStore((state) => state.open)
+  const setOpen = useSidebarStore((state) => state.setOpen)
   const totalCartItems = countCartItems(cartItems)
 
   const handleCloseSidebar = () => {
-    dispatch(setOpen(false))
+    setOpen(false)
   }
 
   return (

@@ -1,28 +1,29 @@
-import List, { ListItem } from '@/components/List'
 import { Text } from '@lebernardo/react'
+import List, { ListItem } from '@/components/List'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
 import { formatDecimalToReal } from '@/helpers/products'
-import { decrementItem, incrementItem, removeItem } from '@/store/slices/cart'
-import { useDispatch } from 'react-redux'
+import { useCartStore } from '@/store/cart'
 import styles from './styles'
 
 type PageProps = {
-  items?: app.CartItems
+  items?: object
 }
 
 const ListCart = ({ items }: PageProps) => {
-  const dispatch = useDispatch()
+  const decrementItem = useCartStore((state) => state.decrementItem)
+  const incrementItem = useCartStore((state) => state.incrementItem)
+  const removeItem = useCartStore((state) => state.removeItem)
 
   const handleDecrementItem = (uuid: string) => {
-    dispatch(decrementItem(uuid))
+    decrementItem(uuid)
   }
 
   const handleIncrementItem = (uuid: string) => {
-    dispatch(incrementItem(uuid))
+    incrementItem(uuid)
   }
 
   const handleRemoveItem = (uuid: string) => {
-    dispatch(removeItem(uuid))
+    removeItem(uuid)
   }
 
   return (

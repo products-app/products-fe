@@ -2,10 +2,9 @@ import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
 import Badge from '@/components/Badge'
 import { useAppSelector } from '@/store'
-import { useDispatch } from 'react-redux'
-import { setOpen } from '@/store/slices/sidebar'
-import { setSearch } from '@/store/slices/search'
 import { countCartItems } from '@/helpers/cart'
+import { useSidebarStore } from '@/store/sidebar'
+import { useSearchStore } from '@/store/search'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -13,7 +12,8 @@ const styles = {
 }
 
 const Header = () => {
-  const dispatch = useDispatch()
+  const setOpen = useSidebarStore((state) => state.setOpen)
+  const setSearch = useSearchStore((state) => state.setSearch)
 
   const { cartItems, sidebarControl, searchTerm } = useAppSelector((state) => {
     return {
@@ -24,11 +24,11 @@ const Header = () => {
   })
 
   const handleOpen = () => {
-    dispatch(setOpen(!sidebarControl.open))
+    setOpen(!sidebarControl.open)
   }
 
   const handleChange = (value: string) => {
-    dispatch(setSearch(value))
+    setSearch(value)
   }
 
   return (
