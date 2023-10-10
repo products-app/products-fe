@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { useStore } from '@/store/products'
-import { useSearchStore } from '@/store/search'
+import { useStore } from '@/root/src/store/slices/products'
+import { useSearchStore } from '@/root/src/store/slices/search'
 import { Heading } from '@lebernardo/react'
 import Page from '@/components/Page'
 import ProductGrid from '@/components/ProductGrid'

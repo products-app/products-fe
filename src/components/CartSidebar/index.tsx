@@ -4,8 +4,8 @@ import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
 import NotFound from '@/components/NotFound'
 import ListCart from './components/ListCart'
-import { useCartStore } from '@/store/cart'
-import { useSidebarStore } from '@/store/sidebar'
+import { useCartStore } from '@/root/src/store/cart'
+import { useSidebarStore } from '@/root/src/store/slices/sidebar'
 
 const CartSidebar = () => {
   const cart = useSyncExternalStore(

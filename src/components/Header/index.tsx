@@ -3,9 +3,9 @@ import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
 import Badge from '@/components/Badge'
 import { countCartItems } from '@/helpers/cart'
-import { useSidebarStore } from '@/store/sidebar'
-import { useSearchStore } from '@/store/search'
-import { useCartStore } from '@/store/cart'
+import { useSidebarStore } from '@/root/src/store/slices/sidebar'
+import { useSearchStore } from '@/root/src/store/slices/search'
+import { useCartStore } from '@/root/src/store/cart'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',

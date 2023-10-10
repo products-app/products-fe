@@ -48,14 +48,10 @@ export const useCartStore = create(
       },
       removeItem(uuid: string) {
         const cartItems = get().cartItems
-        try {
-          delete cartItems[uuid]
-          set({
-            cartItems,
-          })
-        } catch {
-          // Todo show error
-        }
+        delete cartItems[uuid]
+        set({
+          cartItems,
+        })
       },
       incrementItem(uuid: string) {
         set((state) => ({

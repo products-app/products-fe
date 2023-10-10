@@ -5,7 +5,7 @@ export interface ISearch {
   setSearch: (searchTerm: string) => void
 }
 
-const useSearchStore = create<ISearch>((set, get) => ({
+const useSearchStore = create<ISearch>((set) => ({
   setSearch: (searchTerm: string) => {
     set({ searchTerm })
   },

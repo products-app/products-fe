@@ -5,7 +5,7 @@ import {
   getProductStock,
 } from '@/helpers/products'
 import styles from './styles'
-import { useCartStore } from '@/store/cart'
+import { useCartStore } from '@/root/src/store/cart'
 
 type ProductGridProps = {
   items: app.Product[]

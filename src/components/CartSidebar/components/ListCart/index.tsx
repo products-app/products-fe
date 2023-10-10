@@ -2,7 +2,7 @@ import { Text } from '@lebernardo/react'
 import List, { ListItem } from '@/components/List'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
 import { formatDecimalToReal } from '@/helpers/products'
-import { useCartStore } from '@/store/cart'
+import { useCartStore } from '@/root/src/store/cart'
 import styles from './styles'
 
 type PageProps = {
