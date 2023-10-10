@@ -1,22 +1,24 @@
+import { useEffect } from 'react'
+import { useStore } from '@/store/products'
+import { useSearchStore } from '@/store/search'
 import { Heading } from '@lebernardo/react'
-
 import Page from '@/components/Page'
 import ProductGrid from '@/components/ProductGrid'
-import { filterProductsBySearchTerm } from '@/helpers/products'
-import { useAppSelector } from '@/store'
 import NotFound from '@/components/NotFound'
+import { filterProductsBySearchTerm } from '@/helpers/products'
 
 function ProductList() {
-  const { products, searchTerm } = useAppSelector((state) => {
-    return {
-      products: state.products,
-      searchTerm: state.search.searchTerm,
-    }
-  })
+  const searchTerm = useSearchStore((state) => state.searchTerm)
+  const loadData = useStore((state) => state.loadData)
+  const products = useStore((state) => state.products)
+
+  useEffect(() => {
+    loadData(searchTerm)
+  }, [])
 
   const filteredProducts: app.Product[] = filterProductsBySearchTerm(
     products,
-    searchTerm,
+    '',
   )
 
   return (

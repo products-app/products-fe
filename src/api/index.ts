@@ -1,4 +1,3 @@
 import axios from 'axios'
-import config from '@/root/config'
 
-export default axios.create({ baseURL: config.apiUrl })
+export default axios.create({ baseURL: 'http://127.0.0.1:3333' })
