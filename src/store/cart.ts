@@ -20,6 +20,7 @@ export const useCartStore = create(
   persist<State & Actions>(
     (set, get) => ({
       cartItems: {},
+      referredName: 'cartItems',
       addItem: (item: app.Product) => {
         let cartItems = get().cartItems
         const uuid = uuidv4()
@@ -28,6 +29,9 @@ export const useCartStore = create(
         if (founded) {
           const key = founded[0]
           cartItems[key].quantity += 1
+          set({
+            cartItems,
+          })
           return
         }
 
@@ -54,11 +58,13 @@ export const useCartStore = create(
         }
       },
       incrementItem(uuid: string) {
-        const cartItems = get().cartItems
-        cartItems[uuid].quantity += 1
-        set({
-          cartItems,
-        })
+        set((state) => ({
+          ...state.cartItems,
+          [uuid]: {
+            ...state.cartItems[uuid],
+            quantity: (state.cartItems[uuid].quantity += 1),
+          },
+        }))
       },
       decrementItem(uuid: string) {
         const cartItems = get().cartItems

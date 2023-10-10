@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from 'react'
 import { countCartItems } from '@/helpers/cart'
 import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
@@ -7,10 +8,13 @@ import { useCartStore } from '@/store/cart'
 import { useSidebarStore } from '@/store/sidebar'
 
 const CartSidebar = () => {
-  const cartItems = useCartStore((state) => state.cartItems)
+  const cart = useSyncExternalStore(
+    useCartStore.subscribe,
+    useCartStore.getState,
+  )
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
-  const totalCartItems = countCartItems(cartItems)
+  const totalCartItems = countCartItems(cart.cartItems)
 
   const handleCloseSidebar = () => {
     setOpen(false)
@@ -24,7 +28,9 @@ const CartSidebar = () => {
             Carrinho de compras
           </Text>
           <div className="w-full h-[90%] overflow-y-scroll">
-            {cartItems && totalCartItems > 0 && <ListCart items={cartItems} />}
+            {cart.cartItems && totalCartItems > 0 && (
+              <ListCart items={cart.cartItems} />
+            )}
             {totalCartItems === 0 && <NotFound variant="cart-items" />}
           </div>
         </div>

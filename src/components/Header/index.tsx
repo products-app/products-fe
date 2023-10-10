@@ -1,10 +1,11 @@
+import { useSyncExternalStore } from 'react'
 import { TextInput, Text } from '@lebernardo/react'
 import { ShoppingCartSimple } from 'phosphor-react'
 import Badge from '@/components/Badge'
-import { useAppSelector } from '@/store'
 import { countCartItems } from '@/helpers/cart'
 import { useSidebarStore } from '@/store/sidebar'
 import { useSearchStore } from '@/store/search'
+import { useCartStore } from '@/store/cart'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -12,19 +13,18 @@ const styles = {
 }
 
 const Header = () => {
+  const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
+  const searchTerm = useSearchStore((state) => state.searchTerm)
   const setSearch = useSearchStore((state) => state.setSearch)
 
-  const { cartItems, sidebarControl, searchTerm } = useAppSelector((state) => {
-    return {
-      cartItems: state.cart.items,
-      sidebarControl: state.sidebarControl,
-      searchTerm: state.search.searchTerm,
-    }
-  })
+  const cart = useSyncExternalStore(
+    useCartStore.subscribe,
+    useCartStore.getState,
+  )
 
   const handleOpen = () => {
-    setOpen(!sidebarControl.open)
+    setOpen(!open)
   }
 
   const handleChange = (value: string) => {
@@ -53,7 +53,7 @@ const Header = () => {
         <button className={styles.btn} onClick={handleOpen}>
           <ShoppingCartSimple className="text-white" />
           <Badge variant="secondary" className="absolute right-0 top-0">
-            {cartItems ? countCartItems(cartItems) : '0'}
+            {cart.cartItems ? countCartItems(cart.cartItems) : '0'}
           </Badge>
         </button>
       </div>

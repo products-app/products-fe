@@ -1,6 +1,6 @@
 import Datatable from '@/components/Admin/DataTable'
 import { Heading, Card } from '@lebernardo/react'
-import { useAppSelector } from '@/store'
+import { useStore } from '@/store/products'
 
 const styles = {
   container: 'max-w-6xl m-auto py-12',
@@ -14,7 +14,7 @@ const styles = {
 const tableColumns = ['id', 'name', 'stock', 'price', 'active']
 
 function AdminProductList() {
-  const products = useAppSelector((state) => state.products)
+  const products = useStore((state) => state.products)
 
   const handleRedirect = (item: object) => {
     window.location.href = `/admin/add-product?id=${item.id}`
