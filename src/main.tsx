@@ -4,6 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import router from './router'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './styles/global.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 const queryClient = new QueryClient()
 

@@ -5,7 +5,7 @@ export const login = (data: Record<string, any>): Promise<AxiosResponse> => {
   return api.post('/users/login', data)
 }
 
-export const register = (data: Record<string, any>): Promise<AxiosResponse> => {
+export const createUser = (data: Record<string, any>): Promise<AxiosResponse> => {
   return api.post('/users', data)
 }
 

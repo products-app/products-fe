@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import CartSidebar from '@/components/CartSidebar'
+import { ToastContainer } from 'react-toastify'
 import styles from './styles'
 
 type PageProps = {
@@ -14,6 +15,7 @@ const Page = ({ children }: PageProps) => {
         <div className={styles.container}>{children}</div>
       </main>
       <CartSidebar />
+      <ToastContainer />
     </>
   )
 }
