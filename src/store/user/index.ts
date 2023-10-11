@@ -1,15 +1,26 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 export interface IUser {
   userToken: string | undefined
-  setToken: (token: string) => void
+  name: string | undefined
+  setToken: (token: string, name: string) => void
 }
 
-const useUserStore = create<IUser>((set) => ({
-  setToken: (token: string) => {
-    set({ userToken: token })
-  },
-  userToken: undefined,
-}))
+const useUserStore = create(
+  persist<IUser>(
+    (set) => ({
+      name: undefined,
+      userToken: undefined,
+      referredName: 'userToken',
+      setToken: (token: string, name: string) => {
+        set({ userToken: token, name })
+      },
+    }),
+    {
+      name: 'userToken',
+    },
+  ),
+)
 
 export { useUserStore }

@@ -36,7 +36,7 @@ function UserRegister() {
   const handleRegister: SubmitHandler<Inputs> = async (data) => {
     createUser(data)
       .then(() => {
-        setToken(data.email)
+        setToken(data.email, data.name)
         toast('Você foi cadastrado, aguarde...')
         navigate('/register')
       })
