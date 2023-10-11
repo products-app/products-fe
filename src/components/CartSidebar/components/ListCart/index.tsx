@@ -42,7 +42,7 @@ const ListCart = ({ items }: PageProps) => {
             <div className={styles.containerProductText}>
               <Text size="md">{value.name}</Text>
               <Text size="sm" className={styles.textProductQuantity}>
-                Qtde: <strong>{value.quantity}</strong>
+                Qtde: <strong data-cy="item-quantity">{value.quantity}</strong>
               </Text>
             </div>
 
@@ -52,6 +52,7 @@ const ListCart = ({ items }: PageProps) => {
               </Text>
               <div className={styles.containerQuantityControls}>
                 <button
+                  data-cy="decrement-item"
                   name="minus"
                   className={styles.buttonQuantityMinus}
                   onClick={() => handleDecrementItem(key)}
@@ -60,6 +61,7 @@ const ListCart = ({ items }: PageProps) => {
                   <Minus className={styles.buttonIconQuantity} />
                 </button>
                 <button
+                  data-cy="increment-item"
                   className={styles.buttonQuantityPlus}
                   onClick={() => handleIncrementItem(key)}
                   disabled={value.quantity === value.stock}

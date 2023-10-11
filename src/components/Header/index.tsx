@@ -59,7 +59,7 @@ const Header = () => {
   return (
     <header className="bg-gray700">
       <div className={styles.container}>
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <Text className="font-bold text-white" size="xl">
             Prompt
           </Text>
