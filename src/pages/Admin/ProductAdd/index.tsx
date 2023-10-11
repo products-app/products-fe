@@ -25,11 +25,7 @@ type Inputs = {
 function AdminProductAdd() {
   const navigate = useNavigate()
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>()
+  const { register, handleSubmit } = useForm<Inputs>()
 
   const handleCreate: SubmitHandler<Inputs> = async (data) => {
     const product = {

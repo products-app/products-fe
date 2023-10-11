@@ -19,7 +19,7 @@ const ProductGrid = ({ items }: ProductGridProps) => {
   }
 
   return (
-    <section className={styles.grid}>
+    <section id="product-grid" className={styles.grid}>
       {items.map((product, i) => (
         <figure
           key={product?.id && product?.id + i}

@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen, children, onClose }: SidebarProps) => {
   })
 
   return (
-    <div className={sidebarClassNames}>
+    <div id="sidebar" className={sidebarClassNames}>
       <button onClick={onClose} className={styles.buttonClose}>
         <CloseIcon className={styles.buttonIconClose} />
       </button>
