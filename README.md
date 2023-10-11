@@ -3,7 +3,7 @@
     <img src="https://github.com/products-app/products-fe/assets/13439423/9f90454c-c622-4a20-8c3a-c739cd9a7f1b" width="100" /> 
   </a>
 
-  <h3 align="center">Prompt - Shopping Cart</h3>
+  <h3 align="center">Prompt - Shopping Cart (Front-end)</h3>
 
   <p align="center">
     A quick and easy to use shopping cart.
