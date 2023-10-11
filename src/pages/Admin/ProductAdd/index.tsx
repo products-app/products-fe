@@ -1,12 +1,8 @@
-import {
-  Checkbox,
-  Heading,
-  TextInput,
-  Text,
-  Card,
-  TextArea,
-  Button,
-} from '@lebernardo/react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { postProducts } from '@/api/products'
+import { Heading, Text, Card, Button } from '@lebernardo/react'
 
 const styles = {
   container: 'max-w-3xl m-auto py-12',
@@ -15,9 +11,44 @@ const styles = {
   inputWrapper: 'flex flex-col gap-2 w-full',
   checkboxWrapper: 'flex flex-row gap-2 items-center',
   actionsWrapper: 'flex items-center gap-4 justify-end',
+  input: 'bg-gray900 p-4 mb-6',
+}
+
+type Inputs = {
+  image: string
+  name: string
+  price: string
+  stock: string
+  active?: boolean
 }
 
 function AdminProductAdd() {
+  const navigate = useNavigate()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>()
+
+  const handleCreate: SubmitHandler<Inputs> = async (data) => {
+    const product = {
+      ...data,
+      price: parseFloat(data.price),
+      stock: parseInt(data.stock),
+    }
+    postProducts(product)
+      .then(() => {
+        toast('Produto cadastrado com sucesso!')
+        navigate('/admin/list-product')
+      })
+      .catch(() => {
+        toast.error(`Ocorreu um erro! Tente novamente mais tarde!`, {
+          theme: 'dark',
+        })
+      })
+  }
+
   return (
     <div className={styles.container}>
       <div className="text-center mb-4 font-heading">
@@ -29,45 +60,44 @@ function AdminProductAdd() {
       </div>
 
       <Card className={styles.card}>
-        <div className={styles.inputWrapper}>
-          <Text size="sm">Imagem</Text>
-          <TextInput name="image" text="url" />
-          {/* <Button variant="outline" size="small">Selecione uma imagem</Button> */}
-        </div>
-
-        <div className={styles.inputWrapper}>
-          <Text size="sm">Nome</Text>
-          <TextInput name="name" />
-        </div>
-
-        <div className={styles.inputWrapper}>
-          <Text size="sm">Descrição</Text>
-          <TextArea />
-        </div>
-
-        <div className={styles.col2}>
+        <form onSubmit={handleSubmit(handleCreate)}>
           <div className={styles.inputWrapper}>
-            <Text size="sm">Preço</Text>
-            <TextInput name="price" type="number" prefix="R$ " />
+            <Text size="sm">Imagem</Text>
+            <input type="url" {...register('image')} className={styles.input} />
           </div>
 
           <div className={styles.inputWrapper}>
-            <Text size="sm">Estoque</Text>
-            <TextInput name="stock" type="number" />
+            <Text size="sm">Nome</Text>
+            <input type="text" {...register('name')} className={styles.input} />
           </div>
-        </div>
 
-        <div className={styles.checkboxWrapper}>
-          <Checkbox />
-          <Text size="sm" as="label">
-            Ativo
-          </Text>
-        </div>
+          <div className={styles.col2}>
+            <div className={styles.inputWrapper}>
+              <Text size="sm">Preço</Text>
+              <input
+                type="number"
+                {...register('price')}
+                className={styles.input}
+              />
+            </div>
 
-        <div className={styles.actionsWrapper}>
-          <Button>Salvar</Button>
-          <Button variant="outline">Cancelar</Button>
-        </div>
+            <div className={styles.inputWrapper}>
+              <Text size="sm">Estoque</Text>
+              <input
+                type="number"
+                {...register('stock')}
+                className={styles.input}
+              />
+            </div>
+          </div>
+
+          <div className={styles.actionsWrapper}>
+            <Button type="submit">Salvar</Button>
+            <Button type="button" variant="outline">
+              Cancelar
+            </Button>
+          </div>
+        </form>
       </Card>
     </div>
   )

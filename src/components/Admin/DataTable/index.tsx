@@ -3,14 +3,14 @@ import { PencilSimple, TrashSimple } from 'phosphor-react'
 
 const styles = {
   table: 'w-full border-collapse',
-  tableRow: 'py-2 px-4 border-2 border-solid border-gray600',
+  tableRow: 'py-2 px-4 border-2 border-solid border-gray600 text-gray-300 text-left',
 }
 
 type DatatableProps = {
   items: Array<object>
   columns: Array<string>
   actionPrimary: (item: object) => void
-  actionSecondary: (item: object) => void
+  actionSecondary?: (item: object) => void
 }
 
 const Datatable = ({
@@ -45,13 +45,15 @@ const Datatable = ({
               >
                 <PencilSimple />
               </Button>
-              <Button
-                className="p-3 min-w-0 flex items-center justify-center"
-                variant="outline"
-                onClick={() => actionSecondary(item)}
-              >
-                <TrashSimple />
-              </Button>
+              {actionSecondary && (
+                <Button
+                  className="p-3 min-w-0 flex items-center justify-center"
+                  variant="outline"
+                  onClick={() => actionSecondary(item)}
+                >
+                  <TrashSimple />
+                </Button>
+              )}
             </div>
           </td>
         </tbody>
