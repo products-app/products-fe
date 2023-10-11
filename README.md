@@ -3,7 +3,7 @@
     <img src="https://github.com/products-app/products-fe/assets/13439423/9f90454c-c622-4a20-8c3a-c739cd9a7f1b" width="100" /> 
   </a>
 
-  <h3 align="center">Prompt - Shopping Cart</h3>
+  <h3 align="center">Prompt - Shopping Cart (Front-end)</h3>
 
   <p align="center">
     A quick and easy to use shopping cart.
@@ -105,6 +105,8 @@ You can also run lint to perform code checks, with the command below:
 npm run lint
 ```
 
+_Ps: You need to run [backend-api](https://github.com/products-app/products-api) in another terminal if you want to run it locally._
+
 ## Installed Packages
 
 In this section there is a list explaining the function of each installed package.
@@ -145,6 +147,29 @@ disable all rules that are deemed unnecessary or could potentially clash with Pr
 - [autoprefixer](https://github.com/postcss/autoprefixer): this package is used to convert some modern css attributes into css that older browsers can interpret.
 - [@vitejs/plugin-react-swc](https://www.npmjs.com/package/@vitejs/plugin-react-swc): This package has limited options to enable good performances and be transpiler agnostic.
 
+### Github functionalities
+
+1 - Github actions have been implemented to validate the quality of the code using the [CodeQL](https://codeql.github.com/).
+
+Ps: You can also implement ci to run the application's unit tests. Set a minimum test coverage base and check for minimum test coverage.<br />
+*It hasn't been implemented yet, but I intend to add it in the next tasks.*
+
+<img width="500" alt="Screen Shot 2023-10-11 at 09 42 20" src="https://github.com/products-app/products-fe/assets/13439423/18598f7b-7358-4a14-8a88-0a47b664a4a2">
+<br /><br />
+
+2 - Configure Dependabot to create pull requests with lib updates. It runs once a week.
+
+3 - Create a template for pull requests. Here's an example: [Pull Request Example](https://github.com/products-app/products-fe/pull/8)
+
+4 - In this project, direct commits to the `main` branch have been blocked. To commit to `main`, you need to create at least one `feature` branch. See [Git Flow](https://danielkummer.github.io/git-flow-cheatsheet/).
+
+For the gitflow to be complete, you still need to add other branches such as `develop`, `fix`, `hotfix`, `release` and create a base flow:
+`feature` -> `develop` -> `release` -> `main`
+
+I won't go into too much detail, but you can ask me about it.
+
+In this case it wasn't necessary to create the complete flow for the time being, but large companies have this flow to maintain quality, create testable scopes in each environment.
+
 <!-- LICENSE -->
 ## License
 
@@ -158,7 +183,3 @@ Letícia Bernardo - [@letisgobabe](https://twitter.com/letisgobabe)
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-
