@@ -8,3 +8,19 @@ export const getProducts = (search: string): Promise<AxiosResponse> => {
     },
   })
 }
+
+export const getProductByID = (id: number): Promise<AxiosResponse> =>
+  api.get(`/products/${id}`)
+
+export const postProducts = (
+  data: Record<string, any>,
+): Promise<AxiosResponse> => {
+  return api.post('/products', data)
+}
+
+export const putProducts = (
+  id: number,
+  data: Record<string, any>,
+): Promise<AxiosResponse> => {
+  return api.put(`/products/${id}`, data)
+}
