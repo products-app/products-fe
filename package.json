@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
-    "lint": "eslint src/**/* --ext .js,.ts,.tsx --fix"
+    "lint": "eslint src/**/* --ext .js,.ts,.tsx --fix",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@lebernardo/react": "^4.0.0",
