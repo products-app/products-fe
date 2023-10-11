@@ -20,4 +20,11 @@ declare module app {
   export interface BadgeVariants {
     [key: string]: string
   }
+
+  export interface DropdownItem {
+    label: string
+    link: string
+    icon?: React.ReactNode
+    onClick?: () => void
+  }
 }

@@ -1,12 +1,14 @@
 import { useSyncExternalStore } from 'react'
 import { TextInput, Text } from '@lebernardo/react'
-import { ShoppingCartSimple, UserCircle } from 'phosphor-react'
+import { ShoppingCartSimple, UserCircle, SignOut } from 'phosphor-react'
 import Badge from '@/components/Badge'
 import { countCartItems } from '@/helpers/cart'
 import { useSidebarStore } from '@/root/src/store/sidebar'
 import { useSearchStore } from '@/root/src/store/search'
 import { useCartStore } from '@/root/src/store/cart'
+import { useUserStore } from '@/root/src/store/user'
 import { useNavigate } from 'react-router-dom'
+import { Dropdown } from '@/components/Dropdown'
 
 const styles = {
   container: 'max-w-5xl mx-auto p-3 flex items-center justify-between',
@@ -19,11 +21,28 @@ const Header = () => {
   const setOpen = useSidebarStore((state) => state.setOpen)
   const searchTerm = useSearchStore((state) => state.searchTerm)
   const setSearch = useSearchStore((state) => state.setSearch)
+  const userName = useUserStore((state) => state.userName)
+  const userToken = useUserStore((state) => state.userToken)
+  const deleteToken = useUserStore((state) => state.deleteToken)
 
   const cart = useSyncExternalStore(
     useCartStore.subscribe,
     useCartStore.getState,
   )
+
+  const dropdownOptions: app.DropdownItem[] = [
+    // {
+    //   label: 'Editar perfil',
+    //   link: '/profile',
+    //   icon: <PencilSimple className="text-gray200 text-lg" />,
+    // },
+    {
+      label: 'Fazer logout',
+      link: 'javascript:void',
+      icon: <SignOut className="text-gray200 text-lg" />,
+      onClick: deleteToken,
+    },
+  ]
 
   const handleOpen = () => {
     setOpen(!open)
@@ -56,10 +75,22 @@ const Header = () => {
           />
         </form>
 
-        <div className="flex gap-4">
-          <button className={styles.btn} onClick={handleAccount}>
-            <UserCircle className="text-white text-lg" />
-          </button>
+        <div className="flex items-center gap-4">
+          {userToken ? (
+            <>
+              {userName && (
+                <Text>
+                  Olá, <span>{userName}</span>
+                </Text>
+              )}
+              <Dropdown items={dropdownOptions} />
+            </>
+          ) : (
+            <button className={styles.btn} onClick={handleAccount}>
+              <UserCircle className="text-white text-lg" />
+            </button>
+          )}
+
           <button className={styles.btn} onClick={handleOpen}>
             <ShoppingCartSimple className="text-white" />
             <Badge variant="secondary" className="absolute right-0 top-0">
