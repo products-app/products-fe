@@ -24,11 +24,7 @@ function UserLogin() {
     }
   }, [])
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>()
+  const { register, handleSubmit } = useForm<Inputs>()
 
   const handleLogin: SubmitHandler<Inputs> = async (data) => {
     login(data)

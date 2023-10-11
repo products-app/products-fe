@@ -107,6 +107,18 @@ npm run lint
 
 _Ps: You need to run [backend-api](https://github.com/products-app/products-api) in another terminal if you want to run it locally._
 
+### Run the E2E tests
+
+Cypress was implemented as a way of demonstrating its use.
+
+To test it, you need to run `npm run dev` in one terminal and `npm run cypress:run` in another.
+
+If you want to see cypress running on the screen, you can "open" instead of "run". The command should look like this:
+
+```
+npm run cypress:open
+```
+
 ## Installed Packages
 
 In this section there is a list explaining the function of each installed package.

@@ -27,7 +27,10 @@ const CartSidebar = () => {
           <Text size="xl" className="mb-5">
             Carrinho de compras
           </Text>
-          <div className="w-full h-[90%] overflow-y-scroll">
+          <div
+            id="cart-sidebar-items"
+            className="w-full h-[90%] overflow-y-scroll"
+          >
             {cart.cartItems && totalCartItems > 0 && (
               <ListCart items={cart.cartItems} />
             )}

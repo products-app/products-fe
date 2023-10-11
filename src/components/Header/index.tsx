@@ -59,7 +59,7 @@ const Header = () => {
   return (
     <header className="bg-gray700">
       <div className={styles.container}>
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <Text className="font-bold text-white" size="xl">
             Prompt
           </Text>
@@ -75,7 +75,7 @@ const Header = () => {
           />
         </form>
 
-        <div className="flex items-center gap-4">
+        <div id="header-user-actions" className="flex items-center gap-4">
           {userToken ? (
             <>
               {userName && (
@@ -91,7 +91,7 @@ const Header = () => {
             </button>
           )}
 
-          <button className={styles.btn} onClick={handleOpen}>
+          <button id="button-cart" className={styles.btn} onClick={handleOpen}>
             <ShoppingCartSimple className="text-white" />
             <Badge variant="secondary" className="absolute right-0 top-0">
               {cart.cartItems ? countCartItems(cart.cartItems) : '0'}

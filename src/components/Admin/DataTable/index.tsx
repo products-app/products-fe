@@ -3,7 +3,8 @@ import { PencilSimple, TrashSimple } from 'phosphor-react'
 
 const styles = {
   table: 'w-full border-collapse',
-  tableRow: 'py-2 px-4 border-2 border-solid border-gray600 text-gray-300 text-left',
+  tableRow:
+    'py-2 px-4 border-2 border-solid border-gray600 text-gray-300 text-left',
 }
 
 type DatatableProps = {
