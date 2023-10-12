@@ -27,4 +27,16 @@ declare module app {
     icon?: React.ReactNode
     onClick?: () => void
   }
+
+  export interface OrderProduct {
+    product_id: number
+    price: number
+    quantity: number
+  }
+
+  export interface Order {
+    userID: number
+    total: number
+    orderProducts: OrderProduct[]
+  }
 }

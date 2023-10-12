@@ -14,6 +14,7 @@ type Actions = {
   removeItem: (uuid: string) => void
   incrementItem: (uuid: string) => void
   decrementItem: (uuid: string) => void
+  truncateItems: () => void
 }
 
 export const useCartStore = create(
@@ -69,6 +70,11 @@ export const useCartStore = create(
         }
         set({
           cartItems,
+        })
+      },
+      truncateItems() {
+        set({
+          cartItems: {},
         })
       },
     }),

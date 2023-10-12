@@ -1,6 +1,11 @@
 import { useSyncExternalStore } from 'react'
 import { TextInput, Text } from '@lebernardo/react'
-import { ShoppingCartSimple, UserCircle, SignOut } from 'phosphor-react'
+import {
+  ShoppingCartSimple,
+  UserCircle,
+  SignOut,
+  Package,
+} from 'phosphor-react'
 import Badge from '@/components/Badge'
 import { countCartItems } from '@/helpers/cart'
 import { useSidebarStore } from '@/root/src/store/sidebar'
@@ -31,14 +36,14 @@ const Header = () => {
   )
 
   const dropdownOptions: app.DropdownItem[] = [
-    // {
-    //   label: 'Editar perfil',
-    //   link: '/profile',
-    //   icon: <PencilSimple className="text-gray200 text-lg" />,
-    // },
+    {
+      label: 'Meus pedidos',
+      link: '/user/orders',
+      icon: <Package className="text-gray200 text-lg" />,
+    },
     {
       label: 'Fazer logout',
-      link: 'javascript:void',
+      link: '#',
       icon: <SignOut className="text-gray200 text-lg" />,
       onClick: deleteToken,
     },

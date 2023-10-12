@@ -6,18 +6,31 @@ import NotFound from '@/components/NotFound'
 import ListCart from './components/ListCart'
 import { useCartStore } from '@/root/src/store/cart'
 import { useSidebarStore } from '@/root/src/store/sidebar'
+import { useUserStore } from '@/root/src/store/user'
+import { useNavigate } from 'react-router-dom'
 
 const CartSidebar = () => {
+  const navigate = useNavigate()
   const cart = useSyncExternalStore(
     useCartStore.subscribe,
     useCartStore.getState,
   )
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
+  const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
   const totalCartItems = countCartItems(cart.cartItems)
+  const userToken = useUserStore((state) => state.userToken)
 
   const handleCloseSidebar = () => {
     setOpen(false)
+  }
+
+  const handleOpenCheckout = () => {
+    if (userToken) {
+      setOpenCheckout(true)
+    } else {
+      navigate('/login')
+    }
   }
 
   return (
@@ -40,7 +53,11 @@ const CartSidebar = () => {
 
         {totalCartItems > 0 && (
           <Card className="fixed right-0 bottom-0 w-full">
-            <Button variant="primary" className="w-full my-4">
+            <Button
+              variant="primary"
+              className="w-full my-4"
+              onClick={handleOpenCheckout}
+            >
               Comprar agora
             </Button>
           </Card>
