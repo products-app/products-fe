@@ -11,6 +11,6 @@ export const createUser = (
   return api.post('/users', data)
 }
 
-export const getUserOrders = (id: string): Promise<AxiosResponse> => {
+export const getUserOrders = (id: number): Promise<AxiosResponse> => {
   return api.get(`/users/${id}/orders`)
 }
