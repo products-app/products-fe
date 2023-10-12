@@ -11,7 +11,10 @@ const filterProductsBySearchTerm = (
 ): app.Product[] => {
   if (searchTerm === '') return products
 
-  return products.filter((product) => product?.name?.includes(searchTerm))
+  return products.filter(
+    (product) =>
+      product?.name?.toUpperCase().includes(searchTerm.toUpperCase()),
+  )
 }
 
 const getProductImage = (img: string | undefined) =>
