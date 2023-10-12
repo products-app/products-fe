@@ -5,6 +5,7 @@ import AdminProductList from '@/pages/Admin/ProductList'
 import PageNotFound from '@/pages/PageNotFound'
 import UserLogin from '../pages/User/login'
 import UserRegister from '../pages/User/register'
+import UserOrders from '../pages/User/orders'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
     id: 'register',
     path: '/register',
     element: <UserRegister />,
+  },
+  {
+    id: 'orders',
+    path: 'user/orders',
+    element: <UserOrders />,
   },
   {
     id: 'add-product',

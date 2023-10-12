@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import CartSidebar from '@/components/CartSidebar'
+import CheckoutModal from '@/components/CheckoutModal'
 import { ToastContainer } from 'react-toastify'
 import styles from './styles'
 
@@ -16,6 +17,7 @@ const Page = ({ children }: PageProps) => {
       </main>
       <CartSidebar />
       <ToastContainer />
+      <CheckoutModal />
     </>
   )
 }

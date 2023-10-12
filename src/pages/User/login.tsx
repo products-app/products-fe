@@ -29,7 +29,7 @@ function UserLogin() {
   const handleLogin: SubmitHandler<Inputs> = async (data) => {
     login(data)
       .then((res) => {
-        setToken(data.email, res.data.name)
+        setToken(data.email, res.data.name, res.data.id)
         toast('Você está logado, redirecionando...')
         navigate('/')
       })

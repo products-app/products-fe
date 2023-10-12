@@ -48,7 +48,7 @@ const ListCart = ({ items }: PageProps) => {
 
             <div className={styles.containerControls}>
               <Text className={styles.textProductPrice}>
-                {formatDecimalToReal(99.9)}
+                {formatDecimalToReal(value.price)}
               </Text>
               <div className={styles.containerQuantityControls}>
                 <button
