@@ -1,7 +1,6 @@
 import { LinkBreak } from 'phosphor-react'
-import { Heading, Text, Button } from '@lebernardo/react'
-import styles from '@/styles/notFound'
 import { useRouter } from 'next/navigation'
+import { Container, HeadingContainer, TextContainer, ButtonContainer } from '@/styles/notFound'
 
 const Page = () => {
   const router = useRouter()
@@ -11,21 +10,20 @@ const Page = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <LinkBreak className={styles.iconNotFound} />
-      <Heading size="lg">404 - Página não encontrada</Heading>
-      <Text size="lg" className={styles.textDescription}>
+    <Container>
+      <LinkBreak />
+      <HeadingContainer>404 - Página não encontrada</HeadingContainer>
+      <TextContainer>
         Tente recarregar a página ou tentar mais tarde
-      </Text>
+      </TextContainer>
 
-      <Button
+      <ButtonContainer
         variant="outline"
-        className={styles.buttonAction}
         onClick={redirectToPageIndex}
       >
         Voltar para página inicial
-      </Button>
-    </div>
+      </ButtonContainer>
+    </Container>
   )
 }
 
