@@ -15,8 +15,8 @@ const Dropdown = ({ items }: DropdownProps) => {
   }
 
   return (
-    <div className={styles.container}>
-      <div>
+    <div className={styles.container} suppressHydrationWarning>
+      <div suppressHydrationWarning>
         <span className="rounded-md shadow-sm">
           <button
             type="button"
@@ -30,7 +30,8 @@ const Dropdown = ({ items }: DropdownProps) => {
       <div
         className={classNames(styles.list, {
           [styles.listDisplayNone]: !display,
-        })}
+        })} 
+        suppressHydrationWarning
       >
         <div className="rounded-md bg-gray900 shadow-xs">
           <div className="py-1">

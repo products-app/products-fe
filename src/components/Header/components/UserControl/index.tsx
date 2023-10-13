@@ -18,11 +18,10 @@ const UserControl = () => {
   const router = useRouter()
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
-  const userName = useUserStore((state) => state.userName)
   const userToken = useUserStore((state) => state.userToken)
   const deleteToken = useUserStore((state) => state.deleteToken)
-  
   const cartItems = useFromStore(useCartStore, state => state.cartItems)
+  const userName = useFromStore(useUserStore, state => state.userName)
 
   const dropdownOptions: app.DropdownItem[] = [
     {
@@ -47,7 +46,7 @@ const UserControl = () => {
   }
 
   return (
-    <UserActionContainer id="header-user-actions">
+    <UserActionContainer id="header-user-actions" suppressHydrationWarning>
       {userToken ? (
         <>
           {userName && (

@@ -29,6 +29,7 @@ function UserLogin() {
   const handleLogin: SubmitHandler<Inputs> = async (data) => {
     login(data)
       .then((res) => {
+        console.log(res.data.id)
         setToken(data.email, res.data.name, res.data.id)
         toast('Você está logado, redirecionando...')
         router.push('/')

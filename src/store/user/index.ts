@@ -17,6 +17,7 @@ const useUserStore = create(
       userID: undefined,
       referredName: 'userToken',
       setToken: (token: string, name: string, id: number) => {
+        console.log("user", id)
         set({ userToken: token, userName: name, userID: id })
       },
       deleteToken: () => {

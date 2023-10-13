@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useCartStore } from '@/store/cart'
 import { loadStripe } from '@stripe/stripe-js'
-import { Button, Heading, Text } from '@lebernardo/react'
 import {
   PaymentElement,
   Elements,
@@ -13,12 +12,15 @@ import { formatDecimalToReal } from '@/helpers/products'
 import { toast } from 'react-toastify'
 import { postOrder } from '@/api/order'
 import { useUserStore } from '@/store/user'
-import config from '../../../config'
+import { HeadingContainer, OrderText, OrderButton } from './styles'
+import useFromStore from "@/hooks/store"
+
+const confiPK = "pk_test_51O06hDJTVjoQ9SZlF0vxhAybkAKmQEt6ngo5cK1gZKCiajMHtXTD7HbjTtfQFRCaz9Tv3h3DZrN1jE9C3SACPNFx00SGuy0ucH"
 
 const CheckoutForm = () => {
-  const cartItems = useCartStore((state) => state.cartItems)
+  const userID = useFromStore(useUserStore, state => state.userID)
+  const cartItems = useFromStore(useCartStore, state => state.cartItems)
   const truncateItems = useCartStore((state) => state.truncateItems)
-  const userID = useUserStore((state) => state.userID)
   const stripe = useStripe()
   const elements = useElements()
 
@@ -28,6 +30,8 @@ const CheckoutForm = () => {
   const [totalCart, setTotalCart] = useState(0)
 
   useEffect(() => {
+    console.log(userID)
+    if (!cartItems) return
     const [errMsg, totalCart] = getTotal(cartItems)
 
     if (errMsg) {
@@ -41,6 +45,7 @@ const CheckoutForm = () => {
   }, [cartItems])
 
   const handleCreateOrder = async () => {
+    if (!cartItems) return
     const orderProducts = cartToOrderItems(cartItems)
     if (!orderProducts) {
       setErrorMessage('the cart is empty')
@@ -51,7 +56,7 @@ const CheckoutForm = () => {
     }
     const order = {
       items: orderProducts,
-      user_id: userID,
+      user_id: userID || 0,
       total: totalCart,
     }
 
@@ -96,35 +101,32 @@ const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Heading className="text-gray900 mb-3" size="md">
+      <HeadingContainer size="md">
         Finalizar a compra
-      </Heading>
-      <Text
-        className="text-gray600 pb-4 mb-4 border-b-2 border-solid border-gray400"
-        size="lg"
-      >
+      </HeadingContainer>
+      <OrderText size="lg">
         Total do pedido: <strong>{formatDecimalToReal(totalCart)}</strong>
-      </Text>
+      </OrderText>
       <PaymentElement />
-      <Button
-        className="bg-base500 p-2 mt-8 w-full"
+      <OrderButton
         type="submit"
         disabled={!stripe || !elements}
       >
         Finalizar pedido
-      </Button>
+      </OrderButton>
       {errorMessage && <div>{errorMessage}</div>}
     </form>
   )
 }
 
-const stripePromise = loadStripe(config.stripeSK)
+const stripePromise = loadStripe(confiPK)
 
 const Checkout = () => {
-  const cartItems = useCartStore((state) => state.cartItems)
+  const cart = useFromStore(useCartStore, state => state)
   const [totalCart, setTotalCart] = useState(200)
   useEffect(() => {
-    const [errMsg, totalCart] = getTotal(cartItems)
+    if (cart?.cartItems) return
+    const [errMsg, totalCart] = getTotal(cart?.cartItems)
 
     if (errMsg) {
       toast.error(errMsg, {
@@ -133,7 +135,7 @@ const Checkout = () => {
       return
     }
     setTotalCart(totalCart)
-  }, [cartItems])
+  }, [])
 
   const options = {
     mode: 'payment',
