@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 import { postProducts } from '@/api/products'
 import { Heading, Text, Card, Button } from '@lebernardo/react'
+import { Input } from './styles'
 
 const styles = {
   container: 'max-w-3xl m-auto py-12',
@@ -58,30 +59,28 @@ function AdminProductAdd() {
         <form onSubmit={handleSubmit(handleCreate)}>
           <div className={styles.inputWrapper}>
             <Text size="sm">Imagem</Text>
-            <input type="url" {...register('image')} className={styles.input} />
+            <Input type="url" {...register('image')} />
           </div>
 
           <div className={styles.inputWrapper}>
             <Text size="sm">Nome</Text>
-            <input type="text" {...register('name')} className={styles.input} />
+            <Input type="text" {...register('name')} />
           </div>
 
           <div className={styles.col2}>
             <div className={styles.inputWrapper}>
               <Text size="sm">Preço</Text>
-              <input
+              <Input
                 type="number"
                 {...register('price')}
-                className={styles.input}
               />
             </div>
 
             <div className={styles.inputWrapper}>
               <Text size="sm">Estoque</Text>
-              <input
+              <Input
                 type="number"
                 {...register('stock')}
-                className={styles.input}
               />
             </div>
           </div>

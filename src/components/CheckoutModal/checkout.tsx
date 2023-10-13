@@ -19,7 +19,7 @@ const confiPK = "pk_test_51O06hDJTVjoQ9SZlF0vxhAybkAKmQEt6ngo5cK1gZKCiajMHtXTD7H
 
 const CheckoutForm = () => {
   const userID = useFromStore(useUserStore, state => state.userID)
-  const cartItems = useFromStore(useCartStore, state => state.cartItems)
+  const cartItems = useCartStore((state) => state.cartItems)
   const truncateItems = useCartStore((state) => state.truncateItems)
   const stripe = useStripe()
   const elements = useElements()
@@ -49,9 +49,9 @@ const CheckoutForm = () => {
     const orderProducts = cartToOrderItems(cartItems)
     if (!orderProducts) {
       setErrorMessage('the cart is empty')
-      toast.error('the cart is empty', {
-        theme: 'dark',
-      })
+      // toast.error('the cart is empty', {
+      //   theme: 'dark',
+      // })
       return
     }
     const order = {
@@ -82,9 +82,10 @@ const CheckoutForm = () => {
         orderReturned = res?.data
       })
       .catch((e) => {
-        toast.error('não foi possível efetuar a compra', {
-          theme: 'dark',
-        })
+        console.log(e)
+        // toast.error('não foi possível efetuar a compra', {
+        //   theme: 'dark',
+        // })
       })
 
     if (!orderReturned) return
@@ -92,7 +93,7 @@ const CheckoutForm = () => {
       elements,
       clientSecret: orderReturned.client_secret,
       confirmParams: {
-        return_url: '/user/orders',
+        return_url: 'http://localhost:3000/user/orders',
       },
     })
 
@@ -129,9 +130,9 @@ const Checkout = () => {
     const [errMsg, totalCart] = getTotal(cart?.cartItems)
 
     if (errMsg) {
-      toast.error(errMsg, {
-        theme: 'dark',
-      })
+      // toast.error(errMsg, {
+      //   theme: 'dark',
+      // })
       return
     }
     setTotalCart(totalCart)

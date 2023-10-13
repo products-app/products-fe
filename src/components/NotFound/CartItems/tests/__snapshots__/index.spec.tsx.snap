@@ -1,17 +1,16 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Empty Card component > should render correctly 1`] = `
+exports[`Empty Card component should render correctly 1`] = `
 <div>
   <div
-    class="flex justify-center flex-col items-center h-5/6 overflow-hidden"
+    class="c-dzUtkR"
   >
     <img
       alt="Imagem de carrinho vazio"
-      class="w-full px-8"
       src="empty-cart.png"
     />
     <p
-      class="c-dgMvMW c-dgMvMW-kWyXas-size-md text-gray500"
+      class="c-dgMvMW c-igsGei c-dgMvMW-kWyXas-size-md"
     >
       Adicione algo em seu carrinho...
     </p>

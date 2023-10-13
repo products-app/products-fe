@@ -1,4 +1,3 @@
-import { beforeEach, describe, expect, it } from 'vitest'
 import { useSearchStore as store } from './index'
 
 const exampleState = {

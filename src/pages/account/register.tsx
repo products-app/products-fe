@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { createUser } from '@/api/user'
 import { useUserStore } from '@/store/user'
 import { toast } from 'react-toastify'
-import styles from './styles'
+import styles, { Input } from './styles'
 import { useEffect } from 'react'
 
 type Inputs = {
@@ -62,47 +62,42 @@ function UserRegister() {
             <form onSubmit={handleSubmit(handleRegister)}>
               <div className={styles.inputWrapper}>
                 <Text size="sm">E-mail</Text>
-                <input
+                <Input
                   type="text"
                   {...register('email')}
-                  className={styles.input}
                 />
               </div>
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Username</Text>
-                <input
+                <Input
                   type="text"
                   {...register('username')}
-                  className={styles.input}
                 />
               </div>
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Nome</Text>
-                <input
+                <Input
                   type="text"
                   {...register('name')}
-                  className={styles.input}
                 />
               </div>
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Telefone</Text>
-                <input
+                <Input
                   placeholder="(**) *****-****"
                   type="text"
                   {...register('phone')}
-                  className={styles.input}
                 />
               </div>
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Senha</Text>
-                <input
+                <Input
                   type="password"
                   {...register('password')}
-                  className={styles.input}
                 />
               </div>
               <Button variant="outline">Cadastrar</Button>

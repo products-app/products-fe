@@ -5,7 +5,7 @@ import { login } from '@/api/user'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { useUserStore } from '@/store/user'
-import styles from './styles'
+import styles, { Input } from './styles'
 import { useEffect } from 'react'
 
 type Inputs = {
@@ -60,19 +60,17 @@ function UserLogin() {
               <form onSubmit={handleSubmit(handleLogin)}>
                 <div className={styles.inputWrapper}>
                   <Text size="sm">E-mail</Text>
-                  <input
+                  <Input
                     type="text"
                     {...register('email')}
-                    className={styles.input}
                   />
                 </div>
 
                 <div className={styles.inputWrapper}>
                   <Text size="sm">Senha</Text>
-                  <input
+                  <Input
                     type="password"
                     {...register('password')}
-                    className={styles.input}
                   />
                 </div>
                 <Button type="submit">Login</Button>
