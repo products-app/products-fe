@@ -1,9 +1,9 @@
 import { Heading, Text, Card, Button } from '@lebernardo/react'
 import Page from '@/components/Page'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { createUser } from '@/api/user'
-import { useUserStore } from '@/root/src/store/user'
+import { useUserStore } from '@/store/user'
 import { toast } from 'react-toastify'
 import styles from './styles'
 import { useEffect } from 'react'
@@ -17,13 +17,13 @@ type Inputs = {
 }
 
 function UserRegister() {
-  const navigate = useNavigate()
+  const router = useRouter()
   const userToken = useUserStore((state) => state.userToken)
   const setToken = useUserStore((state) => state.setToken)
 
   useEffect(() => {
     if (userToken) {
-      navigate('/')
+      router.push('/')
     }
   }, [])
 
@@ -35,10 +35,10 @@ function UserRegister() {
 
   const handleRegister: SubmitHandler<Inputs> = async (data) => {
     createUser(data)
-      .then(() => {
-        setToken(data.email, data.name)
+      .then((res) => {
+        setToken(data.email, data.name, res.data.userID)
         toast('Você foi cadastrado, aguarde...')
-        navigate('/register')
+        router.push('/account/register')
       })
       .catch(() => {
         toast.error(`Ocorreu um erro! Tente novamente mais tarde!`, {

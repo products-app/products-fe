@@ -1,4 +1,4 @@
 export default {
-  apiUrl: import.meta.env.API_URL,
-  stripeSK: import.meta.env.STRIPE_SK,
+  apiUrl: process.env.API_URL,
+  stripeSK: process.env.STRIPE_SK,
 }

@@ -1,6 +1,6 @@
 import Datatable from '@/components/Admin/DataTable'
-import { Heading, Card } from '@lebernardo/react'
-import { useNavigate } from 'react-router-dom'
+import { Heading } from '@lebernardo/react'
+import { useRouter } from 'next/navigation'
 import { getProducts } from '@/api/products'
 import { useQuery } from 'react-query'
 import { useMemo } from 'react'
@@ -17,13 +17,13 @@ const styles = {
 const tableColumns = ['id', 'name', 'stock', 'price', 'active']
 
 function AdminProductList() {
-  const navigate = useNavigate()
+  const router = useRouter()
   const { data } = useQuery(['products'], () => getProducts(''))
   const products = useMemo(() => data?.data, [data])
   const countProducts = products ? products.length : 0
 
   const handleRedirect = (item: object) => {
-    navigate(`/admin/add-product?id=${item.id}`)
+    router.push(`/admin/products/add?id=${item.id}`)
   }
 
   return (

@@ -1,24 +1,20 @@
-import { useSyncExternalStore } from 'react'
 import { countCartItems } from '@/helpers/cart'
 import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
 import NotFound from '@/components/NotFound'
 import ListCart from './components/ListCart'
-import { useCartStore } from '@/root/src/store/cart'
-import { useSidebarStore } from '@/root/src/store/sidebar'
-import { useUserStore } from '@/root/src/store/user'
-import { useNavigate } from 'react-router-dom'
+import { useCartStore } from '@/store/cart'
+import { useSidebarStore } from '@/store/sidebar'
+import { useUserStore } from '@/store/user'
+import { useRouter } from 'next/navigation'
 
 const CartSidebar = () => {
-  const navigate = useNavigate()
-  const cart = useSyncExternalStore(
-    useCartStore.subscribe,
-    useCartStore.getState,
-  )
+  const router = useRouter()
+  const cartItems = useCartStore((state) => state.cartItems)
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
   const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
-  const totalCartItems = countCartItems(cart.cartItems)
+  const totalCartItems = countCartItems(cartItems)
   const userToken = useUserStore((state) => state.userToken)
 
   const handleCloseSidebar = () => {
@@ -29,7 +25,7 @@ const CartSidebar = () => {
     if (userToken) {
       setOpenCheckout(true)
     } else {
-      navigate('/login')
+      router.push('/account')
     }
   }
 
@@ -44,10 +40,10 @@ const CartSidebar = () => {
             id="cart-sidebar-items"
             className="w-full h-[90%] overflow-y-scroll"
           >
-            {cart.cartItems && totalCartItems > 0 && (
-              <ListCart items={cart.cartItems} />
+            {cartItems && totalCartItems > 0 && (
+              <ListCart items={cartItems} />
             )}
-            {totalCartItems === 0 && <NotFound variant="cart-items" />}
+            {/* {totalCartItems === 0 && <NotFound variant="cart-items" />} */}
           </div>
         </div>
 

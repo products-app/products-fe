@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { useStore } from '@/root/src/store/products'
-import { useSearchStore } from '@/root/src/store/search'
+import { useStore } from '@/store/products'
+import { useSearchStore } from '@/store/search'
 import { Heading } from '@lebernardo/react'
 import Page from '@/components/Page'
 import ProductGrid from '@/components/ProductGrid'
-import NotFound from '@/components/NotFound'
+// import NotFound from '@/components/NotFound'
 import { filterProductsBySearchTerm } from '@/helpers/products'
 
 function ProductList() {
@@ -30,7 +30,8 @@ function ProductList() {
 
       {filteredProducts.length === 0 && searchTerm === '' && (
         <div className="h-screen w-full">
-          <NotFound variant="list-products" />
+          hi
+          {/* <NotFound variant="list-products" /> */}
         </div>
       )}
     </Page>

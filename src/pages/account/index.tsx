@@ -2,9 +2,9 @@ import { Heading, Text, Card, Button } from '@lebernardo/react'
 import Page from '@/components/Page'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { login } from '@/api/user'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
-import { useUserStore } from '@/root/src/store/user'
+import { useUserStore } from '@/store/user'
 import styles from './styles'
 import { useEffect } from 'react'
 
@@ -14,13 +14,13 @@ type Inputs = {
 }
 
 function UserLogin() {
-  const navigate = useNavigate()
+  const router = useRouter()
   const userToken = useUserStore((state) => state.userToken)
   const setToken = useUserStore((state) => state.setToken)
 
   useEffect(() => {
     if (userToken) {
-      navigate('/')
+      router.push('/')
     }
   }, [])
 
@@ -31,7 +31,8 @@ function UserLogin() {
       .then((res) => {
         setToken(data.email, res.data.name, res.data.id)
         toast('Você está logado, redirecionando...')
-        navigate('/')
+        router.push('/')
+        
       })
       .catch(() => {
         toast.error(`Ocorreu um erro! Tente novamente mais tarde!`, {
@@ -41,7 +42,7 @@ function UserLogin() {
   }
 
   const goToRegister = () => {
-    navigate('/register')
+    router.push('/account/register')
   }
 
   return (

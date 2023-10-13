@@ -5,6 +5,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    "next/core-web-vitals",
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'standard',

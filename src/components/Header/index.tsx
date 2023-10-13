@@ -1,4 +1,3 @@
-import { useSyncExternalStore } from 'react'
 import { TextInput, Text } from '@lebernardo/react'
 import {
   ShoppingCartSimple,
@@ -8,11 +7,11 @@ import {
 } from 'phosphor-react'
 import Badge from '@/components/Badge'
 import { countCartItems } from '@/helpers/cart'
-import { useSidebarStore } from '@/root/src/store/sidebar'
-import { useSearchStore } from '@/root/src/store/search'
-import { useCartStore } from '@/root/src/store/cart'
-import { useUserStore } from '@/root/src/store/user'
-import { useNavigate } from 'react-router-dom'
+import { useSidebarStore } from '@/store/sidebar'
+import { useSearchStore } from '@/store/search'
+import { useCartStore } from '@/store/cart'
+import { useUserStore } from '@/store/user'
+import { useRouter } from 'next/navigation'
 import { Dropdown } from '@/components/Dropdown'
 
 const styles = {
@@ -21,7 +20,7 @@ const styles = {
 }
 
 const Header = () => {
-  const navigate = useNavigate()
+  const router = useRouter()
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
   const searchTerm = useSearchStore((state) => state.searchTerm)
@@ -29,11 +28,7 @@ const Header = () => {
   const userName = useUserStore((state) => state.userName)
   const userToken = useUserStore((state) => state.userToken)
   const deleteToken = useUserStore((state) => state.deleteToken)
-
-  const cart = useSyncExternalStore(
-    useCartStore.subscribe,
-    useCartStore.getState,
-  )
+  const cartItems = useCartStore((state) => state.cartItems)
 
   const dropdownOptions: app.DropdownItem[] = [
     {
@@ -58,7 +53,7 @@ const Header = () => {
   }
 
   const handleAccount = () => {
-    navigate('/login')
+    router.push("/account")
   }
 
   return (
@@ -99,7 +94,7 @@ const Header = () => {
           <button id="button-cart" className={styles.btn} onClick={handleOpen}>
             <ShoppingCartSimple className="text-white" />
             <Badge variant="secondary" className="absolute right-0 top-0">
-              {cart.cartItems ? countCartItems(cart.cartItems) : '0'}
+              {cartItems ? countCartItems(cartItems) : '0'}
             </Badge>
           </button>
         </div>

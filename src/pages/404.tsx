@@ -1,6 +1,6 @@
 import { LinkBreak } from 'phosphor-react'
 import { Heading, Text, Button } from '@lebernardo/react'
-import styles from './styles'
+import styles from '@/styles/notFound'
 import { useRouter } from 'next/navigation'
 
 const Page = () => {

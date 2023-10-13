@@ -1,5 +1,5 @@
-import { useState, useEffect, useSyncExternalStore } from 'react'
-import { useCartStore } from '@/root/src/store/cart'
+import { useState, useEffect } from 'react'
+import { useCartStore } from '@/store/cart'
 import { loadStripe } from '@stripe/stripe-js'
 import { Button, Heading, Text } from '@lebernardo/react'
 import {
@@ -12,15 +12,12 @@ import { getTotal, cartToOrderItems } from '@/helpers/cart'
 import { formatDecimalToReal } from '@/helpers/products'
 import { toast } from 'react-toastify'
 import { postOrder } from '@/api/order'
-import { useUserStore } from '@/root/src/store/user'
-import config from '@/root/config'
+import { useUserStore } from '@/store/user'
+import config from '../../../config'
 
 const CheckoutForm = () => {
-  const cart = useSyncExternalStore(
-    useCartStore.subscribe,
-    useCartStore.getState,
-  )
-
+  const cartItems = useCartStore((state) => state.cartItems)
+  const truncateItems = useCartStore((state) => state.truncateItems)
   const userID = useUserStore((state) => state.userID)
   const stripe = useStripe()
   const elements = useElements()
@@ -31,7 +28,7 @@ const CheckoutForm = () => {
   const [totalCart, setTotalCart] = useState(0)
 
   useEffect(() => {
-    const [errMsg, totalCart] = getTotal(cart.cartItems)
+    const [errMsg, totalCart] = getTotal(cartItems)
 
     if (errMsg) {
       setErrorMessage(errMsg)
@@ -41,10 +38,10 @@ const CheckoutForm = () => {
       return
     }
     setTotalCart(totalCart)
-  }, [cart])
+  }, [cartItems])
 
   const handleCreateOrder = async () => {
-    const orderProducts = cartToOrderItems(cart.cartItems)
+    const orderProducts = cartToOrderItems(cartItems)
     if (!orderProducts) {
       setErrorMessage('the cart is empty')
       toast.error('the cart is empty', {
@@ -94,7 +91,7 @@ const CheckoutForm = () => {
       },
     })
 
-    cart.truncateItems()
+    truncateItems()
   }
 
   return (
@@ -124,13 +121,10 @@ const CheckoutForm = () => {
 const stripePromise = loadStripe(config.stripeSK)
 
 const Checkout = () => {
-  const cart = useSyncExternalStore(
-    useCartStore.subscribe,
-    useCartStore.getState,
-  )
+  const cartItems = useCartStore((state) => state.cartItems)
   const [totalCart, setTotalCart] = useState(200)
   useEffect(() => {
-    const [errMsg, totalCart] = getTotal(cart.cartItems)
+    const [errMsg, totalCart] = getTotal(cartItems)
 
     if (errMsg) {
       toast.error(errMsg, {
@@ -139,7 +133,7 @@ const Checkout = () => {
       return
     }
     setTotalCart(totalCart)
-  }, [cart])
+  }, [cartItems])
 
   const options = {
     mode: 'payment',

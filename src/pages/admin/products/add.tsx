@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 import { postProducts } from '@/api/products'
 import { Heading, Text, Card, Button } from '@lebernardo/react'
 
@@ -23,8 +23,7 @@ type Inputs = {
 }
 
 function AdminProductAdd() {
-  const navigate = useNavigate()
-
+  const router = useRouter()
   const { register, handleSubmit } = useForm<Inputs>()
 
   const handleCreate: SubmitHandler<Inputs> = async (data) => {
@@ -36,7 +35,7 @@ function AdminProductAdd() {
     postProducts(product)
       .then(() => {
         toast('Produto cadastrado com sucesso!')
-        navigate('/admin/list-product')
+        router.push('/admin/products')
       })
       .catch(() => {
         toast.error(`Ocorreu um erro! Tente novamente mais tarde!`, {
