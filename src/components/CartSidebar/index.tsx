@@ -7,14 +7,15 @@ import { useCartStore } from '@/store/cart'
 import { useSidebarStore } from '@/store/sidebar'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
+import useFromStore from "@/hooks/store"
 
 const CartSidebar = () => {
   const router = useRouter()
-  const cartItems = useCartStore((state) => state.cartItems)
+  const cartItems = useFromStore(useCartStore, state => state.cartItems)
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
   const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
-  const totalCartItems = countCartItems(cartItems)
+  const totalCartItems = countCartItems(cartItems || {})
   const userToken = useUserStore((state) => state.userToken)
 
   const handleCloseSidebar = () => {

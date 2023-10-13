@@ -17,10 +17,6 @@ declare module app {
     [uuid: string]: CartItem
   }
 
-  export interface BadgeVariants {
-    [key: string]: string
-  }
-
   export interface DropdownItem {
     label: string
     link: string
