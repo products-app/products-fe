@@ -1,9 +1,38 @@
-export default {
-  grid: 'grid grid-cols-3 grid-flow-row gap-4',
-  gridItemProduct: 'bg-gray600 rounded-lg overflow-hidden',
-  imgProduct: 'w-full aspect-square',
-  wrapperText: 'p-4',
-  textProductName: 'text-white',
-  wrapperControls: 'flex items-center justify-center',
-  buttonAddToCart: 'w-full mt-4',
-}
+import { styled, Button, Heading } from '@lebernardo/react'
+
+export const ProductItemContainer = styled('div', {
+  background: '$gray600',
+  overflow: 'hidden',
+  borderRadius: '0.5rem',
+
+  img: {
+    width: '100%',
+    aspectRatio: '1/1',
+  },
+
+  figcaption: {
+    padding: '1rem',
+  },
+})
+
+export const Grid = styled('div', {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+  gridAutoFlow: 'row',
+  gap: '1rem',
+})
+
+export const ButtonContainer = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
+export const ButtonAddToCart = styled(Button, {
+  width: '100%',
+  marginTop: '1rem',
+})
+
+export const ProductName = styled(Heading, {
+  color: '$white',
+})
