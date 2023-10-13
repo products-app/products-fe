@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { useStore } from '@/store/products'
 import { useSearchStore } from '@/store/search'
-import { Heading } from '@lebernardo/react'
 import Page from '@/components/Page'
 import ProductGrid from '@/components/ProductGrid'
-// import NotFound from '@/components/NotFound'
+import NotFoundProducts from '@/components/NotFound/ListProducts'
+import NotFoundSearch from '@/components/NotFound/Search'
 import { filterProductsBySearchTerm } from '@/helpers/products'
+import { HeaderSection } from '@/styles/listProducts'
 
 function ProductList() {
   const searchTerm = useSearchStore((state) => state.searchTerm)
@@ -18,21 +19,22 @@ function ProductList() {
 
   const filteredProducts: app.Product[] = filterProductsBySearchTerm(
     products,
-    '',
+    searchTerm,
   )
 
   return (
     <Page>
-      <Heading className="text-center mb-4 font-heading">Produtos</Heading>
+      <HeaderSection>Produtos</HeaderSection>
       {filteredProducts.length > 0 && (
         <ProductGrid items={filterProductsBySearchTerm(products, searchTerm)} />
       )}
 
-      {filteredProducts.length === 0 && searchTerm === '' && (
-        <div className="h-screen w-full">
-          hi
-          {/* <NotFound variant="list-products" /> */}
-        </div>
+      {products.length === 0 && searchTerm === '' && (
+        <NotFoundProducts />
+      )}
+
+      {filteredProducts.length === 0 && searchTerm !== '' && (
+        <NotFoundSearch searchTerm={searchTerm} />
       )}
     </Page>
   )
