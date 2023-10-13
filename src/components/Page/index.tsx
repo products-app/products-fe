@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import CartSidebar from '@/components/CartSidebar'
 import CheckoutModal from '@/components/CheckoutModal'
 import { ToastContainer } from 'react-toastify'
-import styles from './styles'
+import { Container } from './styles'
 
 type PageProps = {
   children?: React.ReactNode
@@ -13,7 +13,7 @@ const Page = ({ children }: PageProps) => {
     <>
       <Header />
       <main>
-        <div className={styles.container}>{children}</div>
+        <Container>{children}</Container>
       </main>
       <CartSidebar />
       <ToastContainer />

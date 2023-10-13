@@ -1,3 +1,6 @@
-export default {
-  container: 'max-w-5xl mx-auto my-10',
-}
+import { styled } from '@lebernardo/react'
+
+export const Container = styled('div', {
+  maxWidth: '64rem',
+  margin: '2.5rem auto',
+})

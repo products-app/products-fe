@@ -1,24 +1,21 @@
-import { useSyncExternalStore } from 'react'
 import { countCartItems } from '@/helpers/cart'
-import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
-import NotFound from '@/components/NotFound'
+import NotFoundCartItems from '@/components/NotFound/CartItems'
 import ListCart from './components/ListCart'
-import { useCartStore } from '@/root/src/store/cart'
-import { useSidebarStore } from '@/root/src/store/sidebar'
-import { useUserStore } from '@/root/src/store/user'
-import { useNavigate } from 'react-router-dom'
+import { useCartStore } from '@/store/cart'
+import { useSidebarStore } from '@/store/sidebar'
+import { useUserStore } from '@/store/user'
+import { useRouter } from 'next/navigation'
+import useFromStore from "@/hooks/store"
+import { SidebarContainer, CartContainer, ItemsContainer, ItemsText, CartControl, ButtonContainer } from './styles'
 
 const CartSidebar = () => {
-  const navigate = useNavigate()
-  const cart = useSyncExternalStore(
-    useCartStore.subscribe,
-    useCartStore.getState,
-  )
+  const router = useRouter()
+  const cartItems = useFromStore(useCartStore, state => state.cartItems)
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
   const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
-  const totalCartItems = countCartItems(cart.cartItems)
+  const totalCartItems = countCartItems(cartItems || {})
   const userToken = useUserStore((state) => state.userToken)
 
   const handleCloseSidebar = () => {
@@ -29,40 +26,37 @@ const CartSidebar = () => {
     if (userToken) {
       setOpenCheckout(true)
     } else {
-      navigate('/login')
+      router.push('/account')
     }
   }
 
   return (
     <Sidebar isOpen={open} onClose={handleCloseSidebar}>
-      <div className="flex flex-col justify-between h-full relative">
-        <div className="relative h-[80%]">
-          <Text size="xl" className="mb-5">
+      <SidebarContainer>
+        <CartContainer>
+          <ItemsText size="lg">
             Carrinho de compras
-          </Text>
-          <div
-            id="cart-sidebar-items"
-            className="w-full h-[90%] overflow-y-scroll"
-          >
-            {cart.cartItems && totalCartItems > 0 && (
-              <ListCart items={cart.cartItems} />
+          </ItemsText>
+          <ItemsContainer id="cart-sidebar-items">
+            {cartItems && totalCartItems > 0 && (
+              <ListCart items={cartItems} />
             )}
-            {totalCartItems === 0 && <NotFound variant="cart-items" />}
-          </div>
-        </div>
+
+            {totalCartItems === 0 && <NotFoundCartItems />}
+          </ItemsContainer>
+        </CartContainer>
 
         {totalCartItems > 0 && (
-          <Card className="fixed right-0 bottom-0 w-full">
-            <Button
+          <CartControl>
+            <ButtonContainer
               variant="primary"
-              className="w-full my-4"
               onClick={handleOpenCheckout}
             >
               Comprar agora
-            </Button>
-          </Card>
+            </ButtonContainer>
+          </CartControl>
         )}
-      </div>
+      </SidebarContainer>
     </Sidebar>
   )
 }

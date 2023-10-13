@@ -1,4 +1,3 @@
-import { beforeEach, describe, expect, it } from 'vitest'
 import { useSidebarStore as store } from './index'
 
 const exampleState = {

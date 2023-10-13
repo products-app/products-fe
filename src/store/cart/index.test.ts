@@ -1,4 +1,3 @@
-import { beforeEach, describe, expect, it } from 'vitest'
 import { useCartStore as store } from './index'
 
 const key = '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'

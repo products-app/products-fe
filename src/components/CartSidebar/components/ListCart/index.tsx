@@ -2,28 +2,32 @@ import { Text } from '@lebernardo/react'
 import List, { ListItem } from '@/components/List'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
 import { formatDecimalToReal } from '@/helpers/products'
-import { useCartStore } from '@/root/src/store/cart'
-import styles from './styles'
+import { useCartStore } from '@/store/cart'
+import useFromStore from "@/hooks/store"
+import { ButtonQuantityPlus, 
+  ButtonQuantityMinus, ContainerImg, 
+  ContainerText, TextQuantity, ContainerControls, 
+  TextPrice, ButtonRemoveProduct, 
+  ContainerQuantityControl } from './styles'
+
 
 type PageProps = {
   items?: app.CartItems
 }
 
 const ListCart = ({ items }: PageProps) => {
-  const decrementItem = useCartStore((state) => state.decrementItem)
-  const incrementItem = useCartStore((state) => state.incrementItem)
-  const removeItem = useCartStore((state) => state.removeItem)
+  const cart = useFromStore(useCartStore, state => state)
 
   const handleDecrementItem = (uuid: string) => {
-    decrementItem(uuid)
+    cart && cart?.decrementItem(uuid)
   }
 
   const handleIncrementItem = (uuid: string) => {
-    incrementItem(uuid)
+    cart && cart?.incrementItem(uuid)
   }
 
   const handleRemoveItem = (uuid: string) => {
-    removeItem(uuid)
+    cart && cart?.removeItem(uuid)
   }
 
   return (
@@ -31,54 +35,50 @@ const ListCart = ({ items }: PageProps) => {
       {items &&
         Object.entries(items).map(([key, value], i) => (
           <ListItem key={i}>
-            <figure className={styles.containerImg}>
+            <ContainerImg>
               <img
-                className={styles.imgItem}
                 src={value.image}
                 alt={value.name}
               />
-            </figure>
+            </ContainerImg>
 
-            <div className={styles.containerProductText}>
+            <ContainerText>
               <Text size="md">{value.name}</Text>
-              <Text size="sm" className={styles.textProductQuantity}>
+              <TextQuantity size="sm">
                 Qtde: <strong data-cy="item-quantity">{value.quantity}</strong>
-              </Text>
-            </div>
+              </TextQuantity>
+            </ContainerText>
 
-            <div className={styles.containerControls}>
-              <Text className={styles.textProductPrice}>
+            <ContainerControls>
+              <TextPrice>
                 {formatDecimalToReal(value.price)}
-              </Text>
-              <div className={styles.containerQuantityControls}>
-                <button
+              </TextPrice>
+              <ContainerQuantityControl>
+                <ButtonQuantityMinus
                   data-cy="decrement-item"
                   name="minus"
-                  className={styles.buttonQuantityMinus}
                   onClick={() => handleDecrementItem(key)}
                   disabled={value.quantity === 1}
                 >
-                  <Minus className={styles.buttonIconQuantity} />
-                </button>
-                <button
+                  <Minus />
+                </ButtonQuantityMinus>
+                <ButtonQuantityPlus
                   data-cy="increment-item"
-                  className={styles.buttonQuantityPlus}
                   onClick={() => handleIncrementItem(key)}
                   disabled={value.quantity === value.stock}
                 >
-                  <Plus className={styles.buttonIconQuantity} />
-                </button>
-              </div>
-            </div>
+                  <Plus />
+                </ButtonQuantityPlus>
+              </ContainerQuantityControl>
+            </ContainerControls>
 
-            <div className={styles.containerControls}>
-              <button
-                className={styles.buttonRemoveProduct}
+            <ContainerControls>
+              <ButtonRemoveProduct
                 onClick={() => handleRemoveItem(key)}
               >
-                <TrashSimple className={styles.buttonIconRemove} />
-              </button>
-            </div>
+                <TrashSimple />
+              </ButtonRemoveProduct>
+            </ContainerControls>
           </ListItem>
         ))}
     </List>

@@ -1,6 +1,5 @@
 import { X as CloseIcon } from 'phosphor-react'
-import classNames from 'classnames'
-import styles from './styles'
+import { SidebarContainer, ButtonClose } from './styles'
 
 type SidebarProps = {
   isOpen?: boolean
@@ -9,18 +8,20 @@ type SidebarProps = {
 }
 
 const Sidebar = ({ isOpen, children, onClose }: SidebarProps) => {
-  const sidebarClassNames = classNames(styles.sidebar, {
-    [styles.sidebarClose]: !isOpen,
-    [styles.sidebarOpen]: isOpen,
-  })
+  let style;
+  if (isOpen) {
+    style = { 'transform': 'translateX(0px)' } 
+  } else {
+    style = { 'transform': 'translateX(100%)' } 
+  }
 
   return (
-    <div id="sidebar" className={sidebarClassNames}>
-      <button onClick={onClose} className={styles.buttonClose}>
-        <CloseIcon className={styles.buttonIconClose} />
-      </button>
+    <SidebarContainer id="sidebar" style={style}>
+      <ButtonClose onClick={onClose}>
+        <CloseIcon />
+      </ButtonClose>
       {children}
-    </div>
+    </SidebarContainer>
   )
 }
 

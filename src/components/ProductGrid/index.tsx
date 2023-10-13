@@ -1,11 +1,11 @@
-import { Heading, Button, Text } from '@lebernardo/react'
+import { Text } from '@lebernardo/react'
 import {
   formatDecimalToReal,
   getProductImage,
   getProductStock,
 } from '@/helpers/products'
-import styles from './styles'
-import { useCartStore } from '@/root/src/store/cart'
+import { ProductItemContainer, Grid, ButtonContainer, ButtonAddToCart, ProductName } from './styles'
+import { useCartStore } from '@/store/cart'
 
 type ProductGridProps = {
   items: app.Product[]
@@ -19,39 +19,36 @@ const ProductGrid = ({ items }: ProductGridProps) => {
   }
 
   return (
-    <section id="product-grid" className={styles.grid}>
+    <Grid id="product-grid">
       {items.map((product, i) => (
-        <figure
+        <ProductItemContainer
           key={product?.id && product?.id + i}
-          className={styles.gridItemProduct}
         >
           <img
             src={getProductImage(product.image)}
-            className={styles.imgProduct}
           />
 
-          <figcaption className={styles.wrapperText}>
-            <Heading size="sm" className={styles.textProductName}>
+          <figcaption>
+            <ProductName>
               {product.name}
-            </Heading>
+            </ProductName>
             <Text>{formatDecimalToReal(product.price)}</Text>
 
-            <div className={styles.wrapperControls}>
-              <Button
+            <ButtonContainer>
+              <ButtonAddToCart
                 variant="outline"
-                className={styles.buttonAddToCart}
                 onClick={() => handleAddToCart(product)}
                 disabled={
                   getProductStock(product.stock) === 0 || product.price === 0
                 }
               >
                 Adicionar ao carrinho
-              </Button>
-            </div>
+              </ButtonAddToCart>
+            </ButtonContainer>
           </figcaption>
-        </figure>
+        </ProductItemContainer>
       ))}
-    </section>
+    </Grid>
   )
 }
 
