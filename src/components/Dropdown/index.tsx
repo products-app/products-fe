@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import { UserCircle } from 'phosphor-react'
 import { useState } from 'react'
-import styles from './styles'
+import styles, { LinksContainer } from './styles'
 
 type DropdownProps = {
   items: app.DropdownItem[]
@@ -33,7 +33,7 @@ const Dropdown = ({ items }: DropdownProps) => {
         })} 
         suppressHydrationWarning
       >
-        <div className="rounded-md bg-gray900 shadow-xs">
+        <LinksContainer>
           <div className="py-1">
             {items.map((item) => (
               <a
@@ -46,7 +46,7 @@ const Dropdown = ({ items }: DropdownProps) => {
               </a>
             ))}
           </div>
-        </div>
+        </LinksContainer>
       </div>
     </div>
   )
