@@ -1,4 +1,4 @@
-import { Heading, Text } from '@lebernardo/react'
+import { Text } from '@lebernardo/react'
 import {
   formatDecimalToReal,
   getProductImage,
