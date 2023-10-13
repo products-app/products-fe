@@ -1,16 +1,14 @@
-import { Text } from '@lebernardo/react'
 import { defaultImages } from '@/constants/images'
-import styles from './styles'
+import { Container, TextContainer } from './styles'
 
-const CartItems = () => (
-  <div className={styles.container}>
+const NotFoundCartItems = () => (
+  <Container>
     <img
-      className={styles.defaultImg}
       src={defaultImages.emptyCart}
       alt="Imagem de carrinho vazio"
     />
-    <Text className={styles.message}>Adicione algo em seu carrinho...</Text>
-  </div>
+    <TextContainer>Adicione algo em seu carrinho...</TextContainer>
+  </Container>
 )
 
-export default CartItems
+export default NotFoundCartItems

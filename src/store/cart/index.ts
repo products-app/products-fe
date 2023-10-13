@@ -59,13 +59,13 @@ export const useCartStore = create(
           ...state.cartItems,
           [uuid]: {
             ...state.cartItems[uuid],
-            quantity: (state.cartItems[uuid].quantity += 1),
+            quantity: (state.cartItems[uuid]?.quantity ? (state.cartItems[uuid].quantity += 1): 0),
           },
         }))
       },
       decrementItem(uuid: string) {
         const cartItems = get().cartItems
-        if (cartItems[uuid].quantity > 1) {
+        if (cartItems[uuid]?.quantity && cartItems[uuid].quantity > 1) {
           cartItems[uuid].quantity -= 1
         }
         set({

@@ -1,14 +1,87 @@
-export default {
-  containerImg: 'bg-gray600 rounded-lg w-36 h-13 overflow-hidden',
-  imgItem: 'object-cover w-auto h-auto aspect-square',
-  containerProductText: 'whitespace-nowrap overflow-hidden w-full',
-  textProductQuantity: 'text-gray400',
-  containerControls: 'text-right',
-  textProductPrice: 'text-base300 font-bold',
-  containerQuantityControls: 'flex mt-2 justify-end',
-  buttonQuantityMinus: 'bg-gray-700 p-1 disabled:cursor-not-allowed',
-  buttonQuantityPlus: 'bg-gray-800 p-1 disabled:cursor-not-allowed',
-  buttonIconQuantity: 'text-white text-xs',
-  buttonRemoveProduct: 'p-2 hover:bg-gray800 rounded-full',
-  buttonIconRemove: 'text-gray200 hover:text-white',
-}
+import { styled, Button, Text, Card } from '@lebernardo/react'
+
+export const ContainerImg = styled('div', {
+  background: '$gray600',
+  borderRadius: '0.5rem',
+  width: '9rem',
+  height: '3rem',
+  overflow: 'hidden',
+
+  img: {
+    width: 'auto',
+    height: 'auto',
+    objectFit: 'cover',
+    aspectRatio: '1/1',
+  }
+})
+
+export const ContainerText = styled('figure', {
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  width: '100%',
+})
+
+export const TextQuantity = styled(Text, {
+  color: '$gray400',
+})
+
+export const ContainerControls = styled('div', {
+  textAlign: 'right',
+})
+
+export const TextPrice = styled(Text, {
+  color: '$base300',
+  fontWeight: 'bold',
+})
+
+export const ContainerQuantityControl = styled('div', {
+  display: 'flex',
+  justifyContent: 'end',
+  marginTop: '0.5rem',
+})
+
+export const ButtonQuantityMinus = styled('button', {
+  background: '$gray700',
+  padding: '0.25rem',
+
+  '&:disabled': {
+    cursor: 'not-allowed',
+  },
+
+  svg: {
+    color: '$white',
+    fontSize: '$xs',
+  }
+})
+
+export const ButtonQuantityPlus = styled('button', {
+  background: '$gray800',
+  padding: '0.25rem',
+
+  '&:disabled': {
+    cursor: 'not-allowed',
+  },
+
+  svg: {
+    color: '$white',
+    fontSize: '$xs',
+  }
+})
+
+export const ButtonRemoveProduct = styled('button', {
+  padding: '0.5rem',
+
+  '&:hover': {
+    background: '$gray800',
+    borderRadius: '9999px',
+  },
+
+  svg: {
+    color: '$gray200',
+
+    '&:hover': {
+      color: '$white',
+    },
+  }
+})
+

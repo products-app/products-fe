@@ -1,5 +1,21 @@
-export default {
-  container: 'flex justify-center flex-col items-center h-5/6 overflow-hidden',
-  defaultImg: 'w-full px-8',
-  message: 'text-gray500',
-}
+import { styled, Text } from '@lebernardo/react'
+
+export const Container = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  overflow: 'hidden',
+  height: '83.333333%',
+
+  img: {
+    width: '100%',
+    paddingLeft: '2rem',
+    paddingRight: '2rem',
+  }
+})
+
+export const TextContainer = styled(Text, {
+  color: '$gray500',
+})
+

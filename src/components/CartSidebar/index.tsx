@@ -1,13 +1,13 @@
 import { countCartItems } from '@/helpers/cart'
-import { Text, Button, Card } from '@lebernardo/react'
 import Sidebar from '@/components/Sidebar'
-import NotFound from '@/components/NotFound'
+import NotFoundCartItems from '@/components/NotFound/CartItems'
 import ListCart from './components/ListCart'
 import { useCartStore } from '@/store/cart'
 import { useSidebarStore } from '@/store/sidebar'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
 import useFromStore from "@/hooks/store"
+import { SidebarContainer, CartContainer, ItemsContainer, ItemsText, CartControl, ButtonContainer } from './styles'
 
 const CartSidebar = () => {
   const router = useRouter()
@@ -32,34 +32,31 @@ const CartSidebar = () => {
 
   return (
     <Sidebar isOpen={open} onClose={handleCloseSidebar}>
-      <div className="flex flex-col justify-between h-full relative">
-        <div className="relative h-[80%]">
-          <Text size="xl" className="mb-5">
+      <SidebarContainer>
+        <CartContainer>
+          <ItemsText size="lg">
             Carrinho de compras
-          </Text>
-          <div
-            id="cart-sidebar-items"
-            className="w-full h-[90%] overflow-y-scroll"
-          >
+          </ItemsText>
+          <ItemsContainer id="cart-sidebar-items">
             {cartItems && totalCartItems > 0 && (
               <ListCart items={cartItems} />
             )}
-            {/* {totalCartItems === 0 && <NotFound variant="cart-items" />} */}
-          </div>
-        </div>
+
+            {totalCartItems === 0 && <NotFoundCartItems />}
+          </ItemsContainer>
+        </CartContainer>
 
         {totalCartItems > 0 && (
-          <Card className="fixed right-0 bottom-0 w-full">
-            <Button
+          <CartControl>
+            <ButtonContainer
               variant="primary"
-              className="w-full my-4"
               onClick={handleOpenCheckout}
             >
               Comprar agora
-            </Button>
-          </Card>
+            </ButtonContainer>
+          </CartControl>
         )}
-      </div>
+      </SidebarContainer>
     </Sidebar>
   )
 }
