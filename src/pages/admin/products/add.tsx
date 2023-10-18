@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
+import { useUserStore } from '@/store/user'
 import { postProducts } from '@/api/products'
 import { Heading, Text, Card, Button } from '@lebernardo/react'
 import { Input } from './styles'
@@ -24,6 +25,7 @@ type Inputs = {
 }
 
 function AdminProductAdd() {
+  const userToken = useUserStore((state) => state.userToken)
   const router = useRouter()
   const { register, handleSubmit } = useForm<Inputs>()
 
@@ -33,7 +35,7 @@ function AdminProductAdd() {
       price: parseFloat(data.price),
       stock: parseInt(data.stock),
     }
-    postProducts(product)
+    postProducts(product, userToken)
       .then(() => {
         toast('Produto cadastrado com sucesso!')
         router.push('/admin/products')

@@ -14,13 +14,15 @@ export const getProductByID = (id: number): Promise<AxiosResponse> =>
 
 export const postProducts = (
   data: Record<string, any>,
+  token: string | undefined,
 ): Promise<AxiosResponse> => {
-  return api.post('/products', data)
+  return api.post('/products', data, { headers: { authorization: token } })
 }
 
 export const putProducts = (
   id: number,
   data: Record<string, any>,
+  token: string | undefined,
 ): Promise<AxiosResponse> => {
-  return api.put(`/products/${id}`, data)
+  return api.put(`/products/${id}`, data, { headers: { authorization: token } })
 }

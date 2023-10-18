@@ -8,11 +8,15 @@ import { useUserStore } from '@/store/user'
 import { useMemo } from 'react'
 import { formatDecimalToReal } from '@/helpers/products'
 import { getOrderStatus } from '@/helpers/order'
+import NotFoundOrders from '@/components/NotFound/Orders'
 
 function UserOrders() {
   const userID = useUserStore((state) => state.userID)
+  const userToken = useUserStore((state) => state.userToken)
 
-  const { data } = useQuery(['orders'], () => getUserOrders(userID || 0))
+  const { data } = useQuery(['orders'], () =>
+    getUserOrders(userID || 0, userToken),
+  )
   const userOrders = useMemo(() => data?.data, [data])
 
   return (
@@ -73,6 +77,7 @@ function UserOrders() {
                   </div>
                 </Card>
               ))}
+            {userOrders && userOrders.length === 0 && <NotFoundOrders />}
           </div>
         </div>
       </div>
