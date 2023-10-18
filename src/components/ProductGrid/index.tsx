@@ -4,7 +4,13 @@ import {
   getProductImage,
   getProductStock,
 } from '@/helpers/products'
-import { ProductItemContainer, Grid, ButtonContainer, ButtonAddToCart, ProductName } from './styles'
+import {
+  ProductItemContainer,
+  Grid,
+  ButtonContainer,
+  ButtonAddToCart,
+  ProductName,
+} from './styles'
 import { useCartStore } from '@/store/cart'
 
 type ProductGridProps = {
@@ -21,17 +27,11 @@ const ProductGrid = ({ items }: ProductGridProps) => {
   return (
     <Grid id="product-grid">
       {items.map((product, i) => (
-        <ProductItemContainer
-          key={product?.id && product?.id + i}
-        >
-          <img
-            src={getProductImage(product.image)}
-          />
+        <ProductItemContainer key={product?.id && product?.id + i}>
+          <img src={getProductImage(product.image)} />
 
           <figcaption>
-            <ProductName>
-              {product.name}
-            </ProductName>
+            <ProductName size="sm">{product.name}</ProductName>
             <Text>{formatDecimalToReal(product.price)}</Text>
 
             <ButtonContainer>

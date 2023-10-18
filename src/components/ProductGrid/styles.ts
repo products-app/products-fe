@@ -35,4 +35,10 @@ export const ButtonAddToCart = styled(Button, {
 
 export const ProductName = styled(Heading, {
   color: '$white',
+  height: '4rem',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  display: '-webkit-box',
+  '-webkit-line-clamp': 2,
+  '-webkit-box-orient': 'vertical',
 })
