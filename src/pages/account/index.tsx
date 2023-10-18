@@ -29,11 +29,15 @@ function UserLogin() {
   const handleLogin: SubmitHandler<Inputs> = async (data) => {
     login(data)
       .then((res) => {
-        console.log(res.data.id)
-        setToken(data.email, res.data.name, res.data.id)
+        const userAuth = {
+          id: res.data.id,
+          name: res.data.name,
+          email: res.data.email,
+          token: res.data.token,
+        } as app.UserAuth
+        setToken(userAuth)
         toast('Você está logado, redirecionando...')
         router.push('/')
-        
       })
       .catch(() => {
         toast.error(`Ocorreu um erro! Tente novamente mais tarde!`, {
@@ -60,18 +64,12 @@ function UserLogin() {
               <form onSubmit={handleSubmit(handleLogin)}>
                 <div className={styles.inputWrapper}>
                   <Text size="sm">E-mail</Text>
-                  <Input
-                    type="text"
-                    {...register('email')}
-                  />
+                  <Input type="text" {...register('email')} />
                 </div>
 
                 <div className={styles.inputWrapper}>
                   <Text size="sm">Senha</Text>
-                  <Input
-                    type="password"
-                    {...register('password')}
-                  />
+                  <Input type="password" {...register('password')} />
                 </div>
                 <Button type="submit">Login</Button>
               </form>

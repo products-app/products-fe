@@ -5,7 +5,7 @@ export interface IUser {
   userToken: string | undefined
   userName: string | undefined
   userID: number | undefined
-  setToken: (token: string, name: string, userID: number) => void
+  setToken: (user: app.UserAuth) => void
   deleteToken: () => void
 }
 
@@ -16,9 +16,8 @@ const useUserStore = create(
       userToken: undefined,
       userID: undefined,
       referredName: 'userToken',
-      setToken: (token: string, name: string, id: number) => {
-        console.log("user", id)
-        set({ userToken: token, userName: name, userID: id })
+      setToken: (user: app.UserAuth) => {
+        set({ userToken: user.token, userName: user.name, userID: user.id })
       },
       deleteToken: () => {
         set({ userToken: undefined, userName: undefined, userID: undefined })

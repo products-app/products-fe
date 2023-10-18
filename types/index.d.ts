@@ -35,4 +35,11 @@ declare module app {
     total: number
     orderProducts: OrderProduct[]
   }
+
+  export interface UserAuth {
+    id: number
+    token: string
+    name: string
+    email: string
+  }
 }
