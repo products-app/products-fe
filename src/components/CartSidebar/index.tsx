@@ -6,12 +6,19 @@ import { useCartStore } from '@/store/cart'
 import { useSidebarStore } from '@/store/sidebar'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
-import useFromStore from "@/hooks/store"
-import { SidebarContainer, CartContainer, ItemsContainer, ItemsText, CartControl, ButtonContainer } from './styles'
+import useFromStore from '@/hooks/store'
+import {
+  SidebarContainer,
+  CartContainer,
+  ItemsContainer,
+  ItemsText,
+  CartControl,
+  ButtonContainer,
+} from './styles'
 
 const CartSidebar = () => {
   const router = useRouter()
-  const cartItems = useFromStore(useCartStore, state => state.cartItems)
+  const cartItems = useFromStore(useCartStore, (state) => state.cartItems)
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
   const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
@@ -34,13 +41,9 @@ const CartSidebar = () => {
     <Sidebar isOpen={open} onClose={handleCloseSidebar}>
       <SidebarContainer>
         <CartContainer>
-          <ItemsText size="lg">
-            Carrinho de compras
-          </ItemsText>
+          <ItemsText size="lg">Carrinho de compras</ItemsText>
           <ItemsContainer id="cart-sidebar-items">
-            {cartItems && totalCartItems > 0 && (
-              <ListCart items={cartItems} />
-            )}
+            {cartItems && totalCartItems > 0 && <ListCart items={cartItems} />}
 
             {totalCartItems === 0 && <NotFoundCartItems />}
           </ItemsContainer>
@@ -48,10 +51,7 @@ const CartSidebar = () => {
 
         {totalCartItems > 0 && (
           <CartControl>
-            <ButtonContainer
-              variant="primary"
-              onClick={handleOpenCheckout}
-            >
+            <ButtonContainer variant="primary" onClick={handleOpenCheckout}>
               Comprar agora
             </ButtonContainer>
           </CartControl>

@@ -12,13 +12,19 @@ export const ContainerImg = styled('div', {
     height: 'auto',
     objectFit: 'cover',
     aspectRatio: '1/1',
-  }
+  },
 })
 
 export const ContainerText = styled('figure', {
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   width: '100%',
+
+  p: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
 })
 
 export const TextQuantity = styled(Text, {
