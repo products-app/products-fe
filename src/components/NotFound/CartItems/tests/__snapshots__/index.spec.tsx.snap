@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Empty Card component should render correctly 1`] = `
+exports[`Not Found Cart Items component should render correctly 1`] = `
 <div>
   <div
     class="c-dzUtkR"
   >
     <img
       alt="Imagem de carrinho vazio"
-      src="empty-cart.png"
+      src="/empty-cart.png"
     />
     <p
       class="c-dgMvMW c-igsGei c-dgMvMW-kWyXas-size-md"
