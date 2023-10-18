@@ -13,12 +13,14 @@ import { toast } from 'react-toastify'
 import { postOrder } from '@/api/order'
 import { useUserStore } from '@/store/user'
 import { HeadingContainer, OrderText, OrderButton } from './styles'
-import useFromStore from "@/hooks/store"
+import useFromStore from '@/hooks/store'
 
-const confiPK = "pk_test_51O06hDJTVjoQ9SZlF0vxhAybkAKmQEt6ngo5cK1gZKCiajMHtXTD7HbjTtfQFRCaz9Tv3h3DZrN1jE9C3SACPNFx00SGuy0ucH"
+const confiPK =
+  'pk_test_51O06hDJTVjoQ9SZlF0vxhAybkAKmQEt6ngo5cK1gZKCiajMHtXTD7HbjTtfQFRCaz9Tv3h3DZrN1jE9C3SACPNFx00SGuy0ucH'
 
 const CheckoutForm = () => {
-  const userID = useFromStore(useUserStore, state => state.userID)
+  const userID = useFromStore(useUserStore, (state) => state.userID)
+  const userToken = useFromStore(useUserStore, (state) => state.userToken)
   const cartItems = useCartStore((state) => state.cartItems)
   const truncateItems = useCartStore((state) => state.truncateItems)
   const stripe = useStripe()
@@ -30,7 +32,6 @@ const CheckoutForm = () => {
   const [totalCart, setTotalCart] = useState(0)
 
   useEffect(() => {
-    console.log(userID)
     if (!cartItems) return
     const [errMsg, totalCart] = getTotal(cartItems)
 
@@ -49,9 +50,6 @@ const CheckoutForm = () => {
     const orderProducts = cartToOrderItems(cartItems)
     if (!orderProducts) {
       setErrorMessage('the cart is empty')
-      // toast.error('the cart is empty', {
-      //   theme: 'dark',
-      // })
       return
     }
     const order = {
@@ -60,7 +58,7 @@ const CheckoutForm = () => {
       total: totalCart,
     }
 
-    return postOrder(order)
+    return postOrder(order, userToken)
   }
 
   const handleSubmit = async (event) => {
@@ -83,12 +81,10 @@ const CheckoutForm = () => {
       })
       .catch((e) => {
         console.log(e)
-        // toast.error('não foi possível efetuar a compra', {
-        //   theme: 'dark',
-        // })
       })
 
     if (!orderReturned) return
+
     await stripe?.confirmPayment({
       elements,
       clientSecret: orderReturned.client_secret,
@@ -102,17 +98,12 @@ const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <HeadingContainer size="md">
-        Finalizar a compra
-      </HeadingContainer>
+      <HeadingContainer size="md">Finalizar a compra</HeadingContainer>
       <OrderText size="lg">
         Total do pedido: <strong>{formatDecimalToReal(totalCart)}</strong>
       </OrderText>
       <PaymentElement />
-      <OrderButton
-        type="submit"
-        disabled={!stripe || !elements}
-      >
+      <OrderButton type="submit" disabled={!stripe || !elements}>
         Finalizar pedido
       </OrderButton>
       {errorMessage && <div>{errorMessage}</div>}
@@ -130,9 +121,6 @@ const Checkout = () => {
     const [errMsg, totalCart] = getTotal(cart?.cartItems)
 
     if (errMsg) {
-      // toast.error(errMsg, {
-      //   theme: 'dark',
-      // })
       return
     }
     setTotalCart(totalCart)
