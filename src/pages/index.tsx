@@ -1,43 +1,47 @@
-import { useEffect } from 'react'
-import { useStore } from '@/store/products'
-import { useSearchStore } from '@/store/search'
+import { useStore } from '@/stores'
+import { useGetProduct } from '@/hooks/products'
+import { filterProductsBySearchTerm } from '@/helpers/products'
+import Loading from '@/components/Loading'
+import NotFoundProducts from '@/components/NotFound/ListProducts'
 import Page from '@/components/Page'
 import ProductGrid from '@/components/ProductGrid'
-import NotFoundProducts from '@/components/NotFound/ListProducts'
-import NotFoundSearch from '@/components/NotFound/Search'
-import { filterProductsBySearchTerm } from '@/helpers/products'
-import { HeaderSection } from '@/styles/listProducts'
+import { HeaderSection } from './styles'
 
-function ProductList() {
-  const searchTerm = useSearchStore((state) => state.searchTerm)
-  const loadData = useStore((state) => state.loadData)
-  const products = useStore((state) => state.products)
+function List() {
+  const searchTerm = useStore((state) => state.searchTerm)
 
-  useEffect(() => {
-    loadData(searchTerm)
-  }, [])
+  const { data: products, isLoading, isError } = useGetProduct(searchTerm)
 
-  const filteredProducts: app.Product[] = filterProductsBySearchTerm(
-    products,
-    searchTerm,
-  )
+  if (isError) {
+    return (
+      <Page>
+        <NotFoundProducts />
+      </Page>
+    )
+  }
+
+  if (isLoading) {
+    return (
+      <Page>
+        <Loading />
+      </Page>
+    )
+  }
+
+  const filteredProducts: app.Product[] | undefined =
+    filterProductsBySearchTerm(products, searchTerm)
 
   return (
     <Page>
       <HeaderSection>Produtos</HeaderSection>
-      {filteredProducts.length > 0 && (
-        <ProductGrid items={filterProductsBySearchTerm(products, searchTerm)} />
-      )}
 
-      {products.length === 0 && searchTerm === '' && (
+      {filteredProducts && filteredProducts.length > 0 ? (
+        <ProductGrid items={filteredProducts} />
+      ) : (
         <NotFoundProducts />
-      )}
-
-      {filteredProducts.length === 0 && searchTerm !== '' && (
-        <NotFoundSearch searchTerm={searchTerm} />
       )}
     </Page>
   )
 }
 
-export default ProductList
+export default List
