@@ -15,8 +15,7 @@ import { useUserStore } from '@/store/user'
 import { HeadingContainer, OrderText, OrderButton } from './styles'
 import useFromStore from '@/hooks/store'
 
-const confiPK =
-  'pk_test_51O06hDJTVjoQ9SZlF0vxhAybkAKmQEt6ngo5cK1gZKCiajMHtXTD7HbjTtfQFRCaz9Tv3h3DZrN1jE9C3SACPNFx00SGuy0ucH'
+const confiPK = process.env.NEXT_PUBLIC_STRIPE_SK || ''
 
 const CheckoutForm = () => {
   const userID = useFromStore(useUserStore, (state) => state.userID)
