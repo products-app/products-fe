@@ -1,11 +1,14 @@
+import { useStore } from '@/stores'
+import Link from 'next/link'
 import { TextInput } from '@lebernardo/react'
-import { useSearchStore } from '@/store/search'
-import { HeaderSection, HeaderContainer, InputContainer } from './styles'
 import UserControl from './components/UserControl'
+import { HeaderSection, HeaderContainer, InputContainer } from './styles'
 
 const Header = () => {
-  const searchTerm = useSearchStore((state) => state.searchTerm)
-  const setSearch = useSearchStore((state) => state.setSearch)
+  const { searchTerm, setSearch } = useStore((state) => ({
+    searchTerm: state.searchTerm,
+    setSearch: state.setSearch,
+  }))
 
   const handleChange = (value: string) => {
     setSearch(value)
@@ -14,16 +17,16 @@ const Header = () => {
   return (
     <HeaderSection>
       <HeaderContainer>
-        <a href="/">
-          Prompt
-        </a>
+        <Link href="/">Prompt</Link>
 
         <InputContainer>
           <TextInput
             type="text"
             id="search"
             placeholder="Pesquise por produtos"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleChange(e.target.value)
+            }
             value={searchTerm}
           />
         </InputContainer>

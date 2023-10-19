@@ -19,7 +19,7 @@ const customStyles = {
   },
 }
 
-Modal.setAppElement('#__next')
+Modal.setAppElement('body')
 
 const CheckoutModal = () => {
   const openCheckout = useSidebarStore((state) => state.openCheckout)
