@@ -40,6 +40,37 @@ declare module app {
     id: number
     token: string
     name: string
-    email: string
+    email?: string
+  }
+
+  export interface AppState {
+    searchTerm?: string
+    openSidebar?: boolean
+    openCheckout?: boolean
+  }
+
+  export interface IAppControl extends AppState {
+    setSearch: (searchTerm: string) => void
+    setOpenSidebar: (open: boolean) => void
+    setOpenCheckout: (open: boolean) => void
+  }
+
+  export interface CartState {
+    items?: app.CartItem[]
+  }
+
+  export interface ICart extends CartState {
+    addItem: (item: app.Product) => void
+    removeItem: (item: app.CartItem) => void
+    increaseItem: (item: app.CartItem) => void
+    decreaseItem: (item: app.CartItem) => void
+  }
+
+  export interface UserState {
+    user?: app.UserAuth
+  }
+
+  export interface IUser extends UserState {
+    setUser: (loggedUser: app.UserAuth) => void
   }
 }
