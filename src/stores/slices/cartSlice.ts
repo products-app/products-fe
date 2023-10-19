@@ -58,14 +58,14 @@ const createCartSlice = (
   },
   removeItem(item: app.CartItem) {
     const items = get().items
-    const index = items.indexOf(item)
+    const index = items.findIndex((i: app.CartItem) => i.id === item.id)
 
     if (index > -1) {
       items.splice(index, 1)
       set({ items })
     }
   },
-  reset: () => {
+  resetCart: () => {
     set(defaultState)
   },
 })

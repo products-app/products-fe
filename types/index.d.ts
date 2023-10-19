@@ -53,6 +53,7 @@ declare module app {
     setSearch: (searchTerm: string) => void
     setOpenSidebar: (open: boolean) => void
     setOpenCheckout: (open: boolean) => void
+    resetApp: () => void
   }
 
   export interface CartState {
@@ -64,6 +65,7 @@ declare module app {
     removeItem: (item: app.CartItem) => void
     increaseItem: (item: app.CartItem) => void
     decreaseItem: (item: app.CartItem) => void
+    resetCart: () => void
   }
 
   export interface UserState {
@@ -72,5 +74,6 @@ declare module app {
 
   export interface IUser extends UserState {
     setUser: (loggedUser: app.UserAuth) => void
+    resetUser: () => void
   }
 }

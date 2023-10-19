@@ -7,7 +7,7 @@ export const createUserSlice = (set: (partial: app.UserState) => void) => ({
   setUser: (loggedUser: app.UserAuth) => {
     set({ user: loggedUser })
   },
-  reset: () => {
+  resetUser: () => {
     set(defaultState)
   },
 })

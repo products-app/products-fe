@@ -15,7 +15,7 @@ export const createAppSlice = (set: (partial: app.AppState) => void) => ({
   setOpenCheckout(openCheckout: boolean) {
     set({ openCheckout })
   },
-  reset: () => {
+  resetApp: () => {
     set(defaultState)
   },
 })
