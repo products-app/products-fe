@@ -23,7 +23,6 @@ export const postOrder = (
   data: Record<string, any>,
   token: string | undefined,
 ): Promise<AxiosResponse> => {
-  console.log({ headers: { authorization: token }, data })
   return api.post('/orders', data, { headers: { authorization: token } })
 }
 
