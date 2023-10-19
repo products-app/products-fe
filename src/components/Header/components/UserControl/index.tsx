@@ -12,15 +12,15 @@ import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
 import { Dropdown } from '@/components/Dropdown'
 import { UserActionContainer, BadgeContainer } from './styles'
-import useFromStore from "@/hooks/store"
+import useFromStore from '@/hooks/store'
 
 const UserControl = () => {
   const router = useRouter()
   const open = useSidebarStore((state) => state.open)
   const setOpen = useSidebarStore((state) => state.setOpen)
   const deleteToken = useUserStore((state) => state.deleteToken)
-  const cartItems = useFromStore(useCartStore, state => state.cartItems)
-  const userName = useFromStore(useUserStore, state => state.userName)
+  const cartItems = useFromStore(useCartStore, (state) => state.cartItems)
+  const userName = useFromStore(useUserStore, (state) => state.userName)
 
   const dropdownOptions: app.DropdownItem[] = [
     {
@@ -41,7 +41,7 @@ const UserControl = () => {
   }
 
   const handleAccount = () => {
-    router.push("/account")
+    router.push('/account')
   }
 
   return (

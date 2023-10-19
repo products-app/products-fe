@@ -40,6 +40,6 @@ export const BadgeContainer = styled('div', {
   p: {
     fontSize: '$xs',
     color: '$white',
-    fontWeight: '$bold'
-  }
+    fontWeight: '$bold',
+  },
 })

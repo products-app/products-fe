@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Sidebar from '../index'
 
 const content = <div>Test</div>
@@ -14,12 +14,12 @@ describe('Sidebar component', () => {
   })
 
   it('should contain text in sidebar content', () => {
-    const { getByText } = render(
+    render(
       <Sidebar {...props} isOpen={true}>
         {content}
       </Sidebar>,
     )
-    expect(getByText('Test')).toBeDefined()
-    expect(() => getByText('no exist')).toThrow()
+    expect(screen.getByText('Test')).toBeInTheDocument()
+    expect(() => screen.getByText('no exist')).toThrow()
   })
 })

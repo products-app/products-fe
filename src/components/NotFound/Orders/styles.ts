@@ -11,7 +11,7 @@ export const Container = styled('div', {
   svg: {
     fontSize: '8rem',
     lineHeight: '1',
-  }
+  },
 })
 
 export const HeadingContainer = styled(Heading, {

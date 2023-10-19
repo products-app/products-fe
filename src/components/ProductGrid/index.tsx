@@ -12,6 +12,7 @@ import {
   ProductName,
 } from './styles'
 import { useCartStore } from '@/store/cart'
+import Image from 'next/image'
 
 type ProductGridProps = {
   items: app.Product[]
@@ -28,7 +29,13 @@ const ProductGrid = ({ items }: ProductGridProps) => {
     <Grid id="product-grid">
       {items.map((product, i) => (
         <ProductItemContainer key={product?.id && product?.id + i}>
-          <img src={getProductImage(product.image)} />
+          <Image
+            src={getProductImage(product.image)}
+            alt={product.name}
+            width={0}
+            height={0}
+            sizes="100vw"
+          />
 
           <figcaption>
             <ProductName size="sm">{product.name}</ProductName>

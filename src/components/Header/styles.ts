@@ -17,7 +17,7 @@ export const HeaderContainer = styled('div', {
     alignItems: 'center',
     fontWeight: 'bold',
     color: '$white',
-    fontSize: '$lg'
+    fontSize: '$lg',
   },
 })
 

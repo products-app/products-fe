@@ -1,4 +1,4 @@
-import { styled, Button, Text, Card } from '@lebernardo/react'
+import { styled, Text } from '@lebernardo/react'
 
 export const ContainerImg = styled('div', {
   background: '$gray600',
@@ -57,7 +57,7 @@ export const ButtonQuantityMinus = styled('button', {
   svg: {
     color: '$white',
     fontSize: '$xs',
-  }
+  },
 })
 
 export const ButtonQuantityPlus = styled('button', {
@@ -71,7 +71,7 @@ export const ButtonQuantityPlus = styled('button', {
   svg: {
     color: '$white',
     fontSize: '$xs',
-  }
+  },
 })
 
 export const ButtonRemoveProduct = styled('button', {
@@ -88,6 +88,5 @@ export const ButtonRemoveProduct = styled('button', {
     '&:hover': {
       color: '$white',
     },
-  }
+  },
 })
-

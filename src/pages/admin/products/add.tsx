@@ -72,18 +72,12 @@ function AdminProductAdd() {
           <div className={styles.col2}>
             <div className={styles.inputWrapper}>
               <Text size="sm">Preço</Text>
-              <Input
-                type="number"
-                {...register('price')}
-              />
+              <Input type="number" {...register('price')} />
             </div>
 
             <div className={styles.inputWrapper}>
               <Text size="sm">Estoque</Text>
-              <Input
-                type="number"
-                {...register('stock')}
-              />
+              <Input type="number" {...register('stock')} />
             </div>
           </div>
 

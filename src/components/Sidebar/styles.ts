@@ -18,7 +18,8 @@ export const SidebarContainer = styled('section', {
   zIndex: 9000,
   paddingLeft: '3rem 2rem 0',
   display: 'block',
-  transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
+  transitionProperty:
+    'color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter',
   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDuration: '1000ms',
   maxHeight: '100%',
@@ -38,5 +39,5 @@ export const ButtonClose = styled('div', {
   svg: {
     color: '$white',
     fontSize: '$lg',
-  }
-});
+  },
+})

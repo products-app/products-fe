@@ -30,7 +30,7 @@ const Dropdown = ({ items }: DropdownProps) => {
       <div
         className={classNames(styles.list, {
           [styles.listDisplayNone]: !display,
-        })} 
+        })}
         suppressHydrationWarning
       >
         <LinksContainer>

@@ -1,9 +1,10 @@
 import { Text } from '@lebernardo/react'
 import List, { ListItem } from '@/components/List'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
-import { formatDecimalToReal } from '@/helpers/products'
+import { formatDecimalToReal, getProductImage } from '@/helpers/products'
 import { useCartStore } from '@/store/cart'
 import useFromStore from '@/hooks/store'
+import Image from 'next/image'
 import {
   ButtonQuantityPlus,
   ButtonQuantityMinus,
@@ -41,7 +42,13 @@ const ListCart = ({ items }: PageProps) => {
         Object.entries(items).map(([key, value], i) => (
           <ListItem key={i}>
             <ContainerImg>
-              <img src={value.image} alt={value.name} />
+              <Image
+                src={getProductImage(value.image)}
+                alt={value.name}
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
             </ContainerImg>
 
             <ContainerText>

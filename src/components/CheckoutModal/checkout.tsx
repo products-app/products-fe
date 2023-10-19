@@ -114,7 +114,7 @@ const CheckoutForm = () => {
 const stripePromise = loadStripe(confiPK)
 
 const Checkout = () => {
-  const cart = useFromStore(useCartStore, state => state)
+  const cart = useFromStore(useCartStore, (state) => state)
   const [totalCart, setTotalCart] = useState(200)
   useEffect(() => {
     if (cart?.cartItems) return

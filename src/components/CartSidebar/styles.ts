@@ -23,7 +23,7 @@ export const ItemsContainer = styled('div', {
   width: '100%',
   height: '90%',
   position: 'relative',
-  overflowY: 'scroll'
+  overflowY: 'scroll',
 })
 
 export const CartControl = styled(Card, {

@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import Modal from 'react-modal'
 import Checkout from './checkout'
 import { X as CloseIcon } from 'phosphor-react'

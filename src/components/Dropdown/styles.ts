@@ -1,3 +1,10 @@
+import { styled } from '@lebernardo/react'
+
+export const LinksContainer = styled('div', {
+  background: '$gray900',
+  borderRadius: '0.375rem',
+})
+
 export default {
   container: 'relative inline-block text-left',
   buttonOpen:
@@ -7,10 +14,3 @@ export default {
     'origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg hidden',
   link: 'block px-4 py-2 text-sm leading-5 text-gray200 hover:bg-gray600 hover:text-white focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex gap-2 items-center',
 }
-
-import { styled } from '@lebernardo/react'
-
-export const LinksContainer = styled('div', {
-  background: '$gray900',
-  borderRadius: '0.375rem',
-})

@@ -62,26 +62,17 @@ function UserRegister() {
             <form onSubmit={handleSubmit(handleRegister)}>
               <div className={styles.inputWrapper}>
                 <Text size="sm">E-mail</Text>
-                <Input
-                  type="text"
-                  {...register('email')}
-                />
+                <Input type="text" {...register('email')} />
               </div>
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Username</Text>
-                <Input
-                  type="text"
-                  {...register('username')}
-                />
+                <Input type="text" {...register('username')} />
               </div>
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Nome</Text>
-                <Input
-                  type="text"
-                  {...register('name')}
-                />
+                <Input type="text" {...register('name')} />
               </div>
 
               <div className={styles.inputWrapper}>
@@ -95,10 +86,7 @@ function UserRegister() {
 
               <div className={styles.inputWrapper}>
                 <Text size="sm">Senha</Text>
-                <Input
-                  type="password"
-                  {...register('password')}
-                />
+                <Input type="password" {...register('password')} />
               </div>
               <Button variant="outline">Cadastrar</Button>
             </form>

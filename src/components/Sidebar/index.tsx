@@ -8,11 +8,11 @@ type SidebarProps = {
 }
 
 const Sidebar = ({ isOpen, children, onClose }: SidebarProps) => {
-  let style;
+  let style
   if (isOpen) {
-    style = { 'transform': 'translateX(0px)' } 
+    style = { transform: 'translateX(0px)' }
   } else {
-    style = { 'transform': 'translateX(100%)' } 
+    style = { transform: 'translateX(100%)' }
   }
 
   return (

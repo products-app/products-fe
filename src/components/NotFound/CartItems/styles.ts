@@ -12,10 +12,9 @@ export const Container = styled('div', {
     width: '100%',
     paddingLeft: '2rem',
     paddingRight: '2rem',
-  }
+  },
 })
 
 export const TextContainer = styled(Text, {
   color: '$gray500',
 })
-

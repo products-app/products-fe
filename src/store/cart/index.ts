@@ -59,7 +59,9 @@ export const useCartStore = create(
           ...state.cartItems,
           [uuid]: {
             ...state.cartItems[uuid],
-            quantity: (state.cartItems[uuid]?.quantity ? (state.cartItems[uuid].quantity += 1): 0),
+            quantity: state.cartItems[uuid]?.quantity
+              ? (state.cartItems[uuid].quantity += 1)
+              : 0,
           },
         }))
       },

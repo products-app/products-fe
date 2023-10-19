@@ -5,4 +5,3 @@ export const HeaderSection = styled(Heading, {
   marginBottom: '1rem',
   fontFamily: '$heading',
 })
-
