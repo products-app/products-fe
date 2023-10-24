@@ -1,6 +1,6 @@
 import { styled } from '@lebernardo/react'
 
-export const UserActionContainer = styled('div', {
+export const HeaderControlContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '1rem',
@@ -32,14 +32,11 @@ export const BadgeContainer = styled('div', {
   top: 0,
   borderRadius: '9999px',
   width: '1rem',
-  display: 'flex',
+  display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   background: '$base700',
-
-  p: {
-    fontSize: '$xs',
-    color: '$white',
-    fontWeight: '$bold',
-  },
+  fontSize: '$xs',
+  color: '$white',
+  fontWeight: '$bold',
 })
