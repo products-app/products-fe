@@ -14,7 +14,7 @@ exports[`List and List Item components should render both components correctly 1
 <div>
   <ul>
     <li
-      class="flex gap-4 py-3 justify-between border-t-2 border-gray-700 border-solid"
+      class="c-kMCjoS"
     >
       <div>
         Test
