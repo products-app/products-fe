@@ -49,7 +49,7 @@ describe('access the main page', () => {
 
     cy.wait(1000)
     cy.get(
-      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increment-item]',
+      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increase-item]',
     ).click()
     cy.get('#cart-sidebar-items ul > :nth-child(1) [data-cy=item-quantity]')
       .invoke('text')
@@ -66,11 +66,11 @@ describe('access the main page', () => {
 
     cy.wait(1000)
     cy.get(
-      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increment-item]',
+      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increase-item]',
     ).click()
     cy.wait(1000)
     cy.get(
-      '#cart-sidebar-items ul > :nth-child(1) [data-cy=decrement-item]',
+      '#cart-sidebar-items ul > :nth-child(1) [data-cy=decrease-item]',
     ).click()
     cy.get('#cart-sidebar-items ul > :nth-child(1) [data-cy=item-quantity]')
       .invoke('text')
