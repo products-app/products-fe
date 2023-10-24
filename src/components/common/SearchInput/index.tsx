@@ -1,23 +1,50 @@
+// TO DO: search products in backend api
 import { TextInput } from '@lebernardo/react'
-import { useSearch } from './hooks'
 import { InputContainer } from './styles'
+import { useState } from 'react'
 
-const SearchInput = () => {
-  const { searchTerm, handleChange } = useSearch()
+type SearchInputProps = {
+  searchTerm: string
+  placeholder: string
+  handleChange: (val: string) => void
+}
+
+const SearchInput = ({
+  searchTerm,
+  handleChange,
+  placeholder,
+}: SearchInputProps) => {
+  const [searchValue, setSearchValue] = useState(searchTerm)
+
+  const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (
+      event.key === 'Enter' ||
+      (event.key === 'Backspace' && searchValue === '')
+    ) {
+      handleChange(searchValue)
+    }
+  }
 
   return (
     <InputContainer>
       <TextInput
         type="text"
         id="search"
-        placeholder="Pesquise por produtos"
-        value={searchTerm}
+        placeholder={placeholder}
+        value={searchValue}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          handleChange(e.target.value)
+          setSearchValue(e.target.value)
         }
+        onKeyUp={handleSearch}
       />
     </InputContainer>
   )
 }
 
+const defaultProps = {
+  searchTerm: '',
+  placeholder: 'Pesquise por produtos',
+}
+
+SearchInput.defaultProps = defaultProps
 export default SearchInput
