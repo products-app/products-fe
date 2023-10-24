@@ -3,7 +3,7 @@ import Page from '@/components/Page'
 import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { createUser } from '@/api/user'
-import { useUserStore } from '@/store/user'
+import { useStore } from '@/stores'
 import { toast } from 'react-toastify'
 import styles, { Input } from './styles'
 import { useEffect } from 'react'
@@ -18,8 +18,10 @@ type Inputs = {
 
 function UserRegister() {
   const router = useRouter()
-  const userToken = useUserStore((state) => state.userToken)
-  const setToken = useUserStore((state) => state.setToken)
+  const { userToken, setUser } = useStore((state) => ({
+    userToken: state.user?.token,
+    setUser: state.setUser,
+  }))
 
   useEffect(() => {
     if (userToken) {
@@ -27,16 +29,17 @@ function UserRegister() {
     }
   }, [])
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>()
+  const { register, handleSubmit } = useForm<Inputs>()
 
   const handleRegister: SubmitHandler<Inputs> = async (data) => {
     createUser(data)
       .then((res) => {
-        setToken(data.email, data.name, res.data.userID)
+        setUser({
+          email: data.email,
+          name: data.name,
+          id: res.data.userID,
+          token: res.data.token,
+        })
         toast('Você foi cadastrado, aguarde...')
         router.push('/account/register')
       })

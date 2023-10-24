@@ -13,10 +13,6 @@ declare module app {
     quantity: number
   }
 
-  export interface CartItems {
-    [uuid: string]: CartItem
-  }
-
   export interface DropdownItem {
     label: string
     link: string

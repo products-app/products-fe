@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { login } from '@/api/user'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
-import { useUserStore } from '@/store/user'
+import { useStore } from '@/stores'
 import styles, { Input } from './styles'
 import { useEffect } from 'react'
 
@@ -15,8 +15,10 @@ type Inputs = {
 
 function UserLogin() {
   const router = useRouter()
-  const userToken = useUserStore((state) => state.userToken)
-  const setToken = useUserStore((state) => state.setToken)
+  const { userToken, setUser } = useStore((state) => ({
+    userToken: state.user?.token,
+    setUser: state.setUser,
+  }))
 
   useEffect(() => {
     if (userToken) {
@@ -35,7 +37,7 @@ function UserLogin() {
           email: res.data.email,
           token: res.data.token,
         } as app.UserAuth
-        setToken(userAuth)
+        setUser(userAuth)
         toast('Você está logado, redirecionando...')
         router.push('/')
       })

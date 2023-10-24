@@ -2,8 +2,7 @@ import { Text } from '@lebernardo/react'
 import List, { ListItem } from '@/components/List'
 import { Minus, Plus, TrashSimple } from 'phosphor-react'
 import { formatDecimalToReal, getProductImage } from '@/helpers/products'
-import { useCartStore } from '@/store/cart'
-import useFromStore from '@/hooks/store'
+import { useStore } from '@/stores'
 import Image from 'next/image'
 import {
   ButtonQuantityPlus,
@@ -18,28 +17,32 @@ import {
 } from './styles'
 
 type PageProps = {
-  items?: app.CartItems
+  items?: app.CartItem[]
 }
 
 const ListCart = ({ items }: PageProps) => {
-  const cart = useFromStore(useCartStore, (state) => state)
+  const { decreaseItem, increaseItem, removeItem } = useStore((state) => ({
+    decreaseItem: state.decreaseItem,
+    increaseItem: state.increaseItem,
+    removeItem: state.removeItem,
+  }))
 
-  const handleDecrementItem = (uuid: string) => {
-    cart && cart?.decrementItem(uuid)
+  const handleDecrementItem = (item: app.CartItem) => {
+    decreaseItem(item)
   }
 
-  const handleIncrementItem = (uuid: string) => {
-    cart && cart?.incrementItem(uuid)
+  const handleIncrementItem = (item: app.CartItem) => {
+    increaseItem(item)
   }
 
-  const handleRemoveItem = (uuid: string) => {
-    cart && cart?.removeItem(uuid)
+  const handleRemoveItem = (item: app.CartItem) => {
+    removeItem(item)
   }
 
   return (
     <List>
       {items &&
-        Object.entries(items).map(([key, value], i) => (
+        items.map((value, i) => (
           <ListItem key={i}>
             <ContainerImg>
               <Image
@@ -66,14 +69,14 @@ const ListCart = ({ items }: PageProps) => {
                 <ButtonQuantityMinus
                   data-cy="decrement-item"
                   name="minus"
-                  onClick={() => handleDecrementItem(key)}
+                  onClick={() => handleDecrementItem(value)}
                   disabled={value.quantity === 1}
                 >
                   <Minus />
                 </ButtonQuantityMinus>
                 <ButtonQuantityPlus
                   data-cy="increment-item"
-                  onClick={() => handleIncrementItem(key)}
+                  onClick={() => handleIncrementItem(value)}
                   disabled={value.quantity === value.stock}
                 >
                   <Plus />
@@ -82,7 +85,7 @@ const ListCart = ({ items }: PageProps) => {
             </ContainerControls>
 
             <ContainerControls>
-              <ButtonRemoveProduct onClick={() => handleRemoveItem(key)}>
+              <ButtonRemoveProduct onClick={() => handleRemoveItem(value)}>
                 <TrashSimple />
               </ButtonRemoveProduct>
             </ContainerControls>

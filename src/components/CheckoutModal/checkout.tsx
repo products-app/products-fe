@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useCartStore } from '@/store/cart'
 import { loadStripe } from '@stripe/stripe-js'
 import {
   PaymentElement,
@@ -11,17 +10,20 @@ import { getTotal, cartToOrderItems } from '@/helpers/cart'
 import { formatDecimalToReal } from '@/helpers/products'
 import { toast } from 'react-toastify'
 import { postOrder } from '@/api/order'
-import { useUserStore } from '@/store/user'
+import { useStore } from '@/stores'
 import { HeadingContainer, OrderText, OrderButton } from './styles'
 import useFromStore from '@/hooks/store'
 
 const confiPK = process.env.NEXT_PUBLIC_STRIPE_SK || ''
 
 const CheckoutForm = () => {
-  const userID = useFromStore(useUserStore, (state) => state.userID)
-  const userToken = useFromStore(useUserStore, (state) => state.userToken)
-  const cartItems = useCartStore((state) => state.cartItems)
-  const truncateItems = useCartStore((state) => state.truncateItems)
+  const { userID, userToken, cartItems, resetCart } = useStore((state) => ({
+    userID: state.user?.id,
+    userToken: state.user?.token,
+    cartItems: state.items,
+    resetCart: state.resetCart,
+  }))
+
   const stripe = useStripe()
   const elements = useElements()
 
@@ -92,7 +94,7 @@ const CheckoutForm = () => {
       },
     })
 
-    truncateItems()
+    resetCart()
   }
 
   return (
@@ -113,11 +115,11 @@ const CheckoutForm = () => {
 const stripePromise = loadStripe(confiPK)
 
 const Checkout = () => {
-  const cart = useFromStore(useCartStore, (state) => state)
+  const cart = useFromStore(useStore, (state) => state)
   const [totalCart, setTotalCart] = useState(200)
   useEffect(() => {
-    if (cart?.cartItems) return
-    const [errMsg, totalCart] = getTotal(cart?.cartItems)
+    if (cart?.items) return
+    const [errMsg, totalCart] = getTotal(cart?.items)
 
     if (errMsg) {
       return

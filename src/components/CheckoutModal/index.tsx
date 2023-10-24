@@ -2,7 +2,7 @@
 import Modal from 'react-modal'
 import Checkout from './checkout'
 import { X as CloseIcon } from 'phosphor-react'
-import { useSidebarStore } from '@/store/sidebar'
+import { useStore } from '@/stores'
 
 const customStyles = {
   content: {
@@ -22,8 +22,10 @@ const customStyles = {
 Modal.setAppElement('body')
 
 const CheckoutModal = () => {
-  const openCheckout = useSidebarStore((state) => state.openCheckout)
-  const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
+  const { openCheckout, setOpenCheckout } = useStore((state) => ({
+    openCheckout: state.openCheckout,
+    setOpenCheckout: state.setOpenCheckout,
+  }))
 
   function closeModal() {
     setOpenCheckout(false)
@@ -32,7 +34,7 @@ const CheckoutModal = () => {
   return (
     <div>
       <Modal
-        isOpen={openCheckout}
+        isOpen={openCheckout || false}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Checkout"

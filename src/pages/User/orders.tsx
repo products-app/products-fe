@@ -4,7 +4,7 @@ import { getUserOrders } from '@/api/user'
 import Page from '@/components/Page'
 import styles from './styles'
 import { useQuery } from 'react-query'
-import { useUserStore } from '@/store/user'
+import { useStore } from '@/stores'
 import { useMemo } from 'react'
 import { formatDecimalToReal } from '@/helpers/products'
 import { getOrderStatus } from '@/helpers/order'
@@ -12,8 +12,10 @@ import NotFoundOrders from '@/components/NotFound/Orders'
 import Image from 'next/image'
 
 function UserOrders() {
-  const userID = useUserStore((state) => state.userID)
-  const userToken = useUserStore((state) => state.userToken)
+  const { userID, userToken } = useStore((state) => ({
+    userID: state.user?.id,
+    userToken: state.user?.token,
+  }))
 
   const { data } = useQuery(['orders'], () =>
     getUserOrders(userID || 0, userToken),
@@ -65,7 +67,7 @@ function UserOrders() {
                             height={0}
                             sizes="100vw"
                           />
-                          <Text size="lg">
+                          <div>
                             {orderItem?.product?.name}
                             <br />
                             <br />
@@ -76,7 +78,7 @@ function UserOrders() {
                             <Text size="sm">
                               Quantidade: {orderItem?.quantity}
                             </Text>
-                          </Text>
+                          </div>
                         </div>
                       ))}
                   </div>

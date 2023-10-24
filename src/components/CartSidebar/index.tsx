@@ -2,11 +2,8 @@ import { countCartItems } from '@/helpers/cart'
 import Sidebar from '@/components/Sidebar'
 import NotFoundCartItems from '@/components/NotFound/CartItems'
 import ListCart from './components/ListCart'
-import { useCartStore } from '@/store/cart'
-import { useSidebarStore } from '@/store/sidebar'
-import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
-import useFromStore from '@/hooks/store'
+import { useStore } from '@/stores'
 import {
   SidebarContainer,
   CartContainer,
@@ -18,15 +15,18 @@ import {
 
 const CartSidebar = () => {
   const router = useRouter()
-  const cartItems = useFromStore(useCartStore, (state) => state.cartItems)
-  const open = useSidebarStore((state) => state.open)
-  const setOpen = useSidebarStore((state) => state.setOpen)
-  const setOpenCheckout = useSidebarStore((state) => state.setOpenCheckout)
-  const totalCartItems = countCartItems(cartItems || {})
-  const userToken = useUserStore((state) => state.userToken)
+  const { cartItems, openSidebar, setOpenSidebar, setOpenCheckout, userToken } =
+    useStore((state) => ({
+      cartItems: state.items,
+      openSidebar: state.openSidebar,
+      setOpenSidebar: state.setOpenSidebar,
+      setOpenCheckout: state.setOpenCheckout,
+      userToken: state.user?.token,
+    }))
+  const totalCartItems = countCartItems(cartItems || [])
 
   const handleCloseSidebar = () => {
-    setOpen(false)
+    setOpenSidebar(false)
   }
 
   const handleOpenCheckout = () => {
@@ -38,7 +38,7 @@ const CartSidebar = () => {
   }
 
   return (
-    <Sidebar isOpen={open} onClose={handleCloseSidebar}>
+    <Sidebar isOpen={openSidebar} onClose={handleCloseSidebar}>
       <SidebarContainer>
         <CartContainer>
           <ItemsText size="lg">Carrinho de compras</ItemsText>

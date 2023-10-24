@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const countCartItems = (cartItems: app.CartItems): number => {
-  return Object.keys(cartItems).length
+const countCartItems = (cartItems: app.CartItem[]): number => {
+  return cartItems.length
 }
 
 const getTotal = (
-  items: app.CartItems,
+  items: app.CartItem[],
 ): [error: string | undefined, total: number] => {
   try {
     if (countCartItems(items) === 0) {
       throw new Error('the shopping cart is empty')
     }
 
-    const total = Object.values(items).reduce((total, item) => {
+    const total = items.reduce((total, item) => {
       if (isNaN(item?.price) || isNaN(item?.quantity)) {
         throw new Error(`the item ${item?.name || ''} is invalid`)
       }
@@ -27,14 +27,14 @@ const getTotal = (
 }
 
 const cartToOrderItems = (
-  items: app.CartItems,
+  items: app.CartItem[],
 ): app.OrderProduct[] | undefined => {
   try {
     if (countCartItems(items) === 0) {
       throw new Error('the shopping cart is empty')
     }
 
-    const orderProducts = Object.values(items).flatMap((item) => ({
+    const orderProducts = items.flatMap((item) => ({
       product_id: item?.id || 0,
       price: item?.price || 0,
       quantity: item?.quantity || 0,

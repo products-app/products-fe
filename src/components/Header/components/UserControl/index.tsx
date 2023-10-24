@@ -6,21 +6,23 @@ import {
   Package,
 } from 'phosphor-react'
 import { countCartItems } from '@/helpers/cart'
-import { useSidebarStore } from '@/store/sidebar'
-import { useCartStore } from '@/store/cart'
-import { useUserStore } from '@/store/user'
 import { useRouter } from 'next/navigation'
 import { Dropdown } from '@/components/Dropdown'
 import { UserActionContainer, BadgeContainer } from './styles'
-import useFromStore from '@/hooks/store'
+import { useStore } from '@/stores'
 
 const UserControl = () => {
   const router = useRouter()
-  const open = useSidebarStore((state) => state.open)
-  const setOpen = useSidebarStore((state) => state.setOpen)
-  const deleteToken = useUserStore((state) => state.deleteToken)
-  const cartItems = useFromStore(useCartStore, (state) => state.cartItems)
-  const userName = useFromStore(useUserStore, (state) => state.userName)
+
+  const { openSidebar, setOpenSidebar, resetUser, items, userName } = useStore(
+    (state) => ({
+      openSidebar: state.openSidebar,
+      setOpenSidebar: state.setOpenSidebar,
+      resetUser: state.resetUser,
+      items: state.items,
+      userName: state.user?.name,
+    }),
+  )
 
   const dropdownOptions: app.DropdownItem[] = [
     {
@@ -32,12 +34,12 @@ const UserControl = () => {
       label: 'Fazer logout',
       link: '#',
       icon: <SignOut className="text-gray200 text-lg" />,
-      onClick: deleteToken,
+      onClick: resetUser,
     },
   ]
 
   const handleOpen = () => {
-    setOpen(!open)
+    setOpenSidebar(!openSidebar)
   }
 
   const handleAccount = () => {
@@ -64,7 +66,7 @@ const UserControl = () => {
       <button id="button-cart" onClick={handleOpen}>
         <ShoppingCartSimple />
         <BadgeContainer>
-          <p>{cartItems ? countCartItems(cartItems) : '0'}</p>
+          <p>{items ? countCartItems(items) : '0'}</p>
         </BadgeContainer>
       </button>
     </UserActionContainer>

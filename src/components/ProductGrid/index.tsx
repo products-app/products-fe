@@ -11,7 +11,7 @@ import {
   ButtonAddToCart,
   ProductName,
 } from './styles'
-import { useCartStore } from '@/store/cart'
+import { useStore } from '@/stores'
 import Image from 'next/image'
 
 type ProductGridProps = {
@@ -19,7 +19,7 @@ type ProductGridProps = {
 }
 
 const ProductGrid = ({ items }: ProductGridProps) => {
-  const addItem = useCartStore((state) => state.addItem)
+  const addItem = useStore((state) => state.addItem)
 
   const handleAddToCart = (product: app.Product) => {
     addItem(product)
