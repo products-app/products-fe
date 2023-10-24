@@ -3,16 +3,11 @@
 exports[`Loading component should render correctly 1`] = `
 <div>
   <div
-    class="c-jjpTuW"
+    class="c-jjpTuW c-jjpTuW-ijdaZMY-css"
   >
     <div
       class="c-hIpGLj"
     />
-    <p
-      class="c-dgMvMW c-igsGei c-dgMvMW-eQRsLC-size-lg"
-    >
-      Carregando, aguarde...
-    </p>
   </div>
 </div>
 `;

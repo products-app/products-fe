@@ -1,20 +1,23 @@
+import { css } from '@lebernardo/react'
 import { LoadingContainer, LoadingIcon, TextContainer } from './styles'
 
 type LoadingProps = {
   message?: string
+  css?: typeof css
 }
 
-const Loading = ({ message }: LoadingProps) => {
+const Loading = ({ message, css }: LoadingProps) => {
   return (
-    <LoadingContainer>
+    <LoadingContainer css={{ css }}>
       <LoadingIcon />
-      <TextContainer size="lg">{message}</TextContainer>
+      {message && <TextContainer size="lg">{message}</TextContainer>}
     </LoadingContainer>
   )
 }
 
 const defaultProps = {
-  message: 'Carregando, aguarde...',
+  message: undefined,
+  css: '',
 }
 
 Loading.defaultProps = defaultProps
