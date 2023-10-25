@@ -1,6 +1,6 @@
 import { Text } from '@lebernardo/react'
 import { ShoppingCartSimple, UserCircle } from 'phosphor-react'
-import { Dropdown } from '@/components/common/Dropdown'
+import Dropdown from '@/components/common/Dropdown'
 import { useHeader } from '../hooks'
 import { HeaderControlContainer, BadgeContainer } from './styles'
 import { userMenuOptions } from './utils'

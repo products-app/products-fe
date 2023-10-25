@@ -109,18 +109,64 @@ exports[`Header Control component should render correctly when user is logged 1`
       </span>
     </p>
     <div
-      class="relative inline-block text-left"
+      class="c-lXviy"
     >
-      <div>
-        <span
-          class="rounded-md shadow-sm"
+      <button
+        class="c-khCkZv"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 256 256"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <button
-            class="inline-flex justify-center w-full rounded-full border-none hover:bg-gray800 px-3 py-3 text-lg leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray600 active:text-white transition ease-in-out duration-150"
-            type="button"
+          <rect
+            fill="none"
+            height="256"
+            width="256"
+          />
+          <circle
+            cx="128"
+            cy="128"
+            fill="none"
+            r="96"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          />
+          <circle
+            cx="128"
+            cy="120"
+            fill="none"
+            r="40"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          />
+          <path
+            d="M63.8,199.4a72,72,0,0,1,128.4,0"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          />
+        </svg>
+      </button>
+      <div
+        class="c-fwKBLg"
+      >
+        <div
+          class="c-biAswx"
+        >
+          <a
+            href="/user/orders"
           >
             <svg
-              class="text-white text-lg"
+              class="text-gray200 text-lg"
               fill="currentColor"
               height="1em"
               viewBox="0 0 256 256"
@@ -132,28 +178,82 @@ exports[`Header Control component should render correctly when user is logged 1`
                 height="256"
                 width="256"
               />
-              <circle
-                cx="128"
-                cy="128"
+              <path
+                d="M224,177.3V78.7a8.1,8.1,0,0,0-4.1-7l-88-49.5a7.8,7.8,0,0,0-7.8,0l-88,49.5a8.1,8.1,0,0,0-4.1,7v98.6a8.1,8.1,0,0,0,4.1,7l88,49.5a7.8,7.8,0,0,0,7.8,0l88-49.5A8.1,8.1,0,0,0,224,177.3Z"
                 fill="none"
-                r="96"
                 stroke="currentColor"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="16"
               />
-              <circle
-                cx="128"
-                cy="120"
+              <polyline
                 fill="none"
-                r="40"
+                points="177 152.5 177 100.5 80 47"
                 stroke="currentColor"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="16"
+              />
+              <polyline
+                fill="none"
+                points="222.9 74.6 128.9 128 33.1 74.6"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="128.9"
+                x2="128"
+                y1="128"
+                y2="234.8"
+              />
+            </svg>
+             
+            Meus pedidos
+          </a>
+          <a
+            href="/users/logout"
+          >
+            <svg
+              class="text-gray200 text-lg"
+              fill="currentColor"
+              height="1em"
+              viewBox="0 0 256 256"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="none"
+                height="256"
+                width="256"
+              />
+              <polyline
+                fill="none"
+                points="174 86 216 128 174 170"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              />
+              <line
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+                x1="104"
+                x2="216"
+                y1="128"
+                y2="128"
               />
               <path
-                d="M63.8,199.4a72,72,0,0,1,128.4,0"
+                d="M104,216H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h56"
                 fill="none"
                 stroke="currentColor"
                 stroke-linecap="round"
@@ -161,123 +261,9 @@ exports[`Header Control component should render correctly when user is logged 1`
                 stroke-width="16"
               />
             </svg>
-          </button>
-        </span>
-      </div>
-      <div
-        class="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg hidden"
-      >
-        <div
-          class="c-iHLjrm"
-        >
-          <div
-            class="py-1"
-          >
-            <a
-              class="block px-4 py-2 text-sm leading-5 text-gray200 hover:bg-gray600 hover:text-white focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex gap-2 items-center"
-              href="/user/orders"
-            >
-              <svg
-                class="text-gray200 text-lg"
-                fill="currentColor"
-                height="1em"
-                viewBox="0 0 256 256"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  fill="none"
-                  height="256"
-                  width="256"
-                />
-                <path
-                  d="M224,177.3V78.7a8.1,8.1,0,0,0-4.1-7l-88-49.5a7.8,7.8,0,0,0-7.8,0l-88,49.5a8.1,8.1,0,0,0-4.1,7v98.6a8.1,8.1,0,0,0,4.1,7l88,49.5a7.8,7.8,0,0,0,7.8,0l88-49.5A8.1,8.1,0,0,0,224,177.3Z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  fill="none"
-                  points="177 152.5 177 100.5 80 47"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <polyline
-                  fill="none"
-                  points="222.9 74.6 128.9 128 33.1 74.6"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                  x1="128.9"
-                  x2="128"
-                  y1="128"
-                  y2="234.8"
-                />
-              </svg>
-               
-              Meus pedidos
-            </a>
-            <a
-              class="block px-4 py-2 text-sm leading-5 text-gray200 hover:bg-gray600 hover:text-white focus:outline-none focus:bg-gray-100 focus:text-gray-900 flex gap-2 items-center"
-              href="/users/logout"
-            >
-              <svg
-                class="text-gray200 text-lg"
-                fill="currentColor"
-                height="1em"
-                viewBox="0 0 256 256"
-                width="1em"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  fill="none"
-                  height="256"
-                  width="256"
-                />
-                <polyline
-                  fill="none"
-                  points="174 86 216 128 174 170"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-                <line
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                  x1="104"
-                  x2="216"
-                  y1="128"
-                  y2="128"
-                />
-                <path
-                  d="M104,216H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8h56"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="16"
-                />
-              </svg>
-               
-              Fazer logout
-            </a>
-          </div>
+             
+            Fazer logout
+          </a>
         </div>
       </div>
     </div>
