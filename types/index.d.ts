@@ -72,4 +72,10 @@ declare module app {
     setUser: (loggedUser: app.UserAuth) => void
     resetUser: () => void
   }
+
+  export interface CartSidebarActions {
+    removeItem: (item: app.CartItem) => void
+    increaseItem: (item: app.CartItem) => void
+    decreaseItem: (item: app.CartItem) => void
+  }
 }

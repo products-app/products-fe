@@ -40,7 +40,7 @@
   ],
   "exclude": [
     "node_modules",
-    "src/tests",
+    "tests",
     "dist",
     "coverage",
     "cypress",

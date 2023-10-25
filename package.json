@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "lint": "next lint",
     "lint:fix": "eslint src/**/* --ext .js,.ts,.tsx --fix",
-    "test": "jest -u --verbose --coverage",
+    "test": "jest -u",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
