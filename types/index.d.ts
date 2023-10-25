@@ -78,4 +78,14 @@ declare module app {
     increaseItem: (item: app.CartItem) => void
     decreaseItem: (item: app.CartItem) => void
   }
+
+  export interface ICreateOrderResponse extends Order {
+    client_secret: string
+  }
+
+  export interface ICheckoutForm {
+    user: app.UserAuth | undefined
+    cartItems: app.CartItem[] | undefined
+    totalCart: number
+  }
 }
