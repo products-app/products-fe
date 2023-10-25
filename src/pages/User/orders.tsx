@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-key */
 import { Heading, Text, Card } from '@lebernardo/react'
 import { getUserOrders } from '@/api/user'
-import Page from '@/components/Page'
+import Page from '@/components/common/Page'
 import styles from './styles'
 import { useQuery } from 'react-query'
 import { useStore } from '@/stores'
 import { useMemo } from 'react'
 import { formatDecimalToReal } from '@/helpers/products'
 import { getOrderStatus } from '@/helpers/order'
-import NotFoundOrders from '@/components/NotFound/Orders'
+import NotFoundOrders from '@/components/notFound/Orders'
 import Image from 'next/image'
 
 function UserOrders() {

@@ -1,5 +1,5 @@
 import { Heading, Text, Card, Button } from '@lebernardo/react'
-import Page from '@/components/Page'
+import Page from '@/components/common/Page'
 import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { createUser } from '@/api/user'
