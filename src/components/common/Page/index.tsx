@@ -1,6 +1,6 @@
-import Header from '@/components/Header'
-import CartSidebar from '@/components/CartSidebar'
-import CheckoutModal from '@/components/CheckoutModal'
+import Header from '@/components/common/Header'
+import { CartSidebar } from '@/components/Cart'
+import CheckoutModal from '@/components/Checkout/CheckoutModal'
 import { ToastContainer } from 'react-toastify'
 import { Container } from './styles'
 
