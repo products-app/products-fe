@@ -9,7 +9,7 @@ export const userMenuOptions: app.DropdownItem[] = [
   },
   {
     label: 'Fazer logout',
-    link: '/users/logout',
+    link: '/account/logout',
     icon: <SignOut className="text-gray200 text-lg" />,
   },
 ]
