@@ -7,8 +7,9 @@ exports[`Sidebar component should render correctly 1`] = `
     id="sidebar"
     style="transform: translateX(100%);"
   >
-    <div
-      class="c-kqZPLN"
+    <button
+      aria-label="button-close-sidebar"
+      class="c-eOLtzh"
     >
       <svg
         fill="currentColor"
@@ -43,7 +44,7 @@ exports[`Sidebar component should render correctly 1`] = `
           y2="56"
         />
       </svg>
-    </div>
+    </button>
   </section>
 </div>
 `;

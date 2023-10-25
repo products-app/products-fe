@@ -17,7 +17,7 @@ const Sidebar = ({ isOpen, children, onClose }: SidebarProps) => {
 
   return (
     <SidebarContainer id="sidebar" style={style}>
-      <ButtonClose onClick={onClose}>
+      <ButtonClose aria-label="button-close-sidebar" onClick={onClose}>
         <CloseIcon />
       </ButtonClose>
       {children}

@@ -1,12 +1,5 @@
 import { styled } from '@lebernardo/react'
 
-export default {
-  sidebar:
-    'fixed top-0 right-0 h-screen w-96 overflow-y-auto z-[9000] px-8 pt-12 bg-gray900 block transition ease-in-out duration-[1000ms] h-full max-h-full overflow-hidden box-border',
-  sidebarOpen: 'translate-x-0',
-  sidebarClose: 'translate-x-full',
-}
-
 export const SidebarContainer = styled('section', {
   background: '$gray900',
   position: 'fixed',
@@ -27,7 +20,7 @@ export const SidebarContainer = styled('section', {
   boxSizing: 'border-box',
 })
 
-export const ButtonClose = styled('div', {
+export const ButtonClose = styled('button', {
   position: 'absolute',
   top: 0,
   right: 0,
@@ -35,6 +28,7 @@ export const ButtonClose = styled('div', {
   paddingRight: '2.5rem',
   zIndex: 9999,
   cursor: 'pointer',
+  border: 'none',
 
   svg: {
     color: '$white',
