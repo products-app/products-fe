@@ -1,10 +1,10 @@
 import { useStore } from '@/stores'
 import { useGetProduct } from '@/hooks/products'
 import { filterProductsBySearchTerm } from '@/helpers/products'
-import Loading from '@/components/Loading'
-import NotFoundProducts from '@/components/NotFound/ListProducts'
-import Page from '@/components/Page'
-import ProductGrid from '@/components/ProductGrid'
+import Loading from '@/components/common/Loading'
+import NotFoundProducts from '@/components/notFound/ListProducts'
+import Page from '@/components/common/Page'
+import { ProductGrid } from '@/components/Product'
 import { HeaderSection } from './styles'
 
 function List() {
@@ -23,7 +23,7 @@ function List() {
   if (isLoading) {
     return (
       <Page>
-        <Loading />
+        <Loading message="Carregando, aguarde..." />
       </Page>
     )
   }

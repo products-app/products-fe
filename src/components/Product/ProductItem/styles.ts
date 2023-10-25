@@ -15,13 +15,6 @@ export const ProductItemContainer = styled('div', {
   },
 })
 
-export const Grid = styled('div', {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-  gridAutoFlow: 'row',
-  gap: '1rem',
-})
-
 export const ButtonContainer = styled('div', {
   display: 'flex',
   alignItems: 'center',
