@@ -1,18 +1,21 @@
 /* eslint-disable react/jsx-key */
 import { Heading, Text, Card } from '@lebernardo/react'
 import { getUserOrders } from '@/api/user'
-import Page from '@/components/Page'
+import Page from '@/components/common/Page'
 import styles from './styles'
 import { useQuery } from 'react-query'
-import { useUserStore } from '@/store/user'
+import { useStore } from '@/stores'
 import { useMemo } from 'react'
 import { formatDecimalToReal } from '@/helpers/products'
 import { getOrderStatus } from '@/helpers/order'
-import NotFoundOrders from '@/components/NotFound/Orders'
+import NotFoundOrders from '@/components/notFound/Orders'
+import Image from 'next/image'
 
 function UserOrders() {
-  const userID = useUserStore((state) => state.userID)
-  const userToken = useUserStore((state) => state.userToken)
+  const { userID, userToken } = useStore((state) => ({
+    userID: state.user?.id,
+    userToken: state.user?.token,
+  }))
 
   const { data } = useQuery(['orders'], () =>
     getUserOrders(userID || 0, userToken),
@@ -54,24 +57,28 @@ function UserOrders() {
 
                   <div className="mt-4">
                     {userOrder.order_products &&
-                      userOrder.order_products.map((order_item) => (
+                      userOrder.order_products.map((orderItem) => (
                         <div className="flex gap-8 border-t-2 border-solid border-gray600 pt-4">
-                          <img
-                            src={order_item?.product?.image}
+                          <Image
+                            src={orderItem?.product?.image}
+                            alt={orderItem?.product?.name}
                             className="w-28 aspect-square object-cover"
+                            width={0}
+                            height={0}
+                            sizes="100vw"
                           />
-                          <Text size="lg">
-                            {order_item?.product?.name}
+                          <div>
+                            {orderItem?.product?.name}
                             <br />
                             <br />
                             <Text size="sm">
                               Valor Pago:{' '}
-                              {formatDecimalToReal(order_item?.price)}
+                              {formatDecimalToReal(orderItem?.price)}
                             </Text>
                             <Text size="sm">
-                              Quantidade: {order_item?.quantity}
+                              Quantidade: {orderItem?.quantity}
                             </Text>
-                          </Text>
+                          </div>
                         </div>
                       ))}
                   </div>

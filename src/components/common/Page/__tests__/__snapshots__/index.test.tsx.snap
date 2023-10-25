@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component should render correctly 1`] = `
+<div>
+  <header
+    class="c-clOfPL"
+  >
+    <div
+      class="c-iwTvpr"
+    >
+      <a
+        href="/"
+      >
+        Prompt
+      </a>
+      <div
+        class="c-eGMMdN"
+      >
+        <div
+          class="c-bKZIAC"
+        >
+          <input
+            class="c-bgjSgL"
+            id="search"
+            placeholder="Pesquise por produtos"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div
+      class="c-cyakpB"
+    >
+      Test
+    </div>
+  </main>
+  <div
+    class="Toastify"
+  />
+  <div />
+</div>
+`;

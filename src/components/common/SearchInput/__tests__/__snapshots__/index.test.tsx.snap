@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component should render correctly 1`] = `
+<div>
+  <div
+    class="c-eGMMdN"
+  >
+    <div
+      class="c-bKZIAC"
+    >
+      <input
+        class="c-bgjSgL"
+        id="search"
+        placeholder="test placeholder"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</div>
+`;

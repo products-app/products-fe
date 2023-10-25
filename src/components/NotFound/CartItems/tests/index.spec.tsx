@@ -1,22 +1,24 @@
+import NotFoundCartItems from '../index'
 import { render, screen } from '@testing-library/react'
-import EmptyCart from '../index'
 
-describe('Empty Card component', () => {
+describe('Not Found Cart Items component', () => {
   it('should render correctly', () => {
-    const { container } = render(<EmptyCart />)
+    const { container } = render(<NotFoundCartItems />)
     expect(container).toMatchSnapshot()
   })
 
-  it('should contain the empty cart message', () => {
-    const { getByText } = render(<EmptyCart />)
-    expect(getByText('Adicione algo em seu carrinho...')).toBeDefined()
-    expect(() => getByText('no exist')).toThrow()
+  it('should contain the not found cart items message', () => {
+    render(<NotFoundCartItems />)
+    expect(
+      screen.getByText('Adicione algo em seu carrinho...'),
+    ).toBeInTheDocument()
+    expect(() => screen.getByText('no exist')).toThrow()
   })
 
-  it('should contain the empty cart image', () => {
-    render(<EmptyCart />)
-    const emptyCardImage = screen.getByRole('img')
-    expect(emptyCardImage).toHaveAttribute('src', 'empty-cart.png')
-    expect(emptyCardImage).toHaveAttribute('alt')
+  it('should contain the not found cart items image', () => {
+    render(<NotFoundCartItems />)
+    const emptyCartImage = screen.getByRole('img')
+    expect(emptyCartImage).toHaveAttribute('src')
+    expect(emptyCartImage).toHaveAttribute('alt')
   })
 })

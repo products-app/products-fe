@@ -1,3 +1,5 @@
+import { styled } from '@lebernardo/react'
+
 export default {
   container: 'max-w-5xl m-auto py-8',
   containerRegister: 'max-w-3xl m-auto py-8',
@@ -7,8 +9,6 @@ export default {
   checkboxWrapper: 'flex flex-row gap-2 items-center',
   actionsWrapper: 'flex items-center gap-4 justify-end',
 }
-
-import { styled } from '@lebernardo/react'
 
 export const Input = styled('input', {
   background: '$gray900',

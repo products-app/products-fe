@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Item component should render correctly 1`] = `
+<div>
+  <div
+    class="c-jYQuMM c-jYQuMM-ijdaZMY-css"
+  >
+    <img
+      alt="Product Test"
+      data-nimg="1"
+      decoding="async"
+      height="0"
+      loading="lazy"
+      sizes="100vw"
+      src="/_next/image?url=%2Fproduct-not-found.jpg&w=3840&q=75"
+      srcset="/_next/image?url=%2Fproduct-not-found.jpg&w=640&q=75 640w, /_next/image?url=%2Fproduct-not-found.jpg&w=750&q=75 750w, /_next/image?url=%2Fproduct-not-found.jpg&w=828&q=75 828w, /_next/image?url=%2Fproduct-not-found.jpg&w=1080&q=75 1080w, /_next/image?url=%2Fproduct-not-found.jpg&w=1200&q=75 1200w, /_next/image?url=%2Fproduct-not-found.jpg&w=1920&q=75 1920w, /_next/image?url=%2Fproduct-not-found.jpg&w=2048&q=75 2048w, /_next/image?url=%2Fproduct-not-found.jpg&w=3840&q=75 3840w"
+      style="color: transparent;"
+      width="0"
+    />
+    <figcaption>
+      <h2
+        class="c-dgMvMW c-hZwmvA c-dgMvMW-iPGoSV-size-sm"
+      >
+        Product Test
+      </h2>
+      <p
+        class="c-dgMvMW c-dgMvMW-kWyXas-size-md"
+      >
+        R$ 29,90
+      </p>
+      <div
+        class="c-eOfRZm"
+      >
+        <button
+          class="c-gJqLDS c-hihFAR c-gJqLDS-esnCTh-variant-outline c-gJqLDS-bIqJQp-size-medium"
+        >
+          Adicionar ao carrinho
+        </button>
+      </div>
+    </figcaption>
+  </div>
+</div>
+`;

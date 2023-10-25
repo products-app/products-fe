@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("react-toastify/dist/ReactToastify.css");
 
 * {
   background: var(--base300);
@@ -13,4 +14,8 @@
 
 body {
   background: #202024;
+}
+
+.show {
+  visibility: visible !important;
 }

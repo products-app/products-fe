@@ -9,8 +9,7 @@ const NotFoundSearch = ({ searchTerm }: SearchProps) => (
   <Container>
     <SmileyXEyes />
     <HeadingContainer size="lg">
-      Nenhum resultado para:{' '}
-      <span>{searchTerm}</span>
+      Nenhum resultado para: <span>{searchTerm}</span>
     </HeadingContainer>
     <TextContainer size="lg">
       Tente verificar a ortografia ou usar termos mais genéricos

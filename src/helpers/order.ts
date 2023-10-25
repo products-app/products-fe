@@ -4,7 +4,7 @@ const getOrderStatus = (status: string) => {
   if (status in orderStatus) {
     return orderStatus[status]
   } else {
-    return orderStatus['canceled']
+    return orderStatus.canceled
   }
 }
 

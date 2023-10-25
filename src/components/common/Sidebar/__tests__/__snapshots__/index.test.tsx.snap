@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar component should render correctly 1`] = `
+<div>
+  <section
+    class="c-hEQxdV"
+    id="sidebar"
+    style="transform: translateX(100%);"
+  >
+    <button
+      aria-label="button-close-sidebar"
+      class="c-eOLtzh"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 256 256"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <line
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+          x1="200"
+          x2="56"
+          y1="56"
+          y2="200"
+        />
+        <line
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+          x1="200"
+          x2="56"
+          y1="200"
+          y2="56"
+        />
+      </svg>
+    </button>
+  </section>
+</div>
+`;

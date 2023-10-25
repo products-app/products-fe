@@ -11,7 +11,7 @@ export const Container = styled('div', {
   svg: {
     fontSize: '8rem',
     lineHeight: '1',
-  }
+  },
 })
 
 export const HeadingContainer = styled(Heading, {
@@ -19,10 +19,9 @@ export const HeadingContainer = styled(Heading, {
 
   span: {
     color: '$base300',
-  }
+  },
 })
 
 export const TextContainer = styled(Text, {
   color: '$gray500',
 })
-

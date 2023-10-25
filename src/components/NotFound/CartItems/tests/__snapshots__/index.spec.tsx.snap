@@ -1,13 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Empty Card component should render correctly 1`] = `
+exports[`Not Found Cart Items component should render correctly 1`] = `
 <div>
   <div
     class="c-dzUtkR"
   >
     <img
       alt="Imagem de carrinho vazio"
-      src="empty-cart.png"
+      data-nimg="1"
+      decoding="async"
+      height="0"
+      loading="lazy"
+      sizes="100vw"
+      src="/_next/image?url=%2Fempty-cart.png&w=3840&q=75"
+      srcset="/_next/image?url=%2Fempty-cart.png&w=640&q=75 640w, /_next/image?url=%2Fempty-cart.png&w=750&q=75 750w, /_next/image?url=%2Fempty-cart.png&w=828&q=75 828w, /_next/image?url=%2Fempty-cart.png&w=1080&q=75 1080w, /_next/image?url=%2Fempty-cart.png&w=1200&q=75 1200w, /_next/image?url=%2Fempty-cart.png&w=1920&q=75 1920w, /_next/image?url=%2Fempty-cart.png&w=2048&q=75 2048w, /_next/image?url=%2Fempty-cart.png&w=3840&q=75 3840w"
+      style="color: transparent;"
+      width="0"
     />
     <p
       class="c-dgMvMW c-igsGei c-dgMvMW-kWyXas-size-md"

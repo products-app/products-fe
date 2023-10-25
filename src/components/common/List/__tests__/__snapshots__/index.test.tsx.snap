@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Item component should render correctly 1`] = `
+<div>
+  <ul>
+    <div>
+      Test
+    </div>
+  </ul>
+</div>
+`;
+
+exports[`List and List Item components should render both components correctly 1`] = `
+<div>
+  <ul>
+    <li
+      class="c-kMCjoS"
+    >
+      <div>
+        Test
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List component should render correctly 1`] = `
+<div>
+  <ul>
+    <div>
+      Test
+    </div>
+  </ul>
+</div>
+`;

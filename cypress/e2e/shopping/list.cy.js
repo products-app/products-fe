@@ -27,7 +27,7 @@ describe('access the main page', () => {
   it('should click and open cart sidebar', () => {
     cy.wait('@get')
 
-    cy.get('header #header-user-actions #button-cart').click()
+    cy.get('header [data-cy=button-cart]').click()
 
     cy.wait(1000)
     cy.get('#sidebar').then(($sidebar) => {
@@ -45,11 +45,11 @@ describe('access the main page', () => {
     cy.get('#product-grid > :nth-child(1) button').click()
     cy.get('#product-grid > :nth-child(2) button').click()
 
-    cy.get('header #header-user-actions #button-cart').click()
+    cy.get('header [data-cy=button-cart]').click()
 
     cy.wait(1000)
     cy.get(
-      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increment-item]',
+      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increase-item]',
     ).click()
     cy.get('#cart-sidebar-items ul > :nth-child(1) [data-cy=item-quantity]')
       .invoke('text')
@@ -62,15 +62,15 @@ describe('access the main page', () => {
     cy.get('#product-grid > :nth-child(1) button').click()
     cy.get('#product-grid > :nth-child(2) button').click()
 
-    cy.get('header #header-user-actions #button-cart').click()
+    cy.get('header [data-cy=button-cart]').click()
 
     cy.wait(1000)
     cy.get(
-      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increment-item]',
+      '#cart-sidebar-items ul > :nth-child(1) [data-cy=increase-item]',
     ).click()
     cy.wait(1000)
     cy.get(
-      '#cart-sidebar-items ul > :nth-child(1) [data-cy=decrement-item]',
+      '#cart-sidebar-items ul > :nth-child(1) [data-cy=decrease-item]',
     ).click()
     cy.get('#cart-sidebar-items ul > :nth-child(1) [data-cy=item-quantity]')
       .invoke('text')
@@ -80,7 +80,7 @@ describe('access the main page', () => {
   it('should click the user button and redirect to login page', () => {
     cy.wait('@get')
 
-    cy.get('header #header-user-actions > button:nth-child(1)').click()
+    cy.get('[aria-label="button-redirect-login"]').click()
 
     cy.wait(1000)
     cy.url().should('eq', [constants.baseURL, constants.loginPage].join('/'))

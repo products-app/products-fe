@@ -6,10 +6,11 @@ const formatDecimalToReal = (value: number | undefined): string => {
 }
 
 const filterProductsBySearchTerm = (
-  products: app.Product[],
-  searchTerm: string,
-): app.Product[] => {
-  if (searchTerm === '') return products
+  products: app.Product[] | undefined,
+  searchTerm: string | undefined,
+): app.Product[] | undefined => {
+  if (!products) return
+  if (!searchTerm || searchTerm === '') return products
 
   return products.filter(
     (product) =>

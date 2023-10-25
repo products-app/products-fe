@@ -1,7 +1,8 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
-import { useUserStore } from '@/store/user'
+import { useStore } from '@/stores'
+
 import { postProducts } from '@/api/products'
 import { Heading, Text, Card, Button } from '@lebernardo/react'
 import { Input } from './styles'
@@ -25,8 +26,8 @@ type Inputs = {
 }
 
 function AdminProductAdd() {
-  const userToken = useUserStore((state) => state.userToken)
   const router = useRouter()
+  const userToken = useStore((state) => state.user?.token)
   const { register, handleSubmit } = useForm<Inputs>()
 
   const handleCreate: SubmitHandler<Inputs> = async (data) => {
@@ -72,18 +73,12 @@ function AdminProductAdd() {
           <div className={styles.col2}>
             <div className={styles.inputWrapper}>
               <Text size="sm">Preço</Text>
-              <Input
-                type="number"
-                {...register('price')}
-              />
+              <Input type="number" {...register('price')} />
             </div>
 
             <div className={styles.inputWrapper}>
               <Text size="sm">Estoque</Text>
-              <Input
-                type="number"
-                {...register('stock')}
-              />
+              <Input type="number" {...register('stock')} />
             </div>
           </div>
 

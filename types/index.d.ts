@@ -13,10 +13,6 @@ declare module app {
     quantity: number
   }
 
-  export interface CartItems {
-    [uuid: string]: CartItem
-  }
-
   export interface DropdownItem {
     label: string
     link: string
@@ -40,6 +36,56 @@ declare module app {
     id: number
     token: string
     name: string
-    email: string
+    email?: string
+  }
+
+  export interface AppState {
+    searchTerm?: string
+    openSidebar?: boolean
+    openCheckout?: boolean
+  }
+
+  export interface IAppControl extends AppState {
+    setSearch: (searchTerm: string) => void
+    setOpenSidebar: (open: boolean) => void
+    setOpenCheckout: (open: boolean) => void
+    resetApp: () => void
+  }
+
+  export interface CartState {
+    items?: app.CartItem[]
+  }
+
+  export interface ICart extends CartState {
+    addItem: (item: app.Product) => void
+    removeItem: (item: app.CartItem) => void
+    increaseItem: (item: app.CartItem) => void
+    decreaseItem: (item: app.CartItem) => void
+    resetCart: () => void
+  }
+
+  export interface UserState {
+    user?: app.UserAuth
+  }
+
+  export interface IUser extends UserState {
+    setUser: (loggedUser: app.UserAuth) => void
+    resetUser: () => void
+  }
+
+  export interface CartSidebarActions {
+    removeItem: (item: app.CartItem) => void
+    increaseItem: (item: app.CartItem) => void
+    decreaseItem: (item: app.CartItem) => void
+  }
+
+  export interface ICreateOrderResponse extends Order {
+    client_secret: string
+  }
+
+  export interface ICheckoutForm {
+    user: app.UserAuth | undefined
+    cartItems: app.CartItem[] | undefined
+    totalCart: number
   }
 }
