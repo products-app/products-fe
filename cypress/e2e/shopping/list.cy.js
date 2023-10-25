@@ -27,7 +27,7 @@ describe('access the main page', () => {
   it('should click and open cart sidebar', () => {
     cy.wait('@get')
 
-    cy.get('header #header-user-actions #button-cart').click()
+    cy.get('header [data-cy=button-cart]').click()
 
     cy.wait(1000)
     cy.get('#sidebar').then(($sidebar) => {
@@ -45,7 +45,7 @@ describe('access the main page', () => {
     cy.get('#product-grid > :nth-child(1) button').click()
     cy.get('#product-grid > :nth-child(2) button').click()
 
-    cy.get('header #header-user-actions #button-cart').click()
+    cy.get('header [data-cy=button-cart]').click()
 
     cy.wait(1000)
     cy.get(
@@ -62,7 +62,7 @@ describe('access the main page', () => {
     cy.get('#product-grid > :nth-child(1) button').click()
     cy.get('#product-grid > :nth-child(2) button').click()
 
-    cy.get('header #header-user-actions #button-cart').click()
+    cy.get('header [data-cy=button-cart]').click()
 
     cy.wait(1000)
     cy.get(
@@ -80,7 +80,7 @@ describe('access the main page', () => {
   it('should click the user button and redirect to login page', () => {
     cy.wait('@get')
 
-    cy.get('header #header-user-actions > button:nth-child(1)').click()
+    cy.get('[aria-label="button-redirect-login"]').click()
 
     cy.wait(1000)
     cy.url().should('eq', [constants.baseURL, constants.loginPage].join('/'))
