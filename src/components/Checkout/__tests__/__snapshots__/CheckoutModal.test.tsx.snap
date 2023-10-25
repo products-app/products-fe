@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout Modal component should render correctly 1`] = `
+<body>
+  <div>
+    <div />
+  </div>
+  <div
+    class="ReactModalPortal"
+  />
+</body>
+`;
+
+exports[`Checkout Modal component should render correctly with open checkout modal 1`] = `
+<body
+  aria-hidden="true"
+  class="ReactModal__Body--open"
+>
+  <div
+    data-react-modal-body-trap=""
+    style="position: absolute; opacity: 0;"
+    tabindex="0"
+  />
+  <div>
+    <div />
+  </div>
+  <div
+    data-react-modal-body-trap=""
+    style="position: absolute; opacity: 0;"
+    tabindex="0"
+  />
+  <div
+    class="ReactModalPortal"
+  >
+    <div
+      class="ReactModal__Overlay"
+      style="position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: rgba(0, 0, 0, 0.7); z-index: 9999;"
+    >
+      <div
+        aria-label="Checkout"
+        aria-modal="true"
+        class="ReactModal__Content"
+        role="dialog"
+        style="position: absolute; top: 50%; left: 50%; border: 1px solid #ccc; background: rgb(255, 255, 255); overflow: auto; border-radius: 4px; outline: none; padding: 20px; margin-right: -50%; transform: translate(-50%, -50%); background-color: rgb(225, 225, 225);"
+        tabindex="-1"
+      >
+        <button
+          aria-label="close-modal"
+          class="c-bzchUs"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 256 256"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              fill="none"
+              height="256"
+              width="256"
+            />
+            <line
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+              x1="200"
+              x2="56"
+              y1="56"
+              y2="200"
+            />
+            <line
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="16"
+              x1="200"
+              x2="56"
+              y1="200"
+              y2="56"
+            />
+          </svg>
+        </button>
+        <form>
+          <h2
+            class="c-dgMvMW c-hpqwme c-dgMvMW-kupvTz-size-md"
+          >
+            Finalizar a compra
+          </h2>
+          <p
+            class="c-dgMvMW c-CfbqO c-dgMvMW-eQRsLC-size-lg"
+          >
+            Total do pedido: 
+            <strong>
+              R$ 200,00
+            </strong>
+          </p>
+          <div />
+          <button
+            class="c-gJqLDS c-bcxnOA c-gJqLDS-bIqJQp-size-medium"
+            disabled=""
+            type="submit"
+          >
+            Finalizar pedido
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+`;
