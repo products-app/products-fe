@@ -1,8 +1,12 @@
 import Link from 'next/link'
-import HeaderControl from '@/components/common/Header/HeaderControl'
 import SearchInput from '@/components/common/SearchInput'
 import { useSearch } from '../hooks'
 import { HeaderSection, Header } from './styles'
+import dynamic from 'next/dynamic'
+
+const HeaderControl = dynamic(() => import('../HeaderControl'), {
+  ssr: false,
+})
 
 const HeaderContainer = () => {
   const { searchTerm, handleChange } = useSearch()

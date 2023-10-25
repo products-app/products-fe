@@ -16,11 +16,9 @@ describe('Modal component', () => {
 
   it('should click the close button correctly', async () => {
     render(
-      <body>
-        <Modal {...props}>
-          <div>test</div>
-        </Modal>
-      </body>,
+      <Modal {...props}>
+        <div>test</div>
+      </Modal>,
     )
 
     expect(screen.getByText('test')).toBeInTheDocument()

@@ -1,8 +1,12 @@
 import Header from '@/components/common/Header'
-import { CartSidebar } from '@/components/Cart'
 import CheckoutModal from '@/components/Checkout/CheckoutModal'
 import { ToastContainer } from 'react-toastify'
 import { Container } from './styles'
+import dynamic from 'next/dynamic'
+
+const CartSidebar = dynamic(() => import('@/components/Cart/CartSidebar'), {
+  ssr: false,
+})
 
 type PageProps = {
   children?: React.ReactNode

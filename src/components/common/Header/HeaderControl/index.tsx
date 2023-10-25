@@ -1,3 +1,4 @@
+'use client'
 import { Text } from '@lebernardo/react'
 import { ShoppingCartSimple, UserCircle } from 'phosphor-react'
 import Dropdown from '@/components/common/Dropdown'
