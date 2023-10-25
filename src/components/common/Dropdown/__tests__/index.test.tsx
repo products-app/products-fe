@@ -9,7 +9,7 @@ const dropdownItems = [
   },
   {
     label: 'Fazer logout',
-    link: '/users/logout',
+    link: '/account/logout',
     icon: <div />,
   },
 ]
